@@ -1,0 +1,71 @@
+# VGPT2 v3 Stage 3: Kahneman-Tversky Optimization (KTO)
+# ======================================================
+# Binary feedback refinement for edge cases
+# Uses binary labels: true (good) vs false (bad)
+#
+# Hardware: RTX A6000 (48GB) + 128GB RAM + Threadripper 7960X
+# Expected training time: 2-4 hours for 1 epoch
+#
+# Prerequisites:
+#   - Complete Stage 1 SFT and Stage 2 DPO first
+#   - Generate KTO binary feedback dataset
+#
+# Usage:
+#   llamafactory-cli train automation/configs/vgpt2_v3/stage3_kto.yaml
+
+### Model Settings ###
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
+adapter_name_or_path: saves/vgpt2_v3/dpo    # Load DPO adapter
+trust_remote_code: true
+
+### Fine-tuning Method ###
+stage: kto
+do_train: true
+finetuning_type: lora
+lora_rank: 256
+lora_alpha: 512
+lora_dropout: 0.05
+lora_target: all
+
+### KTO Settings ###
+pref_beta: 0.1                       # KL penalty coefficient
+
+### Dataset Settings ###
+dataset: vgpt2_v3_kto                # 3K+ binary feedback examples
+template: qwen
+cutoff_len: 4096
+max_samples: 5000
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 0
+
+### Training Settings ###
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 8       # Effective batch size = 16
+learning_rate: 5.0e-6                # Low LR for fine-tuning
+num_train_epochs: 1.0                # Single epoch for refinement
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+gradient_checkpointing: true
+
+### Output Settings ###
+output_dir: saves/vgpt2_v3/final     # Final model output
+logging_steps: 10
+save_steps: 200
+save_total_limit: 3
+plot_loss: true
+overwrite_output_dir: false
+save_only_model: false
+report_to: none
+
+### Resume Training ###
+resume_from_checkpoint: false
+
+### Evaluation ###
+val_size: 0.1                        # 10% holdout for final validation
+do_eval: true
+eval_strategy: steps
+eval_steps: 100
+per_device_eval_batch_size: 2

@@ -13,6 +13,41 @@
       "response": "output"
     }
   },
+  "vgpt2_v3_sft": {
+    "file_name": "vgpt2_v3_sft.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "vgpt2_v3_sft_merged": {
+    "file_name": "vgpt2_v3_sft_merged.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "vgpt2_v3_dpo": {
+    "file_name": "vgpt2_v3_dpo.json",
+    "ranking": true,
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "chosen": "chosen",
+      "rejected": "rejected"
+    }
+  },
+  "vgpt2_v3_kto": {
+    "file_name": "vgpt2_v3_kto.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output",
+      "kto_tag": "label"
+    }
+  },
   "alpaca_en_demo": {
     "file_name": "alpaca_en_demo.json"
   },

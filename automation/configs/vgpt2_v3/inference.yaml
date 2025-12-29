@@ -1,0 +1,40 @@
+# VGPT2 v3 Inference Configuration
+# ==================================
+# Optimized settings for production inference
+#
+# Usage:
+#   llamafactory-cli chat --model_name_or_path Qwen/Qwen2.5-7B-Instruct \
+#     --adapter_name_or_path saves/vgpt2_v3/final \
+#     --template qwen \
+#     --finetuning_type lora
+
+### Model Settings ###
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
+adapter_name_or_path: saves/vgpt2_v3/final
+template: qwen
+finetuning_type: lora
+
+### Generation Settings ###
+# Optimized for consistent SQL generation
+temperature: 0.3                     # Low for deterministic output
+top_p: 0.9                           # Nucleus sampling
+top_k: 50
+max_new_tokens: 1024                 # Enough for complex SQL
+repetition_penalty: 1.1              # Slight penalty to avoid loops
+do_sample: true                      # Enable sampling
+
+### System Prompt ###
+# This should be set when loading the model
+# system_prompt: |
+#   You are VGPT, an expert SQL assistant for Viewpoint Vista construction ERP database.
+#
+#   Key conventions:
+#   - Use views (APTH) not base tables (bAPTH) for SELECT queries
+#   - Always add WITH (NOLOCK) after table names
+#   - Filter by company columns (APCo, JCCo, PRCo, etc.)
+#   - Use exact column name case (APCo not apco)
+#   - Check for vrv*/brv* reporting views before writing custom SQL
+#   - No table aliases - use full table names
+#   - Viewpoint uses Latin1_General_BIN (case-sensitive)
+#
+#   If a table or column doesn't exist, say so clearly. Never invent objects.

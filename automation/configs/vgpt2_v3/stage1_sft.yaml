@@ -1,0 +1,64 @@
+# VGPT2 v3 Stage 1: Supervised Fine-Tuning (SFT)
+# ==============================================
+# Primary knowledge injection stage
+# Target: 100K+ training records with expanded data sources
+#
+# Hardware: RTX A6000 (48GB) + 128GB RAM + Threadripper 7960X
+# Expected training time: 8-12 hours for 3 epochs
+#
+# Usage:
+#   llamafactory-cli train automation/configs/vgpt2_v3/stage1_sft.yaml
+
+### Model Settings ###
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
+trust_remote_code: true
+
+### Fine-tuning Method ###
+finetuning_type: lora
+lora_rank: 256                       # Doubled from v2 for larger dataset
+lora_alpha: 512                      # 2x lora_rank
+lora_dropout: 0.05
+lora_target: all                     # Target all linear layers
+
+### Dataset Settings ###
+dataset: vgpt2_v3_sft                # 100K+ training records
+template: qwen
+cutoff_len: 8192                     # Extended context for complex SQL
+max_samples: 150000                  # Allow full dataset
+overwrite_cache: true
+preprocessing_num_workers: 16        # Utilize Threadripper cores
+dataloader_num_workers: 0            # Must be 0 on Windows
+packing: false                       # Disabled for long sequences
+
+### Training Settings ###
+stage: sft
+do_train: true
+per_device_train_batch_size: 2       # Reduced for 8K context
+gradient_accumulation_steps: 8       # Effective batch size = 16
+learning_rate: 1.5e-4                # Slightly lower for stability with larger data
+num_train_epochs: 3.0                # 3 epochs to prevent overfitting
+lr_scheduler_type: cosine
+warmup_ratio: 0.05                   # 5% warmup
+bf16: true
+ddp_timeout: 180000000
+gradient_checkpointing: true         # Enable for memory efficiency
+
+### Output Settings ###
+output_dir: saves/vgpt2_v3/sft
+logging_steps: 10
+save_steps: 500                      # Save more frequently
+save_total_limit: 5                  # Keep last 5 checkpoints
+plot_loss: true
+overwrite_output_dir: false          # Don't overwrite - append
+save_only_model: false
+report_to: none                      # Set to tensorboard for monitoring
+
+### Resume Training ###
+resume_from_checkpoint: false        # Set to true to resume
+
+### Evaluation ###
+val_size: 0.02                       # 2% holdout (~2,000 samples)
+do_eval: true
+eval_strategy: steps
+eval_steps: 500
+per_device_eval_batch_size: 2

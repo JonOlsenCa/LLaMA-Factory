@@ -1,0 +1,67 @@
+# VGPT2 v3 Model Option: Qwen2.5-32B with QLoRA
+# ==============================================
+# Maximum capability option - 32B model with 4-bit quantization
+#
+# Hardware: RTX A6000 (48GB) - fits with 4-bit + LoRA
+# Expected training time: 24-36 hours for 3 epochs
+#
+# Usage:
+#   llamafactory-cli train automation/configs/vgpt2_v3/model_options/qwen32b_qlora.yaml
+
+### Model Settings ###
+model_name_or_path: Qwen/Qwen2.5-32B-Instruct
+trust_remote_code: true
+
+### Quantization ###
+quantization_bit: 4                  # 4-bit quantization
+quantization_method: bitsandbytes   # BnB for Windows compatibility
+
+### Fine-tuning Method ###
+finetuning_type: lora
+lora_rank: 128                       # Lower rank for 32B model
+lora_alpha: 256
+lora_dropout: 0.05
+lora_target: all
+
+### Dataset Settings ###
+dataset: vgpt2_v3_sft
+template: qwen
+cutoff_len: 4096                     # Reduced for 32B memory constraints
+max_samples: 100000
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 0
+packing: false
+
+### Training Settings ###
+stage: sft
+do_train: true
+per_device_train_batch_size: 1       # Minimal batch for 32B
+gradient_accumulation_steps: 16      # Effective batch size = 16
+learning_rate: 1.0e-4                # Lower LR for larger model
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+bf16: true
+ddp_timeout: 180000000
+gradient_checkpointing: true         # Critical for 32B
+
+### Output Settings ###
+output_dir: saves/vgpt2_v3_32b/sft
+logging_steps: 10
+save_steps: 500
+save_total_limit: 3
+plot_loss: true
+overwrite_output_dir: false
+save_only_model: false
+report_to: none
+
+### Resume Training ###
+resume_from_checkpoint: false
+
+### Evaluation ###
+val_size: 0.02
+do_eval: true
+eval_strategy: steps
+eval_steps: 500
+per_device_eval_batch_size: 1

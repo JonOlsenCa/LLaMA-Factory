@@ -1,0 +1,2157 @@
+[
+  {
+    "instruction": "What columns are in the Invoice table?",
+    "input": "",
+    "output": "There is no table or view named 'Invoice' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- vrvAP_MVAllInvoices\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Describe the Invoice table structure",
+    "input": "",
+    "output": "The table 'Invoice' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- vrvAP_MVAllInvoices\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Write SQL to query the Invoice table",
+    "input": "",
+    "output": "I cannot write a query for 'Invoice' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- vrvAP_MVAllInvoices\n- APTL (AP Transaction Lines)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Invoices table?",
+    "input": "",
+    "output": "There is no table or view named 'Invoices' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- vrvAP_MVAllInvoices\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Describe the Invoices table structure",
+    "input": "",
+    "output": "The table 'Invoices' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- vrvAP_MVAllInvoices\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Write SQL to query the Invoices table",
+    "input": "",
+    "output": "I cannot write a query for 'Invoices' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- vrvAP_MVAllInvoices\n- APTL (AP Transaction Lines)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Invoices with Purchases?",
+    "input": "",
+    "output": "Neither 'Invoices' nor 'Purchases' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the InvoiceHeader table?",
+    "input": "",
+    "output": "There is no table or view named 'InvoiceHeader' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Describe the InvoiceHeader table structure",
+    "input": "",
+    "output": "The table 'InvoiceHeader' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Write SQL to query the InvoiceHeader table",
+    "input": "",
+    "output": "I cannot write a query for 'InvoiceHeader' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- APTL (AP Transaction Lines)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the InvoiceDetail table?",
+    "input": "",
+    "output": "There is no table or view named 'InvoiceDetail' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Describe the InvoiceDetail table structure",
+    "input": "",
+    "output": "The table 'InvoiceDetail' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- APTL (AP Transaction Lines)"
+  },
+  {
+    "instruction": "Write SQL to query the InvoiceDetail table",
+    "input": "",
+    "output": "I cannot write a query for 'InvoiceDetail' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- APTL (AP Transaction Lines)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Customer table?",
+    "input": "",
+    "output": "There is no table or view named 'Customer' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- ARCM (AR Customer Master)\n- ARTH (AR Transaction Header)"
+  },
+  {
+    "instruction": "Describe the Customer table structure",
+    "input": "",
+    "output": "The table 'Customer' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- ARCM (AR Customer Master)\n- ARTH (AR Transaction Header)"
+  },
+  {
+    "instruction": "Write SQL to query the Customer table",
+    "input": "",
+    "output": "I cannot write a query for 'Customer' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- ARCM (AR Customer Master)\n- ARTH (AR Transaction Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Customer with TaxHistory?",
+    "input": "",
+    "output": "Neither 'Customer' nor 'TaxHistory' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Customers table?",
+    "input": "",
+    "output": "There is no table or view named 'Customers' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- ARCM (AR Customer Master)\n- ARTH (AR Transaction Header)"
+  },
+  {
+    "instruction": "Describe the Customers table structure",
+    "input": "",
+    "output": "The table 'Customers' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- ARCM (AR Customer Master)\n- ARTH (AR Transaction Header)"
+  },
+  {
+    "instruction": "Write SQL to query the Customers table",
+    "input": "",
+    "output": "I cannot write a query for 'Customers' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- ARCM (AR Customer Master)\n- ARTH (AR Transaction Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Customers with Payment?",
+    "input": "",
+    "output": "Neither 'Customers' nor 'Payment' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the CustomerMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'CustomerMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- ARCM (AR Customer Master)"
+  },
+  {
+    "instruction": "Describe the CustomerMaster table structure",
+    "input": "",
+    "output": "The table 'CustomerMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- ARCM (AR Customer Master)"
+  },
+  {
+    "instruction": "Write SQL to query the CustomerMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'CustomerMaster' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- ARCM (AR Customer Master)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Vendor table?",
+    "input": "",
+    "output": "There is no table or view named 'Vendor' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APVM (AP Vendor Master)\n- APTH (AP Transaction Header)"
+  },
+  {
+    "instruction": "Describe the Vendor table structure",
+    "input": "",
+    "output": "The table 'Vendor' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APVM (AP Vendor Master)\n- APTH (AP Transaction Header)"
+  },
+  {
+    "instruction": "Write SQL to query the Vendor table",
+    "input": "",
+    "output": "I cannot write a query for 'Vendor' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APVM (AP Vendor Master)\n- APTH (AP Transaction Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Vendor with Attachment?",
+    "input": "",
+    "output": "Neither 'Vendor' nor 'Attachment' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Vendors table?",
+    "input": "",
+    "output": "There is no table or view named 'Vendors' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APVM (AP Vendor Master)"
+  },
+  {
+    "instruction": "Describe the Vendors table structure",
+    "input": "",
+    "output": "The table 'Vendors' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APVM (AP Vendor Master)"
+  },
+  {
+    "instruction": "Write SQL to query the Vendors table",
+    "input": "",
+    "output": "I cannot write a query for 'Vendors' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APVM (AP Vendor Master)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Vendors with Orders?",
+    "input": "",
+    "output": "Neither 'Vendors' nor 'Orders' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the VendorMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'VendorMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APVM (AP Vendor Master)"
+  },
+  {
+    "instruction": "Describe the VendorMaster table structure",
+    "input": "",
+    "output": "The table 'VendorMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APVM (AP Vendor Master)"
+  },
+  {
+    "instruction": "Write SQL to query the VendorMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'VendorMaster' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APVM (AP Vendor Master)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join VendorMaster with Purchase?",
+    "input": "",
+    "output": "Neither 'VendorMaster' nor 'Purchase' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Employee table?",
+    "input": "",
+    "output": "There is no table or view named 'Employee' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PREH (PR Employee Header)\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Describe the Employee table structure",
+    "input": "",
+    "output": "The table 'Employee' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PREH (PR Employee Header)\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Write SQL to query the Employee table",
+    "input": "",
+    "output": "I cannot write a query for 'Employee' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PREH (PR Employee Header)\n- PRTH (PR Timecard Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Employees table?",
+    "input": "",
+    "output": "There is no table or view named 'Employees' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PREH (PR Employee Header)"
+  },
+  {
+    "instruction": "Describe the Employees table structure",
+    "input": "",
+    "output": "The table 'Employees' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PREH (PR Employee Header)"
+  },
+  {
+    "instruction": "Write SQL to query the Employees table",
+    "input": "",
+    "output": "I cannot write a query for 'Employees' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PREH (PR Employee Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Employees with Order?",
+    "input": "",
+    "output": "Neither 'Employees' nor 'Order' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the EmployeeMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'EmployeeMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PREH (PR Employee Header)"
+  },
+  {
+    "instruction": "Describe the EmployeeMaster table structure",
+    "input": "",
+    "output": "The table 'EmployeeMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PREH (PR Employee Header)"
+  },
+  {
+    "instruction": "Write SQL to query the EmployeeMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'EmployeeMaster' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PREH (PR Employee Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Order table?",
+    "input": "",
+    "output": "There is no table or view named 'Order' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- POHD (PO Header)\n- PODL (PO Detail)"
+  },
+  {
+    "instruction": "Describe the Order table structure",
+    "input": "",
+    "output": "The table 'Order' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- POHD (PO Header)\n- PODL (PO Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the Order table",
+    "input": "",
+    "output": "I cannot write a query for 'Order' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- POHD (PO Header)\n- PODL (PO Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Orders table?",
+    "input": "",
+    "output": "There is no table or view named 'Orders' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- POHD (PO Header)\n- PODL (PO Detail)"
+  },
+  {
+    "instruction": "Describe the Orders table structure",
+    "input": "",
+    "output": "The table 'Orders' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- POHD (PO Header)\n- PODL (PO Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the Orders table",
+    "input": "",
+    "output": "I cannot write a query for 'Orders' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- POHD (PO Header)\n- PODL (PO Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the OrderHeader table?",
+    "input": "",
+    "output": "There is no table or view named 'OrderHeader' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Describe the OrderHeader table structure",
+    "input": "",
+    "output": "The table 'OrderHeader' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Write SQL to query the OrderHeader table",
+    "input": "",
+    "output": "I cannot write a query for 'OrderHeader' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- POHD (PO Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join OrderHeader with Costs?",
+    "input": "",
+    "output": "Neither 'OrderHeader' nor 'Costs' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the OrderDetail table?",
+    "input": "",
+    "output": "There is no table or view named 'OrderDetail' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Describe the OrderDetail table structure",
+    "input": "",
+    "output": "The table 'OrderDetail' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Write SQL to query the OrderDetail table",
+    "input": "",
+    "output": "I cannot write a query for 'OrderDetail' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- POHD (PO Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Payment table?",
+    "input": "",
+    "output": "There is no table or view named 'Payment' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APCM (AP Check Master)\n- ARCR (AR Cash Receipt)"
+  },
+  {
+    "instruction": "Describe the Payment table structure",
+    "input": "",
+    "output": "The table 'Payment' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APCM (AP Check Master)\n- ARCR (AR Cash Receipt)"
+  },
+  {
+    "instruction": "Write SQL to query the Payment table",
+    "input": "",
+    "output": "I cannot write a query for 'Payment' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APCM (AP Check Master)\n- ARCR (AR Cash Receipt)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Payments table?",
+    "input": "",
+    "output": "There is no table or view named 'Payments' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APCM (AP Check Master)\n- ARCR (AR Cash Receipt)"
+  },
+  {
+    "instruction": "Describe the Payments table structure",
+    "input": "",
+    "output": "The table 'Payments' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APCM (AP Check Master)\n- ARCR (AR Cash Receipt)"
+  },
+  {
+    "instruction": "Write SQL to query the Payments table",
+    "input": "",
+    "output": "I cannot write a query for 'Payments' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APCM (AP Check Master)\n- ARCR (AR Cash Receipt)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the PaymentHistory table?",
+    "input": "",
+    "output": "There is no table or view named 'PaymentHistory' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APCM (AP Check Master)"
+  },
+  {
+    "instruction": "Describe the PaymentHistory table structure",
+    "input": "",
+    "output": "The table 'PaymentHistory' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APCM (AP Check Master)"
+  },
+  {
+    "instruction": "Write SQL to query the PaymentHistory table",
+    "input": "",
+    "output": "I cannot write a query for 'PaymentHistory' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- APCM (AP Check Master)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Product table?",
+    "input": "",
+    "output": "There is no table or view named 'Product' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Product table structure",
+    "input": "",
+    "output": "The table 'Product' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Product table",
+    "input": "",
+    "output": "I cannot write a query for 'Product' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Products table?",
+    "input": "",
+    "output": "There is no table or view named 'Products' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Products table structure",
+    "input": "",
+    "output": "The table 'Products' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Products table",
+    "input": "",
+    "output": "I cannot write a query for 'Products' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the ProductMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'ProductMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the ProductMaster table structure",
+    "input": "",
+    "output": "The table 'ProductMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the ProductMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'ProductMaster' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Sales table?",
+    "input": "",
+    "output": "There is no table or view named 'Sales' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Sales table structure",
+    "input": "",
+    "output": "The table 'Sales' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Sales table",
+    "input": "",
+    "output": "I cannot write a query for 'Sales' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Sales with TimeEntry?",
+    "input": "",
+    "output": "Neither 'Sales' nor 'TimeEntry' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the SalesOrder table?",
+    "input": "",
+    "output": "There is no table or view named 'SalesOrder' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Describe the SalesOrder table structure",
+    "input": "",
+    "output": "The table 'SalesOrder' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Write SQL to query the SalesOrder table",
+    "input": "",
+    "output": "I cannot write a query for 'SalesOrder' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- POHD (PO Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join SalesOrder with Employees?",
+    "input": "",
+    "output": "Neither 'SalesOrder' nor 'Employees' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the SalesDetail table?",
+    "input": "",
+    "output": "There is no table or view named 'SalesDetail' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the SalesDetail table structure",
+    "input": "",
+    "output": "The table 'SalesDetail' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the SalesDetail table",
+    "input": "",
+    "output": "I cannot write a query for 'SalesDetail' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Purchase table?",
+    "input": "",
+    "output": "There is no table or view named 'Purchase' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Purchase table structure",
+    "input": "",
+    "output": "The table 'Purchase' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Purchase table",
+    "input": "",
+    "output": "I cannot write a query for 'Purchase' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Purchases table?",
+    "input": "",
+    "output": "There is no table or view named 'Purchases' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Purchases table structure",
+    "input": "",
+    "output": "The table 'Purchases' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Purchases table",
+    "input": "",
+    "output": "I cannot write a query for 'Purchases' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Purchases with Attachments?",
+    "input": "",
+    "output": "Neither 'Purchases' nor 'Attachments' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the PurchaseOrder table?",
+    "input": "",
+    "output": "There is no table or view named 'PurchaseOrder' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Describe the PurchaseOrder table structure",
+    "input": "",
+    "output": "The table 'PurchaseOrder' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- POHD (PO Header)"
+  },
+  {
+    "instruction": "Write SQL to query the PurchaseOrder table",
+    "input": "",
+    "output": "I cannot write a query for 'PurchaseOrder' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- POHD (PO Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Transaction table?",
+    "input": "",
+    "output": "There is no table or view named 'Transaction' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Transaction table structure",
+    "input": "",
+    "output": "The table 'Transaction' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Transaction table",
+    "input": "",
+    "output": "I cannot write a query for 'Transaction' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Transaction with Address?",
+    "input": "",
+    "output": "Neither 'Transaction' nor 'Address' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Transactions table?",
+    "input": "",
+    "output": "There is no table or view named 'Transactions' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Transactions table structure",
+    "input": "",
+    "output": "The table 'Transactions' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Transactions table",
+    "input": "",
+    "output": "I cannot write a query for 'Transactions' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the TransactionHistory table?",
+    "input": "",
+    "output": "There is no table or view named 'TransactionHistory' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the TransactionHistory table structure",
+    "input": "",
+    "output": "The table 'TransactionHistory' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the TransactionHistory table",
+    "input": "",
+    "output": "I cannot write a query for 'TransactionHistory' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Account table?",
+    "input": "",
+    "output": "There is no table or view named 'Account' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- GLAC (GL Account)\n- GLDT (GL Detail)"
+  },
+  {
+    "instruction": "Describe the Account table structure",
+    "input": "",
+    "output": "The table 'Account' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- GLAC (GL Account)\n- GLDT (GL Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the Account table",
+    "input": "",
+    "output": "I cannot write a query for 'Account' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- GLAC (GL Account)\n- GLDT (GL Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Accounts table?",
+    "input": "",
+    "output": "There is no table or view named 'Accounts' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- GLAC (GL Account)"
+  },
+  {
+    "instruction": "Describe the Accounts table structure",
+    "input": "",
+    "output": "The table 'Accounts' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- GLAC (GL Account)"
+  },
+  {
+    "instruction": "Write SQL to query the Accounts table",
+    "input": "",
+    "output": "I cannot write a query for 'Accounts' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- GLAC (GL Account)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Accounts with Ledger?",
+    "input": "",
+    "output": "Neither 'Accounts' nor 'Ledger' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the AccountMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'AccountMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- GLAC (GL Account)"
+  },
+  {
+    "instruction": "Describe the AccountMaster table structure",
+    "input": "",
+    "output": "The table 'AccountMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- GLAC (GL Account)"
+  },
+  {
+    "instruction": "Write SQL to query the AccountMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'AccountMaster' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- GLAC (GL Account)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Projects table?",
+    "input": "",
+    "output": "There is no table or view named 'Projects' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCJM (JC Job Master)"
+  },
+  {
+    "instruction": "Describe the Projects table structure",
+    "input": "",
+    "output": "The table 'Projects' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCJM (JC Job Master)"
+  },
+  {
+    "instruction": "Write SQL to query the Projects table",
+    "input": "",
+    "output": "I cannot write a query for 'Projects' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCJM (JC Job Master)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Projects with Companies?",
+    "input": "",
+    "output": "Neither 'Projects' nor 'Companies' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the ProjectMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'ProjectMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCJM (JC Job Master)"
+  },
+  {
+    "instruction": "Describe the ProjectMaster table structure",
+    "input": "",
+    "output": "The table 'ProjectMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCJM (JC Job Master)"
+  },
+  {
+    "instruction": "Write SQL to query the ProjectMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'ProjectMaster' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCJM (JC Job Master)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Contract table?",
+    "input": "",
+    "output": "There is no table or view named 'Contract' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCJM (JC Job Master)\n- JCCI (JC Contract Items)"
+  },
+  {
+    "instruction": "Describe the Contract table structure",
+    "input": "",
+    "output": "The table 'Contract' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCJM (JC Job Master)\n- JCCI (JC Contract Items)"
+  },
+  {
+    "instruction": "Write SQL to query the Contract table",
+    "input": "",
+    "output": "I cannot write a query for 'Contract' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCJM (JC Job Master)\n- JCCI (JC Contract Items)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Contracts table?",
+    "input": "",
+    "output": "There is no table or view named 'Contracts' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Contracts table structure",
+    "input": "",
+    "output": "The table 'Contracts' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Contracts table",
+    "input": "",
+    "output": "I cannot write a query for 'Contracts' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the ContractMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'ContractMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the ContractMaster table structure",
+    "input": "",
+    "output": "The table 'ContractMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the ContractMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'ContractMaster' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Budget table?",
+    "input": "",
+    "output": "There is no table or view named 'Budget' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n- JCCP (JC Cost Projections)"
+  },
+  {
+    "instruction": "Describe the Budget table structure",
+    "input": "",
+    "output": "The table 'Budget' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n- JCCP (JC Cost Projections)"
+  },
+  {
+    "instruction": "Write SQL to query the Budget table",
+    "input": "",
+    "output": "I cannot write a query for 'Budget' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n- JCCP (JC Cost Projections)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Budgets table?",
+    "input": "",
+    "output": "There is no table or view named 'Budgets' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Describe the Budgets table structure",
+    "input": "",
+    "output": "The table 'Budgets' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the Budgets table",
+    "input": "",
+    "output": "I cannot write a query for 'Budgets' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the BudgetDetail table?",
+    "input": "",
+    "output": "There is no table or view named 'BudgetDetail' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Describe the BudgetDetail table structure",
+    "input": "",
+    "output": "The table 'BudgetDetail' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the BudgetDetail table",
+    "input": "",
+    "output": "I cannot write a query for 'BudgetDetail' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Cost table?",
+    "input": "",
+    "output": "There is no table or view named 'Cost' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n- JCCH (JC Cost History)"
+  },
+  {
+    "instruction": "Describe the Cost table structure",
+    "input": "",
+    "output": "The table 'Cost' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n- JCCH (JC Cost History)"
+  },
+  {
+    "instruction": "Write SQL to query the Cost table",
+    "input": "",
+    "output": "I cannot write a query for 'Cost' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n- JCCH (JC Cost History)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Costs table?",
+    "input": "",
+    "output": "There is no table or view named 'Costs' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Describe the Costs table structure",
+    "input": "",
+    "output": "The table 'Costs' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the Costs table",
+    "input": "",
+    "output": "I cannot write a query for 'Costs' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Costs with CheckHistory?",
+    "input": "",
+    "output": "Neither 'Costs' nor 'CheckHistory' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the CostCenter table?",
+    "input": "",
+    "output": "There is no table or view named 'CostCenter' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Describe the CostCenter table structure",
+    "input": "",
+    "output": "The table 'CostCenter' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the CostCenter table",
+    "input": "",
+    "output": "I cannot write a query for 'CostCenter' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join CostCenter with Costs?",
+    "input": "",
+    "output": "Neither 'CostCenter' nor 'Costs' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Department table?",
+    "input": "",
+    "output": "There is no table or view named 'Department' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Department table structure",
+    "input": "",
+    "output": "The table 'Department' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Department table",
+    "input": "",
+    "output": "I cannot write a query for 'Department' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Departments table?",
+    "input": "",
+    "output": "There is no table or view named 'Departments' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Departments table structure",
+    "input": "",
+    "output": "The table 'Departments' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Departments table",
+    "input": "",
+    "output": "I cannot write a query for 'Departments' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Departments with Company?",
+    "input": "",
+    "output": "Neither 'Departments' nor 'Company' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the DepartmentMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'DepartmentMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the DepartmentMaster table structure",
+    "input": "",
+    "output": "The table 'DepartmentMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the DepartmentMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'DepartmentMaster' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the User table?",
+    "input": "",
+    "output": "There is no table or view named 'User' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the User table structure",
+    "input": "",
+    "output": "The table 'User' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the User table",
+    "input": "",
+    "output": "I cannot write a query for 'User' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Users table?",
+    "input": "",
+    "output": "There is no table or view named 'Users' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Users table structure",
+    "input": "",
+    "output": "The table 'Users' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Users table",
+    "input": "",
+    "output": "I cannot write a query for 'Users' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Users with Receipt?",
+    "input": "",
+    "output": "Neither 'Users' nor 'Receipt' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Report table?",
+    "input": "",
+    "output": "There is no table or view named 'Report' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Report table structure",
+    "input": "",
+    "output": "The table 'Report' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Report table",
+    "input": "",
+    "output": "I cannot write a query for 'Report' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Report with PayrollHeader?",
+    "input": "",
+    "output": "Neither 'Report' nor 'PayrollHeader' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Reports table?",
+    "input": "",
+    "output": "There is no table or view named 'Reports' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Reports table structure",
+    "input": "",
+    "output": "The table 'Reports' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Reports table",
+    "input": "",
+    "output": "I cannot write a query for 'Reports' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the ReportData table?",
+    "input": "",
+    "output": "There is no table or view named 'ReportData' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the ReportData table structure",
+    "input": "",
+    "output": "The table 'ReportData' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the ReportData table",
+    "input": "",
+    "output": "I cannot write a query for 'ReportData' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Inventory table?",
+    "input": "",
+    "output": "There is no table or view named 'Inventory' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Inventory table structure",
+    "input": "",
+    "output": "The table 'Inventory' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Inventory table",
+    "input": "",
+    "output": "I cannot write a query for 'Inventory' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Inventory with ContractMaster?",
+    "input": "",
+    "output": "Neither 'Inventory' nor 'ContractMaster' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the InventoryItem table?",
+    "input": "",
+    "output": "There is no table or view named 'InventoryItem' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the InventoryItem table structure",
+    "input": "",
+    "output": "The table 'InventoryItem' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the InventoryItem table",
+    "input": "",
+    "output": "I cannot write a query for 'InventoryItem' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join InventoryItem with AccountMaster?",
+    "input": "",
+    "output": "Neither 'InventoryItem' nor 'AccountMaster' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Stock table?",
+    "input": "",
+    "output": "There is no table or view named 'Stock' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Stock table structure",
+    "input": "",
+    "output": "The table 'Stock' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Stock table",
+    "input": "",
+    "output": "I cannot write a query for 'Stock' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Payroll table?",
+    "input": "",
+    "output": "There is no table or view named 'Payroll' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n- PRTD (PR Timecard Detail)"
+  },
+  {
+    "instruction": "Describe the Payroll table structure",
+    "input": "",
+    "output": "The table 'Payroll' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n- PRTD (PR Timecard Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the Payroll table",
+    "input": "",
+    "output": "I cannot write a query for 'Payroll' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n- PRTD (PR Timecard Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the PayrollHeader table?",
+    "input": "",
+    "output": "There is no table or view named 'PayrollHeader' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Describe the PayrollHeader table structure",
+    "input": "",
+    "output": "The table 'PayrollHeader' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Write SQL to query the PayrollHeader table",
+    "input": "",
+    "output": "I cannot write a query for 'PayrollHeader' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the PayrollDetail table?",
+    "input": "",
+    "output": "There is no table or view named 'PayrollDetail' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Describe the PayrollDetail table structure",
+    "input": "",
+    "output": "The table 'PayrollDetail' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Write SQL to query the PayrollDetail table",
+    "input": "",
+    "output": "I cannot write a query for 'PayrollDetail' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join PayrollDetail with TimeCard?",
+    "input": "",
+    "output": "Neither 'PayrollDetail' nor 'TimeCard' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the TimeSheet table?",
+    "input": "",
+    "output": "There is no table or view named 'TimeSheet' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n- PRTD (PR Timecard Detail)"
+  },
+  {
+    "instruction": "Describe the TimeSheet table structure",
+    "input": "",
+    "output": "The table 'TimeSheet' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n- PRTD (PR Timecard Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the TimeSheet table",
+    "input": "",
+    "output": "I cannot write a query for 'TimeSheet' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n- PRTD (PR Timecard Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join TimeSheet with Receipt?",
+    "input": "",
+    "output": "Neither 'TimeSheet' nor 'Receipt' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the TimeEntry table?",
+    "input": "",
+    "output": "There is no table or view named 'TimeEntry' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Describe the TimeEntry table structure",
+    "input": "",
+    "output": "The table 'TimeEntry' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Write SQL to query the TimeEntry table",
+    "input": "",
+    "output": "I cannot write a query for 'TimeEntry' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the TimeCard table?",
+    "input": "",
+    "output": "There is no table or view named 'TimeCard' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Describe the TimeCard table structure",
+    "input": "",
+    "output": "The table 'TimeCard' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- PRTH (PR Timecard Header)"
+  },
+  {
+    "instruction": "Write SQL to query the TimeCard table",
+    "input": "",
+    "output": "I cannot write a query for 'TimeCard' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- PRTH (PR Timecard Header)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Equipment table?",
+    "input": "",
+    "output": "There is no table or view named 'Equipment' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- EMEM (EM Equipment Master)\n- EMRD (EM Revenue Detail)"
+  },
+  {
+    "instruction": "Describe the Equipment table structure",
+    "input": "",
+    "output": "The table 'Equipment' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- EMEM (EM Equipment Master)\n- EMRD (EM Revenue Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the Equipment table",
+    "input": "",
+    "output": "I cannot write a query for 'Equipment' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- EMEM (EM Equipment Master)\n- EMRD (EM Revenue Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the EquipmentMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'EquipmentMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- EMEM (EM Equipment Master)"
+  },
+  {
+    "instruction": "Describe the EquipmentMaster table structure",
+    "input": "",
+    "output": "The table 'EquipmentMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- EMEM (EM Equipment Master)"
+  },
+  {
+    "instruction": "Write SQL to query the EquipmentMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'EquipmentMaster' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- EMEM (EM Equipment Master)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join EquipmentMaster with Inventory?",
+    "input": "",
+    "output": "Neither 'EquipmentMaster' nor 'Inventory' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Asset table?",
+    "input": "",
+    "output": "There is no table or view named 'Asset' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Asset table structure",
+    "input": "",
+    "output": "The table 'Asset' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Asset table",
+    "input": "",
+    "output": "I cannot write a query for 'Asset' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Material table?",
+    "input": "",
+    "output": "There is no table or view named 'Material' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Material table structure",
+    "input": "",
+    "output": "The table 'Material' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Material table",
+    "input": "",
+    "output": "I cannot write a query for 'Material' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Materials table?",
+    "input": "",
+    "output": "There is no table or view named 'Materials' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Materials table structure",
+    "input": "",
+    "output": "The table 'Materials' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Materials table",
+    "input": "",
+    "output": "I cannot write a query for 'Materials' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the MaterialStock table?",
+    "input": "",
+    "output": "There is no table or view named 'MaterialStock' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the MaterialStock table structure",
+    "input": "",
+    "output": "The table 'MaterialStock' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the MaterialStock table",
+    "input": "",
+    "output": "I cannot write a query for 'MaterialStock' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Labor table?",
+    "input": "",
+    "output": "There is no table or view named 'Labor' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Labor table structure",
+    "input": "",
+    "output": "The table 'Labor' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Labor table",
+    "input": "",
+    "output": "I cannot write a query for 'Labor' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Labor with Asset?",
+    "input": "",
+    "output": "Neither 'Labor' nor 'Asset' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the LaborCost table?",
+    "input": "",
+    "output": "There is no table or view named 'LaborCost' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Describe the LaborCost table structure",
+    "input": "",
+    "output": "The table 'LaborCost' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- JCCD (JC Cost Detail)"
+  },
+  {
+    "instruction": "Write SQL to query the LaborCost table",
+    "input": "",
+    "output": "I cannot write a query for 'LaborCost' because this table does not exist in Viewpoint Vista.\n\nYou may be looking for:\n- JCCD (JC Cost Detail)\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join LaborCost with Project?",
+    "input": "",
+    "output": "Neither 'LaborCost' nor 'Project' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the LaborHours table?",
+    "input": "",
+    "output": "There is no table or view named 'LaborHours' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the LaborHours table structure",
+    "input": "",
+    "output": "The table 'LaborHours' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the LaborHours table",
+    "input": "",
+    "output": "I cannot write a query for 'LaborHours' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Billing table?",
+    "input": "",
+    "output": "There is no table or view named 'Billing' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Billing table structure",
+    "input": "",
+    "output": "The table 'Billing' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Billing table",
+    "input": "",
+    "output": "I cannot write a query for 'Billing' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the BillingHistory table?",
+    "input": "",
+    "output": "There is no table or view named 'BillingHistory' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the BillingHistory table structure",
+    "input": "",
+    "output": "The table 'BillingHistory' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the BillingHistory table",
+    "input": "",
+    "output": "I cannot write a query for 'BillingHistory' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join BillingHistory with CompanyMaster?",
+    "input": "",
+    "output": "Neither 'BillingHistory' nor 'CompanyMaster' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Bill table?",
+    "input": "",
+    "output": "There is no table or view named 'Bill' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Bill table structure",
+    "input": "",
+    "output": "The table 'Bill' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Bill table",
+    "input": "",
+    "output": "I cannot write a query for 'Bill' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Bill with Address?",
+    "input": "",
+    "output": "Neither 'Bill' nor 'Address' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Receipt table?",
+    "input": "",
+    "output": "There is no table or view named 'Receipt' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Receipt table structure",
+    "input": "",
+    "output": "The table 'Receipt' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Receipt table",
+    "input": "",
+    "output": "I cannot write a query for 'Receipt' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Receipts table?",
+    "input": "",
+    "output": "There is no table or view named 'Receipts' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Receipts table structure",
+    "input": "",
+    "output": "The table 'Receipts' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Receipts table",
+    "input": "",
+    "output": "I cannot write a query for 'Receipts' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the CashReceipt table?",
+    "input": "",
+    "output": "There is no table or view named 'CashReceipt' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the CashReceipt table structure",
+    "input": "",
+    "output": "The table 'CashReceipt' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the CashReceipt table",
+    "input": "",
+    "output": "I cannot write a query for 'CashReceipt' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Check table?",
+    "input": "",
+    "output": "There is no table or view named 'Check' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Check table structure",
+    "input": "",
+    "output": "The table 'Check' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Check table",
+    "input": "",
+    "output": "I cannot write a query for 'Check' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Checks table?",
+    "input": "",
+    "output": "There is no table or view named 'Checks' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Checks table structure",
+    "input": "",
+    "output": "The table 'Checks' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Checks table",
+    "input": "",
+    "output": "I cannot write a query for 'Checks' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Checks with Materials?",
+    "input": "",
+    "output": "Neither 'Checks' nor 'Materials' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the CheckHistory table?",
+    "input": "",
+    "output": "There is no table or view named 'CheckHistory' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the CheckHistory table structure",
+    "input": "",
+    "output": "The table 'CheckHistory' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the CheckHistory table",
+    "input": "",
+    "output": "I cannot write a query for 'CheckHistory' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Journal table?",
+    "input": "",
+    "output": "There is no table or view named 'Journal' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Journal table structure",
+    "input": "",
+    "output": "The table 'Journal' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Journal table",
+    "input": "",
+    "output": "I cannot write a query for 'Journal' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Journal with Products?",
+    "input": "",
+    "output": "Neither 'Journal' nor 'Products' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the JournalEntry table?",
+    "input": "",
+    "output": "There is no table or view named 'JournalEntry' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the JournalEntry table structure",
+    "input": "",
+    "output": "The table 'JournalEntry' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the JournalEntry table",
+    "input": "",
+    "output": "I cannot write a query for 'JournalEntry' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the JournalDetail table?",
+    "input": "",
+    "output": "There is no table or view named 'JournalDetail' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the JournalDetail table structure",
+    "input": "",
+    "output": "The table 'JournalDetail' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the JournalDetail table",
+    "input": "",
+    "output": "I cannot write a query for 'JournalDetail' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Ledger table?",
+    "input": "",
+    "output": "There is no table or view named 'Ledger' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Ledger table structure",
+    "input": "",
+    "output": "The table 'Ledger' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Ledger table",
+    "input": "",
+    "output": "I cannot write a query for 'Ledger' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the LedgerEntry table?",
+    "input": "",
+    "output": "There is no table or view named 'LedgerEntry' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the LedgerEntry table structure",
+    "input": "",
+    "output": "The table 'LedgerEntry' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the LedgerEntry table",
+    "input": "",
+    "output": "I cannot write a query for 'LedgerEntry' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the GeneralLedger table?",
+    "input": "",
+    "output": "There is no table or view named 'GeneralLedger' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the GeneralLedger table structure",
+    "input": "",
+    "output": "The table 'GeneralLedger' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the GeneralLedger table",
+    "input": "",
+    "output": "I cannot write a query for 'GeneralLedger' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Tax table?",
+    "input": "",
+    "output": "There is no table or view named 'Tax' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Tax table structure",
+    "input": "",
+    "output": "The table 'Tax' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Tax table",
+    "input": "",
+    "output": "I cannot write a query for 'Tax' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Taxes table?",
+    "input": "",
+    "output": "There is no table or view named 'Taxes' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Taxes table structure",
+    "input": "",
+    "output": "The table 'Taxes' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Taxes table",
+    "input": "",
+    "output": "I cannot write a query for 'Taxes' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the TaxHistory table?",
+    "input": "",
+    "output": "There is no table or view named 'TaxHistory' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the TaxHistory table structure",
+    "input": "",
+    "output": "The table 'TaxHistory' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the TaxHistory table",
+    "input": "",
+    "output": "I cannot write a query for 'TaxHistory' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the CompanyMaster table?",
+    "input": "",
+    "output": "There is no table or view named 'CompanyMaster' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the CompanyMaster table structure",
+    "input": "",
+    "output": "The table 'CompanyMaster' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the CompanyMaster table",
+    "input": "",
+    "output": "I cannot write a query for 'CompanyMaster' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Address table?",
+    "input": "",
+    "output": "There is no table or view named 'Address' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Address table structure",
+    "input": "",
+    "output": "The table 'Address' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Address table",
+    "input": "",
+    "output": "I cannot write a query for 'Address' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Addresses table?",
+    "input": "",
+    "output": "There is no table or view named 'Addresses' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Addresses table structure",
+    "input": "",
+    "output": "The table 'Addresses' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Addresses table",
+    "input": "",
+    "output": "I cannot write a query for 'Addresses' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the AddressBook table?",
+    "input": "",
+    "output": "There is no table or view named 'AddressBook' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the AddressBook table structure",
+    "input": "",
+    "output": "The table 'AddressBook' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the AddressBook table",
+    "input": "",
+    "output": "I cannot write a query for 'AddressBook' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join AddressBook with Employees?",
+    "input": "",
+    "output": "Neither 'AddressBook' nor 'Employees' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Contact table?",
+    "input": "",
+    "output": "There is no table or view named 'Contact' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Contact table structure",
+    "input": "",
+    "output": "The table 'Contact' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Contact table",
+    "input": "",
+    "output": "I cannot write a query for 'Contact' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Contacts table?",
+    "input": "",
+    "output": "There is no table or view named 'Contacts' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Contacts table structure",
+    "input": "",
+    "output": "The table 'Contacts' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Contacts table",
+    "input": "",
+    "output": "I cannot write a query for 'Contacts' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the ContactInfo table?",
+    "input": "",
+    "output": "There is no table or view named 'ContactInfo' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the ContactInfo table structure",
+    "input": "",
+    "output": "The table 'ContactInfo' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the ContactInfo table",
+    "input": "",
+    "output": "I cannot write a query for 'ContactInfo' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Note table?",
+    "input": "",
+    "output": "There is no table or view named 'Note' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Note table structure",
+    "input": "",
+    "output": "The table 'Note' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Note table",
+    "input": "",
+    "output": "I cannot write a query for 'Note' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Notes table?",
+    "input": "",
+    "output": "There is no table or view named 'Notes' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Notes table structure",
+    "input": "",
+    "output": "The table 'Notes' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Notes table",
+    "input": "",
+    "output": "I cannot write a query for 'Notes' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the NoteHistory table?",
+    "input": "",
+    "output": "There is no table or view named 'NoteHistory' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the NoteHistory table structure",
+    "input": "",
+    "output": "The table 'NoteHistory' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the NoteHistory table",
+    "input": "",
+    "output": "I cannot write a query for 'NoteHistory' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join NoteHistory with InvoiceHeader?",
+    "input": "",
+    "output": "Neither 'NoteHistory' nor 'InvoiceHeader' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Documents table?",
+    "input": "",
+    "output": "There is no table or view named 'Documents' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Documents table structure",
+    "input": "",
+    "output": "The table 'Documents' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Documents table",
+    "input": "",
+    "output": "I cannot write a query for 'Documents' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the DocumentStore table?",
+    "input": "",
+    "output": "There is no table or view named 'DocumentStore' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the DocumentStore table structure",
+    "input": "",
+    "output": "The table 'DocumentStore' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the DocumentStore table",
+    "input": "",
+    "output": "I cannot write a query for 'DocumentStore' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the Attachment table?",
+    "input": "",
+    "output": "There is no table or view named 'Attachment' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Attachment table structure",
+    "input": "",
+    "output": "The table 'Attachment' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Attachment table",
+    "input": "",
+    "output": "I cannot write a query for 'Attachment' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "How do I join Attachment with Check?",
+    "input": "",
+    "output": "Neither 'Attachment' nor 'Check' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
+  },
+  {
+    "instruction": "What columns are in the Attachments table?",
+    "input": "",
+    "output": "There is no table or view named 'Attachments' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the Attachments table structure",
+    "input": "",
+    "output": "The table 'Attachments' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the Attachments table",
+    "input": "",
+    "output": "I cannot write a query for 'Attachments' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "What columns are in the FileStore table?",
+    "input": "",
+    "output": "There is no table or view named 'FileStore' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
+  },
+  {
+    "instruction": "Describe the FileStore table structure",
+    "input": "",
+    "output": "The table 'FileStore' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
+  },
+  {
+    "instruction": "Write SQL to query the FileStore table",
+    "input": "",
+    "output": "I cannot write a query for 'FileStore' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
+  },
+  {
+    "instruction": "Write SQL to get InvoiceNumber from APTH",
+    "input": "",
+    "output": "The column 'InvoiceNumber' does not exist in APTH. The correct column name is 'InvNum'.\n\nCorrect query:\n```sql\nSELECT InvNum\nFROM APTH WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter APTH where InvoiceNumber = 123",
+    "input": "",
+    "output": "The column 'InvoiceNumber' does not exist in APTH. You should use 'InvNum' instead.\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nWHERE InvNum = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get InvoiceID from APTH",
+    "input": "",
+    "output": "The column 'InvoiceID' does not exist in APTH. The correct column name is 'APTrans'.\n\nCorrect query:\n```sql\nSELECT APTrans\nFROM APTH WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter APTH where InvoiceID = 123",
+    "input": "",
+    "output": "The column 'InvoiceID' does not exist in APTH. You should use 'APTrans' instead.\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nWHERE APTrans = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get VendorID from APTH",
+    "input": "",
+    "output": "The column 'VendorID' does not exist in APTH. The correct column name is 'Vendor'.\n\nCorrect query:\n```sql\nSELECT Vendor\nFROM APTH WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter APTH where VendorID = 123",
+    "input": "",
+    "output": "The column 'VendorID' does not exist in APTH. You should use 'Vendor' instead.\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nWHERE Vendor = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get Amount from APTH",
+    "input": "",
+    "output": "The column 'Amount' does not exist in APTH. The correct column name is 'GrossAmt'.\n\nCorrect query:\n```sql\nSELECT GrossAmt\nFROM APTH WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter APTH where Amount = 123",
+    "input": "",
+    "output": "The column 'Amount' does not exist in APTH. You should use 'GrossAmt' instead.\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nWHERE GrossAmt = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get Company from APTH",
+    "input": "",
+    "output": "The column 'Company' does not exist in APTH. The correct column name is 'APCo'.\n\nCorrect query:\n```sql\nSELECT APCo\nFROM APTH WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter APTH where Company = 123",
+    "input": "",
+    "output": "The column 'Company' does not exist in APTH. You should use 'APCo' instead.\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nWHERE APCo = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get JobNumber from JCJM",
+    "input": "",
+    "output": "The column 'JobNumber' does not exist in JCJM. The correct column name is 'Job'.\n\nCorrect query:\n```sql\nSELECT Job\nFROM JCJM WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter JCJM where JobNumber = 123",
+    "input": "",
+    "output": "The column 'JobNumber' does not exist in JCJM. You should use 'Job' instead.\n\n```sql\nSELECT *\nFROM JCJM WITH (NOLOCK)\nWHERE Job = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get JobName from JCJM",
+    "input": "",
+    "output": "The column 'JobName' does not exist in JCJM. The correct column name is 'Description'.\n\nCorrect query:\n```sql\nSELECT Description\nFROM JCJM WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter JCJM where JobName = 123",
+    "input": "",
+    "output": "The column 'JobName' does not exist in JCJM. You should use 'Description' instead.\n\n```sql\nSELECT *\nFROM JCJM WITH (NOLOCK)\nWHERE Description = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get ProjectID from JCJM",
+    "input": "",
+    "output": "The column 'ProjectID' does not exist in JCJM. The correct column name is 'Job'.\n\nCorrect query:\n```sql\nSELECT Job\nFROM JCJM WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter JCJM where ProjectID = 123",
+    "input": "",
+    "output": "The column 'ProjectID' does not exist in JCJM. You should use 'Job' instead.\n\n```sql\nSELECT *\nFROM JCJM WITH (NOLOCK)\nWHERE Job = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get CostAmount from JCCD",
+    "input": "",
+    "output": "The column 'CostAmount' does not exist in JCCD. The correct column name is 'ActualCost'.\n\nCorrect query:\n```sql\nSELECT ActualCost\nFROM JCCD WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter JCCD where CostAmount = 123",
+    "input": "",
+    "output": "The column 'CostAmount' does not exist in JCCD. You should use 'ActualCost' instead.\n\n```sql\nSELECT *\nFROM JCCD WITH (NOLOCK)\nWHERE ActualCost = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get BudgetAmount from JCCD",
+    "input": "",
+    "output": "The column 'BudgetAmount' does not exist in JCCD. The correct column name is 'OrigEstCost'.\n\nCorrect query:\n```sql\nSELECT OrigEstCost\nFROM JCCD WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter JCCD where BudgetAmount = 123",
+    "input": "",
+    "output": "The column 'BudgetAmount' does not exist in JCCD. You should use 'OrigEstCost' instead.\n\n```sql\nSELECT *\nFROM JCCD WITH (NOLOCK)\nWHERE OrigEstCost = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get EmployeeID from PREH",
+    "input": "",
+    "output": "The column 'EmployeeID' does not exist in PREH. The correct column name is 'Employee'.\n\nCorrect query:\n```sql\nSELECT Employee\nFROM PREH WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter PREH where EmployeeID = 123",
+    "input": "",
+    "output": "The column 'EmployeeID' does not exist in PREH. You should use 'Employee' instead.\n\n```sql\nSELECT *\nFROM PREH WITH (NOLOCK)\nWHERE Employee = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get EmployeeName from PREH",
+    "input": "",
+    "output": "The column 'EmployeeName' does not exist in PREH. The correct column name is 'LastName, FirstName'.\n\nCorrect query:\n```sql\nSELECT LastName, FirstName\nFROM PREH WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter PREH where EmployeeName = 123",
+    "input": "",
+    "output": "The column 'EmployeeName' does not exist in PREH. You should use 'LastName, FirstName' instead.\n\n```sql\nSELECT *\nFROM PREH WITH (NOLOCK)\nWHERE LastName, FirstName = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get CustomerID from ARCM",
+    "input": "",
+    "output": "The column 'CustomerID' does not exist in ARCM. The correct column name is 'Customer'.\n\nCorrect query:\n```sql\nSELECT Customer\nFROM ARCM WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter ARCM where CustomerID = 123",
+    "input": "",
+    "output": "The column 'CustomerID' does not exist in ARCM. You should use 'Customer' instead.\n\n```sql\nSELECT *\nFROM ARCM WITH (NOLOCK)\nWHERE Customer = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get CustomerName from ARCM",
+    "input": "",
+    "output": "The column 'CustomerName' does not exist in ARCM. The correct column name is 'Name'.\n\nCorrect query:\n```sql\nSELECT Name\nFROM ARCM WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter ARCM where CustomerName = 123",
+    "input": "",
+    "output": "The column 'CustomerName' does not exist in ARCM. You should use 'Name' instead.\n\n```sql\nSELECT *\nFROM ARCM WITH (NOLOCK)\nWHERE Name = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get AccountNumber from GLAC",
+    "input": "",
+    "output": "The column 'AccountNumber' does not exist in GLAC. The correct column name is 'GLAcct'.\n\nCorrect query:\n```sql\nSELECT GLAcct\nFROM GLAC WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter GLAC where AccountNumber = 123",
+    "input": "",
+    "output": "The column 'AccountNumber' does not exist in GLAC. You should use 'GLAcct' instead.\n\n```sql\nSELECT *\nFROM GLAC WITH (NOLOCK)\nWHERE GLAcct = 123\n```"
+  },
+  {
+    "instruction": "Write SQL to get AccountName from GLAC",
+    "input": "",
+    "output": "The column 'AccountName' does not exist in GLAC. The correct column name is 'Description'.\n\nCorrect query:\n```sql\nSELECT Description\nFROM GLAC WITH (NOLOCK)\n```\n\nNote: Viewpoint uses specific column naming conventions. Always verify column names against the schema."
+  },
+  {
+    "instruction": "Filter GLAC where AccountName = 123",
+    "input": "",
+    "output": "The column 'AccountName' does not exist in GLAC. You should use 'Description' instead.\n\n```sql\nSELECT *\nFROM GLAC WITH (NOLOCK)\nWHERE Description = 123\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT * FROM bAPTH WHERE APCo = 1",
+    "output": "No, this query has an issue: Using base table instead of view.\n\nCorrected query:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE APCo = 1\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT * FROM bAPTH WHERE APCo = 1",
+    "output": "The query has a problem: Using base table instead of view.\n\nFixed version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE APCo = 1\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT * FROM bAPTH WHERE APCo = 1",
+    "output": "This query needs correction before running. Issue: Using base table instead of view.\n\nUse this corrected version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE APCo = 1\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT * FROM APTH WHERE APCo = 1",
+    "output": "No, this query has an issue: Missing WITH (NOLOCK).\n\nCorrected query:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE APCo = 1\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT * FROM APTH WHERE APCo = 1",
+    "output": "The query has a problem: Missing WITH (NOLOCK).\n\nFixed version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE APCo = 1\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT * FROM APTH WHERE APCo = 1",
+    "output": "This query needs correction before running. Issue: Missing WITH (NOLOCK).\n\nUse this corrected version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE APCo = 1\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT a.* FROM APTH a WHERE a.APCo = 1",
+    "output": "No, this query has an issue: Using table alias.\n\nCorrected query:\n```sql\nSELECT APTH.* FROM APTH WITH (NOLOCK) WHERE APTH.APCo = 1\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT a.* FROM APTH a WHERE a.APCo = 1",
+    "output": "The query has a problem: Using table alias.\n\nFixed version:\n```sql\nSELECT APTH.* FROM APTH WITH (NOLOCK) WHERE APTH.APCo = 1\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT a.* FROM APTH a WHERE a.APCo = 1",
+    "output": "This query needs correction before running. Issue: Using table alias.\n\nUse this corrected version:\n```sql\nSELECT APTH.* FROM APTH WITH (NOLOCK) WHERE APTH.APCo = 1\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT * FROM dbo.APTH WITH (NOLOCK)",
+    "output": "No, this query has an issue: Unnecessary schema prefix.\n\nCorrected query:\n```sql\nSELECT * FROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT * FROM dbo.APTH WITH (NOLOCK)",
+    "output": "The query has a problem: Unnecessary schema prefix.\n\nFixed version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT * FROM dbo.APTH WITH (NOLOCK)",
+    "output": "This query needs correction before running. Issue: Unnecessary schema prefix.\n\nUse this corrected version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT apco, vendor FROM APTH",
+    "output": "No, this query has an issue: Wrong column case.\n\nCorrected query:\n```sql\nSELECT APCo, Vendor FROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT apco, vendor FROM APTH",
+    "output": "The query has a problem: Wrong column case.\n\nFixed version:\n```sql\nSELECT APCo, Vendor FROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT apco, vendor FROM APTH",
+    "output": "This query needs correction before running. Issue: Wrong column case.\n\nUse this corrected version:\n```sql\nSELECT APCo, Vendor FROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT * FROM APTH WHERE Mth = '2024-01'",
+    "output": "No, this query has an issue: Invalid month format.\n\nCorrected query:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE Mth = '2024-01-01'\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT * FROM APTH WHERE Mth = '2024-01'",
+    "output": "The query has a problem: Invalid month format.\n\nFixed version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE Mth = '2024-01-01'\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT * FROM APTH WHERE Mth = '2024-01'",
+    "output": "This query needs correction before running. Issue: Invalid month format.\n\nUse this corrected version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) WHERE Mth = '2024-01-01'\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT * FROM APTH JOIN APTL ON APTH.APTrans = APTL.APTrans",
+    "output": "No, this query has an issue: Incomplete JOIN (missing company and month).\n\nCorrected query:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) JOIN APTL WITH (NOLOCK) ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT * FROM APTH JOIN APTL ON APTH.APTrans = APTL.APTrans",
+    "output": "The query has a problem: Incomplete JOIN (missing company and month).\n\nFixed version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) JOIN APTL WITH (NOLOCK) ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT * FROM APTH JOIN APTL ON APTH.APTrans = APTL.APTrans",
+    "output": "This query needs correction before running. Issue: Incomplete JOIN (missing company and month).\n\nUse this corrected version:\n```sql\nSELECT * FROM APTH WITH (NOLOCK) JOIN APTL WITH (NOLOCK) ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\n```"
+  },
+  {
+    "instruction": "Is this SQL query correct for Viewpoint Vista?",
+    "input": "SELECT * FROM APVM WHERE APCo = 1",
+    "output": "No, this query has an issue: APVM doesn't have APCo column.\n\nCorrected query:\n```sql\nSELECT * FROM APVM WITH (NOLOCK) WHERE VendorGroup = @VendorGroup\n```"
+  },
+  {
+    "instruction": "Fix this Viewpoint SQL query",
+    "input": "SELECT * FROM APVM WHERE APCo = 1",
+    "output": "The query has a problem: APVM doesn't have APCo column.\n\nFixed version:\n```sql\nSELECT * FROM APVM WITH (NOLOCK) WHERE VendorGroup = @VendorGroup\n```"
+  },
+  {
+    "instruction": "Help me run this query against Viewpoint",
+    "input": "SELECT * FROM APVM WHERE APCo = 1",
+    "output": "This query needs correction before running. Issue: APVM doesn't have APCo column.\n\nUse this corrected version:\n```sql\nSELECT * FROM APVM WITH (NOLOCK) WHERE VendorGroup = @VendorGroup\n```"
+  },
+  {
+    "instruction": "How do I join APTH with APVM?",
+    "input": "",
+    "output": "To correctly join APTH with APVM, you must include all key columns:\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nINNER JOIN APVM WITH (NOLOCK)\n  ON APTH.VendorGroup = APVM.VendorGroup AND APTH.Vendor = APVM.Vendor\n```\n\nIncomplete JOIN like `APTH.Vendor = APVM.Vendor` would be incorrect because: Missing VendorGroup in JOIN."
+  },
+  {
+    "instruction": "Fix this JOIN query",
+    "input": "SELECT * FROM APTH JOIN APVM ON APTH.Vendor = APVM.Vendor",
+    "output": "This JOIN is incomplete. Missing VendorGroup in JOIN.\n\nCorrected:\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nINNER JOIN APVM WITH (NOLOCK)\n  ON APTH.VendorGroup = APVM.VendorGroup AND APTH.Vendor = APVM.Vendor\n```"
+  },
+  {
+    "instruction": "How do I join APTH with APTL?",
+    "input": "",
+    "output": "To correctly join APTH with APTL, you must include all key columns:\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nINNER JOIN APTL WITH (NOLOCK)\n  ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\n```\n\nIncomplete JOIN like `APTH.APTrans = APTL.APTrans` would be incorrect because: Missing APCo and Mth in JOIN."
+  },
+  {
+    "instruction": "Fix this JOIN query",
+    "input": "SELECT * FROM APTH JOIN APTL ON APTH.APTrans = APTL.APTrans",
+    "output": "This JOIN is incomplete. Missing APCo and Mth in JOIN.\n\nCorrected:\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nINNER JOIN APTL WITH (NOLOCK)\n  ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\n```"
+  },
+  {
+    "instruction": "How do I join JCJM with JCCD?",
+    "input": "",
+    "output": "To correctly join JCJM with JCCD, you must include all key columns:\n\n```sql\nSELECT *\nFROM JCJM WITH (NOLOCK)\nINNER JOIN JCCD WITH (NOLOCK)\n  ON JCJM.JCCo = JCCD.JCCo AND JCJM.Job = JCCD.Job\n```\n\nIncomplete JOIN like `JCJM.Job = JCCD.Job` would be incorrect because: Missing JCCo in JOIN."
+  },
+  {
+    "instruction": "Fix this JOIN query",
+    "input": "SELECT * FROM JCJM JOIN JCCD ON JCJM.Job = JCCD.Job",
+    "output": "This JOIN is incomplete. Missing JCCo in JOIN.\n\nCorrected:\n```sql\nSELECT *\nFROM JCJM WITH (NOLOCK)\nINNER JOIN JCCD WITH (NOLOCK)\n  ON JCJM.JCCo = JCCD.JCCo AND JCJM.Job = JCCD.Job\n```"
+  },
+  {
+    "instruction": "How do I join ARTH with ARCM?",
+    "input": "",
+    "output": "To correctly join ARTH with ARCM, you must include all key columns:\n\n```sql\nSELECT *\nFROM ARTH WITH (NOLOCK)\nINNER JOIN ARCM WITH (NOLOCK)\n  ON ARTH.CustGroup = ARCM.CustGroup AND ARTH.Customer = ARCM.Customer\n```\n\nIncomplete JOIN like `ARTH.Customer = ARCM.Customer` would be incorrect because: Missing CustGroup in JOIN."
+  },
+  {
+    "instruction": "Fix this JOIN query",
+    "input": "SELECT * FROM ARTH JOIN ARCM ON ARTH.Customer = ARCM.Customer",
+    "output": "This JOIN is incomplete. Missing CustGroup in JOIN.\n\nCorrected:\n```sql\nSELECT *\nFROM ARTH WITH (NOLOCK)\nINNER JOIN ARCM WITH (NOLOCK)\n  ON ARTH.CustGroup = ARCM.CustGroup AND ARTH.Customer = ARCM.Customer\n```"
+  },
+  {
+    "instruction": "How do I join PRTH with PREH?",
+    "input": "",
+    "output": "To correctly join PRTH with PREH, you must include all key columns:\n\n```sql\nSELECT *\nFROM PRTH WITH (NOLOCK)\nINNER JOIN PREH WITH (NOLOCK)\n  ON PRTH.PRCo = PREH.PRCo AND PRTH.Employee = PREH.Employee\n```\n\nIncomplete JOIN like `PRTH.Employee = PREH.Employee` would be incorrect because: Missing PRCo in JOIN."
+  },
+  {
+    "instruction": "Fix this JOIN query",
+    "input": "SELECT * FROM PRTH JOIN PREH ON PRTH.Employee = PREH.Employee",
+    "output": "This JOIN is incomplete. Missing PRCo in JOIN.\n\nCorrected:\n```sql\nSELECT *\nFROM PRTH WITH (NOLOCK)\nINNER JOIN PREH WITH (NOLOCK)\n  ON PRTH.PRCo = PREH.PRCo AND PRTH.Employee = PREH.Employee\n```"
+  },
+  {
+    "instruction": "How do I query invoices?",
+    "input": "",
+    "output": "I need more specific information to help you query invoices:\n\n1. **AP Invoices (Vendor):** Use `APTH` (header) and `APTL` (lines)\n2. **AR Invoices (Customer):** Use `ARTH` (header) and `ARTL` (lines)\n3. **Job Billing:** Use `JCCD` with appropriate type filters\n\nPlease specify which type of invoice and what information you need."
+  },
+  {
+    "instruction": "Get all transactions",
+    "input": "",
+    "output": "\"Transactions\" is too generic for Viewpoint Vista. Please specify:\n\n- **AP Transactions:** APTH/APTL\n- **AR Transactions:** ARTH/ARTL\n- **GL Transactions:** GLDT\n- **JC Transactions:** JCCD\n- **PR Transactions:** PRTH/PRTD\n\nAlso specify the company (APCo, JCCo, etc.) and any date range."
+  },
+  {
+    "instruction": "Query the database",
+    "input": "",
+    "output": "I need more specific information:\n\n1. What data are you looking for? (invoices, jobs, employees, etc.)\n2. Which module? (AP, AR, JC, GL, PR, etc.)\n3. Which company?\n4. What filters or conditions?\n\nPlease provide these details for an accurate query."
+  },
+  {
+    "instruction": "Show me all the data",
+    "input": "",
+    "output": "Viewpoint Vista contains thousands of tables across many modules. To help you, please specify:\n\n1. **Module:** AP, AR, JC, GL, PR, EM, etc.\n2. **Specific table or data type**\n3. **Company and date range**\n\nFor example: \"Show me AP invoices for company 1 from January 2024\""
+  },
+  {
+    "instruction": "Write a report query",
+    "input": "",
+    "output": "To write a report query, I need to know:\n\n1. **Report purpose:** What information should it show?\n2. **Data source:** Which module/tables?\n3. **Filters:** Company, date range, status?\n4. **Grouping/Aggregation:** Totals, summaries?\n\nAlso check if a vrv* or brv* reporting view already exists for your purpose."
+  },
+  {
+    "instruction": "Query apth table",
+    "input": "",
+    "output": "The correct table/column name is 'APTH', not 'apth'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query Apth table",
+    "input": "",
+    "output": "The correct table/column name is 'APTH', not 'Apth'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query jcjm table",
+    "input": "",
+    "output": "The correct table/column name is 'JCJM', not 'jcjm'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM JCJM WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query Jcjm table",
+    "input": "",
+    "output": "The correct table/column name is 'JCJM', not 'Jcjm'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM JCJM WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query apco table",
+    "input": "",
+    "output": "The correct table/column name is 'APCo', not 'apco'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM APCo WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query APCO table",
+    "input": "",
+    "output": "The correct table/column name is 'APCo', not 'APCO'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM APCo WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query jcco table",
+    "input": "",
+    "output": "The correct table/column name is 'JCCo', not 'jcco'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM JCCo WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query JCCO table",
+    "input": "",
+    "output": "The correct table/column name is 'JCCo', not 'JCCO'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM JCCo WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query vendorgroup table",
+    "input": "",
+    "output": "The correct table/column name is 'VendorGroup', not 'vendorgroup'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM VendorGroup WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query VENDORGROUP table",
+    "input": "",
+    "output": "The correct table/column name is 'VendorGroup', not 'VENDORGROUP'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM VendorGroup WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query invnum table",
+    "input": "",
+    "output": "The correct table/column name is 'InvNum', not 'invnum'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM InvNum WITH (NOLOCK)\n```"
+  },
+  {
+    "instruction": "Query INVNUM table",
+    "input": "",
+    "output": "The correct table/column name is 'InvNum', not 'INVNUM'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM InvNum WITH (NOLOCK)\n```"
+  }
+]
