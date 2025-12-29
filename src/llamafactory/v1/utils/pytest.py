@@ -13,22 +13,23 @@
 # limitations under the License.
 
 import os
-import socket
+from contextlib import contextmanager
 
 
-def find_available_port() -> int:
-    r"""Find an available port on the local machine."""
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind(("", 0))
-    port = sock.getsockname()[1]
-    sock.close()
-    return port
-
-
-def is_env_enabled(env_var: str, default: str = "0") -> bool:
-    r"""Check if the environment variable is enabled."""
-    return os.getenv(env_var, default).lower() in ["true", "y", "1"]
-
-
-if __name__ == "__main__":
-    print(find_available_port())
+@contextmanager
+def dist_env(local_rank: int = 0, world_size: int = 1, master_port: int = 25595):
+    """Set distributed environment variables."""
+    env_vars = {
+        "MASTER_ADDR": "127.0.0.1",
+        "MASTER_PORT": str(master_port),
+        "RANK": str(local_rank),
+        "LOCAL_RANK": str(local_rank),
+        "WORLD_SIZE": str(world_size),
+        "LOCAL_WORLD_SIZE": str(world_size),
+    }
+    os.environ.update(env_vars)
+    try:
+        yield
+    finally:
+        for key in env_vars.keys():
+            os.environ.pop(key, None)

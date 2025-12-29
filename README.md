@@ -330,27 +330,21 @@ Read technical notes:
 
 | Model                                                             | Model size                       | Template             |
 | ----------------------------------------------------------------- | -------------------------------- | -------------------- |
-| [Baichuan 2](https://huggingface.co/baichuan-inc)                 | 7B/13B                           | baichuan2            |
 | [BLOOM/BLOOMZ](https://huggingface.co/bigscience)                 | 560M/1.1B/1.7B/3B/7.1B/176B      | -                    |
-| [ChatGLM3](https://huggingface.co/THUDM)                          | 6B                               | chatglm3             |
 | [Command R](https://huggingface.co/CohereForAI)                   | 35B/104B                         | cohere               |
-| [DeepSeek (Code/MoE)](https://huggingface.co/deepseek-ai)         | 7B/16B/67B/236B                  | deepseek             |
-| [DeepSeek 2.5/3](https://huggingface.co/deepseek-ai)              | 236B/671B                        | deepseek3            |
+| [DeepSeek (LLM/Code/MoE)](https://huggingface.co/deepseek-ai)     | 7B/16B/67B/236B                  | deepseek             |
+| [DeepSeek 3-3.2](https://huggingface.co/deepseek-ai)              | 236B/671B                        | deepseek3            |
 | [DeepSeek R1 (Distill)](https://huggingface.co/deepseek-ai)       | 1.5B/7B/8B/14B/32B/70B/671B      | deepseekr1           |
 | [ERNIE-4.5](https://huggingface.co/baidu)                         | 0.3B/21B/300B                    | ernie/ernie_nothink  |
-| [Falcon](https://huggingface.co/tiiuae)                           | 7B/11B/40B/180B                  | falcon               |
-| [Falcon-H1](https://huggingface.co/tiiuae)                        | 0.5B/1.5B/3B/7B/34B              | falcon_h1            |
+| [Falcon/Falcon H1](https://huggingface.co/tiiuae)                 | 0.5B/1.5B/3B/7B/11B/34B/40B/180B | falcon/falcon_h1     |
 | [Gemma/Gemma 2/CodeGemma](https://huggingface.co/google)          | 2B/7B/9B/27B                     | gemma/gemma2         |
 | [Gemma 3/Gemma 3n](https://huggingface.co/google)                 | 270M/1B/4B/6B/8B/12B/27B         | gemma3/gemma3n       |
 | [GLM-4/GLM-4-0414/GLM-Z1](https://huggingface.co/zai-org)         | 9B/32B                           | glm4/glmz1           |
-| [GLM-4.1V](https://huggingface.co/zai-org)                        | 9B                               | glm4v                |
 | [GLM-4.5/GLM-4.5(6)V](https://huggingface.co/zai-org)             | 9B/106B/355B                     | glm4_moe/glm4_5v     |
 | [GPT-2](https://huggingface.co/openai-community)                  | 0.1B/0.4B/0.8B/1.5B              | -                    |
-| [GPT-OSS](https://huggingface.co/openai)                          | 20B/120B                         | gpt                  |
-| [Granite 3.0-3.3](https://huggingface.co/ibm-granite)             | 1B/2B/3B/8B                      | granite3             |
-| [Granite 4](https://huggingface.co/ibm-granite)                   | 7B                               | granite4             |
+| [GPT-OSS](https://huggingface.co/openai)                          | 20B/120B                         | gpt_oss              |
+| [Granite 3-4](https://huggingface.co/ibm-granite)                 | 1B/2B/3B/7B/8B                   | granite3/granite4    |
 | [Hunyuan (MT)](https://huggingface.co/tencent/)                   | 7B                               | hunyuan              |
-| [Index](https://huggingface.co/IndexTeam)                         | 1.9B                             | index                |
 | [InternLM 2-3](https://huggingface.co/internlm)                   | 7B/8B/20B                        | intern2              |
 | [InternVL 2.5-3.5](https://huggingface.co/OpenGVLab)              | 1B/2B/4B/8B/14B/30B/38B/78B/241B | intern_vl            |
 | [InternLM/Intern-S1-mini](https://huggingface.co/internlm/)       | 8B                               | intern_s1            |
@@ -364,15 +358,14 @@ Read technical notes:
 | [LLaVA-1.5](https://huggingface.co/llava-hf)                      | 7B/13B                           | llava                |
 | [LLaVA-NeXT](https://huggingface.co/llava-hf)                     | 7B/8B/13B/34B/72B/110B           | llava_next           |
 | [LLaVA-NeXT-Video](https://huggingface.co/llava-hf)               | 7B/34B                           | llava_next_video     |
-| [MiMo](https://huggingface.co/XiaomiMiMo)                         | 7B                               | mimo                 |
+| [MiMo](https://huggingface.co/XiaomiMiMo)                         | 7B/309B                          | mimo/mimo_v2         |
 | [MiniCPM 1-4.1](https://huggingface.co/openbmb)                   | 0.5B/1B/2B/4B/8B                 | cpm/cpm3/cpm4        |
 | [MiniCPM-o-2.6/MiniCPM-V-2.6](https://huggingface.co/openbmb)     | 8B                               | minicpm_o/minicpm_v  |
-| [Ministral(3)/Mistral-Nemo](https://huggingface.co/mistralai)     | 3B/8B/12B/14B                    | ministral/ministral3 |
+| [MiniMax-M1/MiniMax-M2](https://huggingface.co/MiniMaxAI/models)  | 229B/456B                        | minimax1/minimax2    |
+| [Ministral 3](https://huggingface.co/mistralai)                   | 3B/8B/14B                        | ministral3           |
 | [Mistral/Mixtral](https://huggingface.co/mistralai)               | 7B/8x7B/8x22B                    | mistral              |
-| [Mistral Small](https://huggingface.co/mistralai)                 | 24B                              | mistral_small        |
 | [OLMo](https://huggingface.co/allenai)                            | 1B/7B                            | -                    |
 | [PaliGemma/PaliGemma2](https://huggingface.co/google)             | 3B/10B/28B                       | paligemma            |
-| [Phi-1.5/Phi-2](https://huggingface.co/microsoft)                 | 1.3B/2.7B                        | -                    |
 | [Phi-3/Phi-3.5](https://huggingface.co/microsoft)                 | 4B/14B                           | phi                  |
 | [Phi-3-small](https://huggingface.co/microsoft)                   | 7B                               | phi_small            |
 | [Phi-4](https://huggingface.co/microsoft)                         | 14B                              | phi4                 |
@@ -385,13 +378,9 @@ Read technical notes:
 | [Qwen2-VL/Qwen2.5-VL/QVQ](https://huggingface.co/Qwen)            | 2B/3B/7B/32B/72B                 | qwen2_vl             |
 | [Qwen3-VL](https://huggingface.co/Qwen)                           | 2B/4B/8B/30B/32B/235B            | qwen3_vl             |
 | [Seed (OSS/Coder)](https://huggingface.co/ByteDance-Seed)         | 8B/36B                           | seed_oss/seed_coder  |
-| [Skywork o1](https://huggingface.co/Skywork)                      | 8B                               | skywork_o1           |
 | [StarCoder 2](https://huggingface.co/bigcode)                     | 3B/7B/15B                        | -                    |
-| [TeleChat2](https://huggingface.co/Tele-AI)                       | 3B/7B/35B/115B                   | telechat2            |
 | [VibeThinker-1.5B](https://huggingface.co/WeiboAI)                | 1.5B                             | qwen3                |
-| [XVERSE](https://huggingface.co/xverse)                           | 7B/13B/65B                       | xverse               |
 | [Yi/Yi-1.5 (Code)](https://huggingface.co/01-ai)                  | 1.5B/6B/9B/34B                   | yi                   |
-| [Yi-VL](https://huggingface.co/01-ai)                             | 6B/34B                           | yi_vl                |
 | [Yuan 2](https://huggingface.co/IEITYuan)                         | 2B/51B/102B                      | yuan                 |
 
 > [!NOTE]
@@ -578,10 +567,12 @@ huggingface-cli login
 ```bash
 git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
-pip install -e ".[torch,metrics]" --no-build-isolation
+pip install -e ".[metrics]"
 ```
 
-Extra dependencies available: torch, torch-npu, metrics, deepspeed, liger-kernel, bitsandbytes, hqq, eetq, gptq, aqlm, vllm, sglang, galore, apollo, badam, adam-mini, qwen, minicpm_v, openmind, swanlab, dev
+Optional dependencies available: `metrics`, `deepspeed`. Install with: `pip install -e ".[metrics,deepspeed]"`
+
+Additional dependencies for specific features are available in `examples/requirements/`.
 
 #### Install from Docker Image
 
@@ -600,13 +591,7 @@ Please refer to [build docker](#build-docker) to build the image yourself.
 Create an isolated Python environment with [uv](https://github.com/astral-sh/uv):
 
 ```bash
-uv sync --extra torch --extra metrics --prerelease=allow
-```
-
-Run LLaMA-Factory in the isolated environment:
-
-```bash
-uv run --prerelease=allow llamafactory-cli train examples/train_lora/llama3_lora_pretrain.yaml
+uv run llamafactory-cli webui
 ```
 
 </details>
@@ -643,7 +628,7 @@ To enable FlashAttention-2 on the Windows platform, please use the script from [
 
 <details><summary>For Ascend NPU users</summary>
 
-To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version 3.10 or higher and specify extra dependencies: `pip install -e ".[torch-npu,metrics]"`. Additionally, you need to install the **[Ascend CANN Toolkit and Kernels](https://www.hiascend.com/developer/download/community/result?module=cann)**. Please follow the [installation tutorial](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/600alphaX/softwareinstall/instg/atlasdeploy_03_0031.html) or use the following commands:
+To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version 3.10 or higher: `pip install -e . torch-npu==2.7.1`. Additionally, you need to install the **[Ascend CANN Toolkit and Kernels](https://www.hiascend.com/developer/download/community/result?module=cann)**. Please follow the [installation tutorial](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/600alphaX/softwareinstall/instg/atlasdeploy_03_0031.html) or use the following commands:
 
 ```bash
 # replace the url according to your CANN version and devices
@@ -662,8 +647,8 @@ source /usr/local/Ascend/ascend-toolkit/set_env.sh
 | Requirement  | Minimum | Recommend      |
 | ------------ | ------- | -------------- |
 | CANN         | 8.0.RC1 | 8.0.0.alpha002 |
-| torch        | 2.1.0   | 2.4.0          |
-| torch-npu    | 2.1.0   | 2.4.0.post2    |
+| torch        | 2.1.0   | 2.7.1          |
+| torch-npu    | 2.1.0   | 2.7.1          |
 | deepspeed    | 0.13.2  | 0.13.2         |
 | vllm-ascend  | -       | 0.7.3          |
 
@@ -778,7 +763,6 @@ For CUDA users:
 ```bash
 docker build -f ./docker/docker-cuda/Dockerfile \
     --build-arg PIP_INDEX=https://pypi.org/simple \
-    --build-arg EXTRAS=metrics \
     -t llamafactory:latest .
 
 docker run -dit --ipc=host --gpus=all \
@@ -795,7 +779,6 @@ For Ascend NPU users:
 ```bash
 docker build -f ./docker/docker-npu/Dockerfile \
     --build-arg PIP_INDEX=https://pypi.org/simple \
-    --build-arg EXTRAS=torch-npu,metrics \
     -t llamafactory:latest .
 
 docker run -dit --ipc=host \
@@ -820,7 +803,6 @@ For AMD ROCm users:
 ```bash
 docker build -f ./docker/docker-rocm/Dockerfile \
     --build-arg PIP_INDEX=https://pypi.org/simple \
-    --build-arg EXTRAS=metrics \
     -t llamafactory:latest .
 
 docker run -dit --ipc=host \
