@@ -500,23 +500,21 @@ class ModelValidator:
             base_model = "Qwen/Qwen2.5-7B-Instruct"
             self.tokenizer = AutoTokenizer.from_pretrained(base_model)
 
-            if self.model_path.exists():
-                # Load with adapter
-                model = AutoModelForCausalLM.from_pretrained(
-                    base_model,
-                    torch_dtype="auto",
-                    device_map="auto"
+            if not self.model_path.exists():
+                raise ValueError(
+                    f"Model adapter not found at {self.model_path}. "
+                    "Please ensure the model has been trained and the path is correct. "
+                    "Use --model-path to specify a valid adapter directory."
                 )
-                self.model = PeftModel.from_pretrained(model, str(self.model_path))
-                logger.info("Loaded model with adapter")
-            else:
-                # Load base only
-                self.model = AutoModelForCausalLM.from_pretrained(
-                    base_model,
-                    torch_dtype="auto",
-                    device_map="auto"
-                )
-                logger.info("Loaded base model only (no adapter found)")
+
+            # Load with adapter
+            model = AutoModelForCausalLM.from_pretrained(
+                base_model,
+                torch_dtype="auto",
+                device_map="auto"
+            )
+            self.model = PeftModel.from_pretrained(model, str(self.model_path))
+            logger.info(f"Loaded model with adapter from {self.model_path}")
 
         except Exception as e:
             logger.error(f"Failed to load model: {e}")

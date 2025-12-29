@@ -58,44 +58,110 @@ class NegativeExampleGenerator:
     5. Case sensitivity errors
     """
 
-    # Common fake table names users might ask about
+    # Common fake table names users might ask about (expanded for comprehensive coverage)
     FAKE_TABLES = [
-        "Invoice", "Invoices", "InvoiceHeader", "InvoiceDetail",
-        "Customer", "Customers", "CustomerMaster",
-        "Vendor", "Vendors", "VendorMaster",
-        "Employee", "Employees", "EmployeeMaster",
-        "Order", "Orders", "OrderHeader", "OrderDetail",
-        "Payment", "Payments", "PaymentHistory",
-        "Product", "Products", "ProductMaster",
-        "Sales", "SalesOrder", "SalesDetail",
-        "Purchase", "Purchases", "PurchaseOrder",
-        "Transaction", "Transactions", "TransactionHistory",
-        "Account", "Accounts", "AccountMaster",
-        "Project", "Projects", "ProjectMaster",
-        "Contract", "Contracts", "ContractMaster",
-        "Budget", "Budgets", "BudgetDetail",
-        "Cost", "Costs", "CostCenter",
-        "Department", "Departments", "DepartmentMaster",
-        "User", "Users", "UserProfile",
-        "Report", "Reports", "ReportData",
-        "Inventory", "InventoryItem", "Stock",
-        "Payroll", "PayrollHeader", "PayrollDetail",
-        "TimeSheet", "TimeEntry", "TimeCard",
-        "Equipment", "EquipmentMaster", "Asset",
-        "Material", "Materials", "MaterialStock",
-        "Labor", "LaborCost", "LaborHours",
-        "Billing", "BillingHistory", "Bill",
-        "Receipt", "Receipts", "CashReceipt",
-        "Check", "Checks", "CheckHistory",
-        "Journal", "JournalEntry", "JournalDetail",
-        "Ledger", "LedgerEntry", "GeneralLedger",
-        "Tax", "Taxes", "TaxHistory",
-        "Company", "Companies", "CompanyMaster",
-        "Address", "Addresses", "AddressBook",
-        "Contact", "Contacts", "ContactInfo",
-        "Note", "Notes", "NoteHistory",
-        "Document", "Documents", "DocumentStore",
-        "Attachment", "Attachments", "FileStore",
+        # Invoice variations
+        "Invoice", "Invoices", "InvoiceHeader", "InvoiceDetail", "InvoiceLine",
+        "APInvoice", "APInvoiceHeader", "VendorInvoice", "InvoiceHistory",
+        "ARInvoice", "CustomerInvoice", "BillingInvoice",
+        # Customer variations
+        "Customer", "Customers", "CustomerMaster", "CustomerInfo", "CustomerData",
+        "CustomerAccount", "CustomerProfile", "Client", "Clients",
+        # Vendor variations
+        "Vendor", "Vendors", "VendorMaster", "VendorInfo", "VendorData",
+        "Supplier", "Suppliers", "SupplierMaster",
+        # Employee variations
+        "Employee", "Employees", "EmployeeMaster", "EmployeeInfo", "EmployeeData",
+        "Staff", "Personnel", "Worker", "Workers", "TeamMember",
+        # Order variations
+        "Order", "Orders", "OrderHeader", "OrderDetail", "OrderLine",
+        "SalesOrder", "PurchaseOrder", "WorkOrder", "ServiceOrder",
+        # Payment variations
+        "Payment", "Payments", "PaymentHistory", "PaymentDetail",
+        "PaymentTransaction", "PaymentRecord", "VendorPayment",
+        # Product variations
+        "Product", "Products", "ProductMaster", "Item", "Items", "ItemMaster",
+        # Sales variations
+        "Sales", "SalesOrder", "SalesDetail", "SalesData", "SalesHistory",
+        # Purchase variations
+        "Purchase", "Purchases", "PurchaseOrder", "PurchaseDetail", "Purchasing",
+        # Transaction variations
+        "Transaction", "Transactions", "TransactionHistory", "TransactionDetail",
+        "TransactionLog", "GLTransaction", "APTransaction", "ARTransaction",
+        # Account variations
+        "Account", "Accounts", "AccountMaster", "ChartOfAccounts", "GLAccount",
+        "AccountInfo", "BankAccount", "AccountBalance",
+        # Project/Job variations
+        "Project", "Projects", "ProjectMaster", "ProjectDetail", "ProjectInfo",
+        "Job", "Jobs", "JobMaster", "JobDetail", "JobInfo", "JobCost",
+        # Contract variations
+        "Contract", "Contracts", "ContractMaster", "ContractDetail", "Agreement",
+        # Budget variations
+        "Budget", "Budgets", "BudgetDetail", "BudgetLine", "BudgetHistory",
+        # Cost variations
+        "Cost", "Costs", "CostCenter", "CostDetail", "CostHistory", "CostType",
+        # Department variations
+        "Department", "Departments", "DepartmentMaster", "Division", "Divisions",
+        # User variations
+        "User", "Users", "UserProfile", "UserAccount", "UserInfo",
+        # Report variations
+        "Report", "Reports", "ReportData", "ReportHistory", "ReportDetail",
+        # Inventory variations
+        "Inventory", "InventoryItem", "Stock", "StockItem", "Warehouse",
+        # Payroll variations
+        "Payroll", "PayrollHeader", "PayrollDetail", "PayrollHistory",
+        "PayCheck", "PayStub", "Wage", "Wages",
+        # Time variations
+        "TimeSheet", "TimeEntry", "TimeCard", "TimeClock", "TimeRecord",
+        "Timecard", "TimeDetail", "WorkHours", "LaborHours",
+        # Equipment variations
+        "Equipment", "EquipmentMaster", "Asset", "Assets", "AssetMaster",
+        "FixedAsset", "Machine", "Machinery", "Tool", "Tools",
+        # Material variations
+        "Material", "Materials", "MaterialStock", "MaterialUsage", "InventoryMaterial",
+        # Labor variations
+        "Labor", "LaborCost", "LaborHours", "LaborDetail", "LaborRate",
+        # Billing variations
+        "Billing", "BillingHistory", "Bill", "Bills", "BillingDetail",
+        # Receipt variations
+        "Receipt", "Receipts", "CashReceipt", "ReceiptHistory", "PaymentReceipt",
+        # Check variations
+        "Check", "Checks", "CheckHistory", "CheckDetail", "BankCheck",
+        # Journal variations
+        "Journal", "JournalEntry", "JournalDetail", "JournalHeader", "GLJournal",
+        # Ledger variations
+        "Ledger", "LedgerEntry", "GeneralLedger", "SubLedger", "LedgerDetail",
+        # Tax variations
+        "Tax", "Taxes", "TaxHistory", "TaxDetail", "SalesTax", "TaxRate",
+        # Company variations
+        "Company", "Companies", "CompanyMaster", "CompanyInfo", "Organization",
+        # Address variations
+        "Address", "Addresses", "AddressBook", "AddressMaster", "Location",
+        # Contact variations
+        "Contact", "Contacts", "ContactInfo", "ContactPerson", "ContactList",
+        # Note/Document variations
+        "Note", "Notes", "NoteHistory", "Memo", "Memos",
+        "Document", "Documents", "DocumentStore", "DocumentHistory",
+        "Attachment", "Attachments", "FileStore", "File", "Files",
+        # Phase/CostCode variations
+        "Phase", "Phases", "PhaseMaster", "CostCode", "CostCodes",
+        # Retainage variations
+        "Retainage", "RetainageHistory", "RetainageDetail",
+        # Subcontract variations
+        "Subcontract", "Subcontracts", "SubcontractMaster", "SubcontractDetail",
+        # Change Order variations
+        "ChangeOrder", "ChangeOrders", "CO", "Amendment", "Amendments",
+        # Commitment variations
+        "Commitment", "Commitments", "CommittedCost",
+        # Forecast variations
+        "Forecast", "Forecasts", "ForecastDetail", "Projection", "Projections",
+        # Revenue variations
+        "Revenue", "RevenueDetail", "RevenueHistory", "Income",
+        # WIP variations
+        "WIP", "WorkInProgress", "WIPDetail",
+        # Miscellaneous common mistakes
+        "Master", "Header", "Detail", "Line", "History", "Log", "Record",
+        "Table", "Data", "Info", "List", "Summary", "Total",
     ]
 
     # Actual Viewpoint tables for suggestions

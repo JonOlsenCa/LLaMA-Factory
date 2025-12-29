@@ -171,6 +171,12 @@ class VGPT2V3DataGenerator:
             ("Query Optimization", self.generate_optimization_examples),
             ("SQL Generation", self.generate_sql_generation_examples),
             ("Module Overview", self.generate_module_overview_examples),
+            # New generators added for v3.1
+            ("Trigger Documentation", self.generate_trigger_examples),
+            ("Index Metadata", self.generate_index_examples),
+            ("Constraint Metadata", self.generate_constraint_examples),
+            ("SQL Patterns", self.generate_more_sql_examples),
+            ("Column Usage", self.generate_column_usage_examples),
         ]
 
         for name, generator in generators:
@@ -1000,6 +1006,242 @@ ORDER BY GrossAmt DESC"""
             )
             count += 1
 
+    def generate_trigger_examples(self, max_records: Optional[int] = None) -> Iterator[TrainingRecord]:
+        """Generate training examples from trigger documentation (2500+ files)."""
+        trigger_dir = self.vgpt2 / "Viewpoint_Database" / "Triggers" / "Trigger_Documentation"
+        if not trigger_dir.exists():
+            return
+
+        count = 0
+        for md_file in trigger_dir.glob("*.md"):
+            if max_records and count >= max_records:
+                break
+
+            try:
+                content = md_file.read_text(encoding='utf-8')
+                trigger_name = md_file.stem
+
+                # Extract key sections
+                purpose = self._extract_section(content, "**Purpose:**", "**Business Context:**")
+                business = self._extract_section(content, "**Business Context:**", "**Key Logic:**")
+                key_logic = self._extract_section(content, "**Key Logic:**", "**Effects:**")
+                effects = self._extract_section(content, "**Effects:**", "**Modification History:**")
+
+                # Extract metadata
+                module = self._extract_section(content, "**Module:**", "**Parent Table:**")
+                parent_table = self._extract_section(content, "**Parent Table:**", "**Event:**")
+                event = self._extract_section(content, "**Event:**", "**Type:**")
+
+                if purpose:
+                    # Question about trigger purpose
+                    yield TrainingRecord(
+                        instruction=f"What does the {trigger_name} trigger do in Viewpoint Vista?",
+                        output=f"The {trigger_name} trigger is in the {module or 'Viewpoint'} module on table {parent_table or 'unknown'}.\n\n**Purpose:** {purpose}\n\n**When it fires:** {event or 'On data modification'}",
+                        category=DataCategory.BUSINESS_CONTEXT.value,
+                        source="Trigger_Documentation"
+                    )
+                    count += 1
+
+                if key_logic and count < (max_records or float('inf')):
+                    # Question about trigger logic
+                    yield TrainingRecord(
+                        instruction=f"Explain the logic of the {trigger_name} trigger",
+                        output=f"**Key Logic:**\n{key_logic}\n\n**Effects:**\n{effects or 'Validates data and may roll back on error.'}",
+                        category=DataCategory.BUSINESS_CONTEXT.value,
+                        source="Trigger_Documentation"
+                    )
+                    count += 1
+
+                if parent_table and count < (max_records or float('inf')):
+                    # Question about what triggers exist on a table
+                    yield TrainingRecord(
+                        instruction=f"What triggers exist on the {parent_table} table?",
+                        output=f"The {trigger_name} trigger fires on {event or 'data modification'} events on {parent_table}.\n\n{purpose or ''}",
+                        category=DataCategory.SCHEMA_QUERY.value,
+                        source="Trigger_Documentation"
+                    )
+                    count += 1
+
+            except Exception as e:
+                logger.debug(f"Error processing trigger {md_file}: {e}")
+                continue
+
+    def generate_index_examples(self, max_records: Optional[int] = None) -> Iterator[TrainingRecord]:
+        """Generate training examples about database indexes."""
+        index_file = self.vgpt2 / "Viewpoint_Database" / "Indexes" / "_data" / "indexes.json"
+        if not index_file.exists():
+            # Try alternative location
+            index_file = self.metadata_dir / "indexes.json"
+        if not index_file.exists():
+            return
+
+        try:
+            with open(index_file, 'r', encoding='utf-8') as f:
+                indexes = json.load(f)
+        except Exception:
+            return
+
+        count = 0
+        for idx in indexes:
+            if max_records and count >= max_records:
+                break
+
+            table_name = idx.get('TableName', '')
+            index_name = idx.get('IndexName', '')
+            columns = idx.get('Columns', idx.get('IndexColumns', ''))
+            is_unique = idx.get('IsUnique', False)
+            is_pk = idx.get('IsPrimaryKey', False)
+
+            if table_name and index_name:
+                idx_type = "primary key" if is_pk else ("unique index" if is_unique else "index")
+                yield TrainingRecord(
+                    instruction=f"What indexes exist on the {table_name} table?",
+                    output=f"The {table_name} table has the {index_name} {idx_type} on columns: {columns}",
+                    category=DataCategory.SCHEMA_QUERY.value,
+                    source="Index_Metadata"
+                )
+                count += 1
+
+    def generate_constraint_examples(self, max_records: Optional[int] = None) -> Iterator[TrainingRecord]:
+        """Generate training examples about database constraints."""
+        constraint_dir = self.vgpt2 / "Viewpoint_Database" / "Constraints" / "_data"
+        if not constraint_dir.exists():
+            return
+
+        count = 0
+        for json_file in constraint_dir.glob("*.json"):
+            if max_records and count >= max_records:
+                break
+
+            try:
+                with open(json_file, 'r', encoding='utf-8') as f:
+                    constraints = json.load(f)
+
+                if isinstance(constraints, list):
+                    for c in constraints:
+                        if max_records and count >= max_records:
+                            break
+
+                        table = c.get('TableName', '')
+                        name = c.get('ConstraintName', '')
+                        ctype = c.get('ConstraintType', '')
+                        definition = c.get('Definition', c.get('CheckClause', ''))
+
+                        if table and name:
+                            yield TrainingRecord(
+                                instruction=f"What constraints exist on {table}?",
+                                output=f"The {table} table has a {ctype} constraint named {name}.\n\nDefinition: {definition}",
+                                category=DataCategory.SCHEMA_QUERY.value,
+                                source="Constraint_Metadata"
+                            )
+                            count += 1
+            except Exception:
+                continue
+
+    def generate_more_sql_examples(self, max_records: Optional[int] = None) -> Iterator[TrainingRecord]:
+        """Generate additional SQL generation examples for common patterns."""
+        patterns = [
+            # AP Module patterns
+            {"q": "Get all invoices paid to vendor 5000 in 2024", "sql": "SELECT APCo, Mth, APTrans, Vendor, InvNum, InvDate, GrossAmt, PaidDate, PaidMth\nFROM APTH WITH (NOLOCK)\nWHERE APCo = @APCo\n  AND Vendor = 5000\n  AND PaidMth >= '2024-01-01'\n  AND PaidMth < '2025-01-01'\nORDER BY PaidDate"},
+            {"q": "Find AP invoices with retainage", "sql": "SELECT APCo, Vendor, InvNum, GrossAmt, Retainage\nFROM APTH WITH (NOLOCK)\nWHERE APCo = @APCo\n  AND Retainage > 0\nORDER BY Retainage DESC"},
+            {"q": "List all AP batches pending approval", "sql": "SELECT APCo, Mth, BatchId, BatchSeq, Status, Source\nFROM APTB WITH (NOLOCK)\nWHERE APCo = @APCo\n  AND Status = 0\nORDER BY Mth, BatchId"},
+            {"q": "Get vendor 1099 information", "sql": "SELECT VendorGroup, Vendor, Name, TaxId, Vendor1099\nFROM APVM WITH (NOLOCK)\nWHERE VendorGroup = @VendorGroup\n  AND Vendor1099 = 'Y'"},
+            # JC Module patterns
+            {"q": "Get all costs for job 12345", "sql": "SELECT JCCo, Job, Phase, CostType, ActualCost, ActualUnits\nFROM JCCD WITH (NOLOCK)\nWHERE JCCo = @JCCo\n  AND Job = '12345'\nORDER BY Phase, CostType"},
+            {"q": "Find jobs over budget", "sql": "SELECT JCJM.JCCo, JCJM.Job, JCJM.Description,\n  SUM(JCCD.EstCost) AS Budget,\n  SUM(JCCD.ActualCost) AS Actual\nFROM JCJM WITH (NOLOCK)\nINNER JOIN JCCD WITH (NOLOCK)\n  ON JCJM.JCCo = JCCD.JCCo AND JCJM.Job = JCCD.Job\nWHERE JCJM.JCCo = @JCCo\nGROUP BY JCJM.JCCo, JCJM.Job, JCJM.Description\nHAVING SUM(JCCD.ActualCost) > SUM(JCCD.EstCost)"},
+            {"q": "Get job revenue by month", "sql": "SELECT JCCo, Job, Mth, SUM(ActualRevenue) AS Revenue\nFROM JCCD WITH (NOLOCK)\nWHERE JCCo = @JCCo\n  AND Job = @Job\nGROUP BY JCCo, Job, Mth\nORDER BY Mth"},
+            {"q": "Find all change orders for a contract", "sql": "SELECT JCCo, Contract, Item, Description, OrigContractAmt, ContractAmt\nFROM JCCI WITH (NOLOCK)\nWHERE JCCo = @JCCo\n  AND Contract = @Contract\n  AND Item > 0\nORDER BY Item"},
+            # PR Module patterns
+            {"q": "Get employee hours this pay period", "sql": "SELECT PRCo, Employee, PayPeriod, SUM(Hours) AS TotalHours\nFROM PRTD WITH (NOLOCK)\nWHERE PRCo = @PRCo\n  AND PayPeriod = @PayPeriod\nGROUP BY PRCo, Employee, PayPeriod"},
+            {"q": "Find employees with overtime", "sql": "SELECT PRCo, Employee, PayPeriod, EarnType, Hours\nFROM PRTD WITH (NOLOCK)\nWHERE PRCo = @PRCo\n  AND EarnType IN ('OT', 'DT')\n  AND Hours > 0\nORDER BY Employee"},
+            {"q": "Get all active employees", "sql": "SELECT PRCo, Employee, FirstName, LastName, HireDate, Dept, Craft\nFROM PREH WITH (NOLOCK)\nWHERE PRCo = @PRCo\n  AND ActiveYN = 'Y'\nORDER BY LastName, FirstName"},
+            # GL Module patterns
+            {"q": "Get GL transactions for an account", "sql": "SELECT GLCo, Mth, GLAcct, Jrnl, Amount, Description\nFROM GLDT WITH (NOLOCK)\nWHERE GLCo = @GLCo\n  AND GLAcct = @GLAcct\nORDER BY Mth, Jrnl"},
+            {"q": "Calculate account balance by month", "sql": "SELECT GLCo, Mth, GLAcct, SUM(Amount) AS Balance\nFROM GLDT WITH (NOLOCK)\nWHERE GLCo = @GLCo\n  AND GLAcct = @GLAcct\nGROUP BY GLCo, Mth, GLAcct\nORDER BY Mth"},
+            {"q": "Find all expense accounts", "sql": "SELECT GLCo, GLAcct, Description, AcctType\nFROM GLAC WITH (NOLOCK)\nWHERE GLCo = @GLCo\n  AND AcctType = 'E'\n  AND Active = 'Y'\nORDER BY GLAcct"},
+            # AR Module patterns
+            {"q": "Get customer aging", "sql": "SELECT ARCo, CustGroup, Customer, InvNum, InvDate, Amount,\n  DATEDIFF(day, InvDate, GETDATE()) AS DaysOld\nFROM ARTH WITH (NOLOCK)\nWHERE ARCo = @ARCo\n  AND Status = 0\nORDER BY DaysOld DESC"},
+            {"q": "Find all open AR invoices", "sql": "SELECT ARCo, CustGroup, Customer, InvNum, InvDate, Amount, Balance\nFROM ARTH WITH (NOLOCK)\nWHERE ARCo = @ARCo\n  AND Balance > 0\nORDER BY InvDate"},
+            # EM Module patterns
+            {"q": "Get equipment costs", "sql": "SELECT EMCo, Equipment, CostCode, ActualCost, ActualHours\nFROM EMCD WITH (NOLOCK)\nWHERE EMCo = @EMCo\n  AND Equipment = @Equipment\nORDER BY CostCode"},
+            {"q": "Find all active equipment", "sql": "SELECT EMCo, Equipment, Description, Category, Status\nFROM EMEM WITH (NOLOCK)\nWHERE EMCo = @EMCo\n  AND Status = 'A'\nORDER BY Equipment"},
+            # PO Module patterns
+            {"q": "Get all open purchase orders", "sql": "SELECT POCo, PO, Vendor, Description, TotalAmt, Status\nFROM POHD WITH (NOLOCK)\nWHERE POCo = @POCo\n  AND Status = 0\nORDER BY PO"},
+            {"q": "Find PO line items for a PO", "sql": "SELECT POCo, PO, POItem, Description, UM, UnitPrice, RecvdAmt\nFROM POIT WITH (NOLOCK)\nWHERE POCo = @POCo\n  AND PO = @PO\nORDER BY POItem"},
+            # Complex JOINs
+            {"q": "Get AP invoice with vendor and GL info", "sql": "SELECT APTH.APCo, APTH.Vendor, APVM.Name AS VendorName,\n  APTH.InvNum, APTH.GrossAmt, APTL.GLCo, APTL.GLAcct\nFROM APTH WITH (NOLOCK)\nINNER JOIN APVM WITH (NOLOCK)\n  ON APTH.VendorGroup = APVM.VendorGroup AND APTH.Vendor = APVM.Vendor\nINNER JOIN APTL WITH (NOLOCK)\n  ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\nWHERE APTH.APCo = @APCo"},
+            {"q": "Get job costs with cost type descriptions", "sql": "SELECT JCCD.JCCo, JCCD.Job, JCCD.Phase, JCCD.CostType,\n  JCCT.Description AS CostTypeDesc, JCCD.ActualCost\nFROM JCCD WITH (NOLOCK)\nINNER JOIN JCCT WITH (NOLOCK)\n  ON JCCD.PhaseGroup = JCCT.PhaseGroup AND JCCD.CostType = JCCT.CostType\nWHERE JCCD.JCCo = @JCCo AND JCCD.Job = @Job"},
+        ]
+
+        count = 0
+        for p in patterns:
+            if max_records and count >= max_records:
+                break
+            yield TrainingRecord(
+                instruction=f"Write SQL to: {p['q']}",
+                output=f"```sql\n{p['sql']}\n```\n\nNote: Always use WITH (NOLOCK) for SELECT queries and filter by company column.",
+                category=DataCategory.SQL_GENERATION.value,
+                source="SQL_Patterns"
+            )
+            count += 1
+
+    def generate_column_usage_examples(self, max_records: Optional[int] = None) -> Iterator[TrainingRecord]:
+        """Generate examples about how specific columns are used."""
+        columns = self.load_columns()
+        count = 0
+
+        # Group by table
+        tables = {}
+        for col in columns:
+            if not isinstance(col, dict):
+                continue
+            obj_name = col.get('ObjectName', '')
+            if obj_name and obj_name not in tables:
+                tables[obj_name] = []
+            if obj_name:
+                tables[obj_name].append(col)
+
+        # Generate multiple questions per table
+        for table_name, cols in tables.items():
+            if max_records and count >= max_records:
+                break
+
+            # Get primary key columns (usually first few)
+            pk_cols = [c for c in cols if 'key' in c.get('ColumnName', '').lower() or c.get('ColumnPosition', '1') == '1']
+
+            # Get descriptive columns
+            desc_cols = [c for c in cols if 'desc' in c.get('ColumnName', '').lower() or 'name' in c.get('ColumnName', '').lower()]
+
+            # Get amount/money columns
+            amt_cols = [c for c in cols if c.get('DataType', '') in ('money', 'decimal', 'numeric') and ('amt' in c.get('ColumnName', '').lower() or 'amount' in c.get('ColumnName', '').lower() or 'cost' in c.get('ColumnName', '').lower())]
+
+            if pk_cols:
+                yield TrainingRecord(
+                    instruction=f"What are the key columns in {table_name}?",
+                    output=f"The key columns in {table_name} are: {', '.join([c.get('ColumnName', '') for c in pk_cols[:5]])}",
+                    category=DataCategory.SCHEMA_QUERY.value,
+                    source="Column_Usage"
+                )
+                count += 1
+
+            if desc_cols and count < (max_records or float('inf')):
+                yield TrainingRecord(
+                    instruction=f"What columns contain descriptions in {table_name}?",
+                    output=f"Description columns in {table_name}: {', '.join([c.get('ColumnName', '') for c in desc_cols[:5]])}",
+                    category=DataCategory.SCHEMA_QUERY.value,
+                    source="Column_Usage"
+                )
+                count += 1
+
+            if amt_cols and count < (max_records or float('inf')):
+                yield TrainingRecord(
+                    instruction=f"What amount/money columns are in {table_name}?",
+                    output=f"Amount columns in {table_name}: {', '.join([c.get('ColumnName', '') + ' (' + c.get('DataType', '') + ')' for c in amt_cols[:5]])}",
+                    category=DataCategory.SCHEMA_QUERY.value,
+                    source="Column_Usage"
+                )
+                count += 1
+
     # =========================================================================
     # UTILITY METHODS
     # =========================================================================
@@ -1018,18 +1260,32 @@ ORDER BY GrossAmt DESC"""
 
         return content[start_idx:end_idx].strip()
 
-    def save_dataset(self, records: List[TrainingRecord], output_path: str):
-        """Save dataset to JSON file."""
+    def save_dataset(self, records: List[TrainingRecord], output_path: str, deduplicate: bool = True):
+        """Save dataset to JSON file with optional deduplication."""
         output_file = Path(output_path)
         output_file.parent.mkdir(parents=True, exist_ok=True)
 
         # Convert to Alpaca format
         data = [r.to_alpaca() for r in records]
 
+        # Deduplicate by instruction text
+        if deduplicate:
+            seen = set()
+            unique_data = []
+            for item in data:
+                key = item['instruction'].lower().strip()
+                if key not in seen:
+                    seen.add(key)
+                    unique_data.append(item)
+            removed = len(data) - len(unique_data)
+            if removed > 0:
+                logger.info(f"Removed {removed} duplicate records")
+            data = unique_data
+
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
-        logger.info(f"Saved {len(records)} records to {output_file}")
+        logger.info(f"Saved {len(data)} records to {output_file}")
 
     def print_stats(self):
         """Print generation statistics."""

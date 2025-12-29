@@ -39,7 +39,7 @@ class KTOExample:
             "instruction": self.instruction,
             "input": self.input,
             "output": self.output,
-            "label": self.label
+            "label": "true" if self.label else "false"  # LLaMA-Factory expects string
         }
 
 
@@ -147,7 +147,7 @@ class KTOGenerator:
         """Generate positive examples with correct NOLOCK usage."""
         examples = []
 
-        sample_tables = random.sample(self.tables, min(300, len(self.tables)))
+        sample_tables = random.sample(self.tables, min(500, len(self.tables)))
 
         for table in sample_tables:
             if table in self.columns_data:
@@ -232,7 +232,7 @@ class KTOGenerator:
         """Generate positive examples with correct column case."""
         examples = []
 
-        sample_tables = random.sample(self.tables, min(200, len(self.tables)))
+        sample_tables = random.sample(self.tables, min(400, len(self.tables)))
 
         for table in sample_tables:
             if table in self.columns_data:
@@ -256,7 +256,7 @@ class KTOGenerator:
         """Generate negative examples missing NOLOCK."""
         examples = []
 
-        sample_tables = random.sample(self.tables, min(200, len(self.tables)))
+        sample_tables = random.sample(self.tables, min(400, len(self.tables)))
 
         for table in sample_tables:
             co_col = self._get_company_col(table)
@@ -305,7 +305,7 @@ class KTOGenerator:
         """Generate negative examples with wrong column case."""
         examples = []
 
-        sample_tables = random.sample(self.tables, min(150, len(self.tables)))
+        sample_tables = random.sample(self.tables, min(300, len(self.tables)))
 
         for table in sample_tables:
             if table in self.columns_data:

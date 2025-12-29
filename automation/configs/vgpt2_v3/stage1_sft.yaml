@@ -21,7 +21,7 @@ lora_dropout: 0.05
 lora_target: all                     # Target all linear layers
 
 ### Dataset Settings ###
-dataset: vgpt2_v3_sft                # 100K+ training records
+dataset: vgpt2_v3_sft_merged         # SFT + negative examples merged
 template: qwen
 cutoff_len: 8192                     # Extended context for complex SQL
 max_samples: 150000                  # Allow full dataset
