@@ -52,7 +52,7 @@ save_only_model: false
 report_to: none                      # Set to tensorboard for monitoring
 
 ### Resume Training (uncomment if resuming after crash) ###
-# resume_from_checkpoint: true       # Auto-find latest checkpoint
+resume_from_checkpoint: true       # Auto-find latest checkpoint
 # resume_from_checkpoint: saves/vgpt2_v2_lora_sft/checkpoint-1000  # Or specify exact path
 
 ### Evaluation ###

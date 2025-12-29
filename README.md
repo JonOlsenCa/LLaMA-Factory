@@ -73,12 +73,48 @@ Read technical notes:
 > 2. Launch Web UI: `set GRADIO_SERVER_NAME=127.0.0.1 && python -m llamafactory.cli webui`
 > 3. Open your browser to: http://127.0.0.1:7860
 
+> [!CAUTION]
+> **VS Code Terminal Bug**: VS Code randomly sends `Ctrl+C` to running scripts, killing them mid-execution.
+> **ALWAYS** use external terminal scripts:
+> ```powershell
+> .\scripts\run_external.ps1 -Script "test_vgpt2.py"    # Run tests
+> .\scripts\start_training.ps1                          # Start training
+> .\scripts\kill_orphans.ps1                            # Clean up processes
+> ```
+
 > [!WARNING]
 > **Windows/VGPT2 Setup**: See **[SETUP.md](SETUP.md)** for complete Windows installation guide including:
 > - Python 3.12 requirement (NOT 3.14 - breaks dill serialization)
 > - Dependency install order (`numpy<2.0.0`, `cffi`, `python-dateutil` first!)
 > - Checkpoint/crash recovery instructions
 > - Actual training performance metrics (7.3 hours on RTX A6000)
+
+---
+
+## 🎯 VGPT2 Project Status
+
+**VGPT2 Training Completed:** 2025-12-29 ✅
+
+| Metric | Value |
+|--------|-------|
+| Training Time | 6h 35m |
+| Train Loss | 0.2454 |
+| Eval Loss | 1.171 |
+| Dataset | 23,742 records |
+
+**Quick Test:** (Run in external terminal - VS Code kills scripts!)
+```powershell
+.\scripts\run_external.ps1 -Script "test_vgpt2.py"
+```
+
+**Documentation:**
+- **[VGPT2_PROJECT.md](VGPT2_PROJECT.md)** - Full project documentation, test results, next steps
+- **[SETUP.md](SETUP.md)** - Windows installation and setup guide
+- **[RESUME_TRAINING.md](RESUME_TRAINING.md)** - How to resume from checkpoint
+
+**Current Status:** Schema questions work well ✅ | SQL generation has hallucination issues ⚠️
+
+---
 
 ## Table of Contents
 

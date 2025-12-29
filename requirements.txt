@@ -1,14 +1,37 @@
 # ============================================================================
+# VGPT2 Training Environment - Pinned Dependencies
+# Last Updated: 2025-12-29 (after successful training completion)
+# ============================================================================
+#
 # IMPORTANT: Python 3.11 or 3.12 required (NOT 3.13 or 3.14!)
 # Python 3.14 breaks dill/pickle serialization used by datasets library
 # Error: TypeError: Pickler._batch_setitems() takes 2 positional arguments
+#
 # ============================================================================
 # INSTALL ORDER MATTERS! Run these commands in sequence:
-#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+# ============================================================================
+#
+# Step 1: Install PyTorch with CUDA 12.4
+#   pip install torch==2.6.0+cu124 torchvision==0.21.0+cu124 torchaudio==2.6.0+cu124 --index-url https://download.pytorch.org/whl/cu124
+#
+# Step 2: Install core dependencies
 #   pip install "numpy<2.0.0" cffi python-dateutil pandas
-#   pip install accelerate>=0.21.0 huggingface_hub>=0.25.0 packaging>=20.0 datasets
+#
+# Step 3: Install ML libraries (PINNED VERSIONS - DO NOT UPGRADE)
+#   pip install transformers==4.57.1 peft==0.17.1 accelerate==1.11.0
+#
+# Step 4: Install LlamaFactory from source
 #   pip install -e ".[torch,metrics]"
+#
+# Step 5: Install quantization support (optional)
 #   pip install bitsandbytes
+#
+# ============================================================================
+# CRITICAL VERSION PINS (LlamaFactory 0.9.4.dev0 compatibility)
+# ============================================================================
+# transformers==4.57.1   # NOT 4.57.3 - breaks llamafactory
+# peft==0.17.1           # NOT 0.18.0 - breaks llamafactory
+# accelerate==1.11.0     # NOT 1.12.0 - breaks llamafactory
 # ============================================================================
 
 # core deps
