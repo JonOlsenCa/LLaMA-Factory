@@ -7,14 +7,15 @@
 # - Memory usage
 # - Temperature
 # - Power draw
+#
+# USAGE: Run as script file, not by pasting!
+#   .\training\monitor_gpu.ps1
 
 param(
     [int]$IntervalSeconds = 5
 )
 
-# Get the repo root (parent of training folder)
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$RepoRoot = Split-Path -Parent $ScriptDir
+$RepoRoot = "C:\Github\LLM_fine-tuning"
 
 Write-Host "GPU Monitor - Press Ctrl+C to stop" -ForegroundColor Cyan
 Write-Host "===================================" -ForegroundColor Cyan

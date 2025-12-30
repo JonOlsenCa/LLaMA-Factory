@@ -3,10 +3,11 @@
 # Run this to resume SFT training from the last checkpoint
 #
 # This modifies the config temporarily to enable resume
+#
+# USAGE: Run as script file, not by pasting!
+#   .\training\02_resume_sft.ps1
 
-# Get the repo root (parent of training folder)
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$RepoRoot = Split-Path -Parent $ScriptDir
+$RepoRoot = "C:\Github\LLM_fine-tuning"
 
 # Change to repo root
 Set-Location $RepoRoot
@@ -18,7 +19,7 @@ Write-Host "Repo root: $RepoRoot"
 Write-Host ""
 
 # Check for existing checkpoints
-$checkpointDir = Join-Path $RepoRoot "saves\vgpt2_v3\sft"
+$checkpointDir = "$RepoRoot\saves\vgpt2_v3\sft"
 $checkpoints = Get-ChildItem -Path $checkpointDir -Directory -Filter "checkpoint-*" -ErrorAction SilentlyContinue | Sort-Object Name
 
 if ($checkpoints) {
@@ -31,9 +32,13 @@ if ($checkpoints) {
     exit 1
 }
 
+# Activate virtual environment
+Write-Host "Activating venv: $RepoRoot\venv" -ForegroundColor Cyan
+& "$RepoRoot\venv\Scripts\Activate.ps1"
+
 # Create a temporary config with resume enabled
-$configPath = Join-Path $RepoRoot "automation\configs\vgpt2_v3\stage1_sft.yaml"
-$tempConfigPath = Join-Path $RepoRoot "automation\configs\vgpt2_v3\stage1_sft_resume.yaml"
+$configPath = "$RepoRoot\automation\configs\vgpt2_v3\stage1_sft.yaml"
+$tempConfigPath = "$RepoRoot\automation\configs\vgpt2_v3\stage1_sft_resume.yaml"
 
 $content = Get-Content $configPath -Raw
 $content = $content -replace "resume_from_checkpoint: false", "resume_from_checkpoint: true"
@@ -42,7 +47,7 @@ $content | Set-Content $tempConfigPath
 Write-Host "Using temporary config: $tempConfigPath" -ForegroundColor Cyan
 Write-Host ""
 
-llamafactory-cli train $tempConfigPath
+& "$RepoRoot\venv\Scripts\llamafactory-cli.exe" train $tempConfigPath
 
 # Clean up temp config
 Remove-Item $tempConfigPath -ErrorAction SilentlyContinue

@@ -6,17 +6,18 @@
 # - All saved checkpoints
 # - Time since last checkpoint
 # - Estimated progress
+#
+# USAGE: Run as script file, not by pasting!
+#   .\training\monitor_checkpoints.ps1
 
 param(
     [string]$Stage = "sft",
     [int]$IntervalSeconds = 30
 )
 
-# Get the repo root (parent of training folder)
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$RepoRoot = Split-Path -Parent $ScriptDir
+$RepoRoot = "C:\Github\LLM_fine-tuning"
 
-$outputDir = Join-Path $RepoRoot "saves\vgpt2_v3\$Stage"
+$outputDir = "$RepoRoot\saves\vgpt2_v3\$Stage"
 
 Write-Host "Checkpoint Monitor - $Stage" -ForegroundColor Cyan
 Write-Host "============================" -ForegroundColor Cyan

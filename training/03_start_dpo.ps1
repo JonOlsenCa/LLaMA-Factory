@@ -4,10 +4,11 @@
 #
 # Prerequisites: Stage 1 SFT must be complete
 # Expected time: 30-60 minutes
+#
+# USAGE: Run as script file, not by pasting!
+#   .\training\03_start_dpo.ps1
 
-# Get the repo root (parent of training folder)
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$RepoRoot = Split-Path -Parent $ScriptDir
+$RepoRoot = "C:\Github\LLM_fine-tuning"
 
 # Change to repo root
 Set-Location $RepoRoot
@@ -19,7 +20,7 @@ Write-Host "Repo root: $RepoRoot"
 Write-Host ""
 
 # Verify SFT adapter exists
-$sftAdapter = Join-Path $RepoRoot "saves\vgpt2_v3\sft\adapter_model.safetensors"
+$sftAdapter = "$RepoRoot\saves\vgpt2_v3\sft\adapter_model.safetensors"
 if (-not (Test-Path $sftAdapter)) {
     Write-Host "ERROR: SFT adapter not found at $sftAdapter" -ForegroundColor Red
     Write-Host "Complete Stage 1 SFT training first!" -ForegroundColor Red
@@ -33,7 +34,11 @@ Write-Host "Epochs: 2"
 Write-Host "Expected time: 30-60 minutes"
 Write-Host ""
 
-$configPath = Join-Path $RepoRoot "automation\configs\vgpt2_v3\stage2_dpo.yaml"
+# Activate virtual environment
+Write-Host "Activating venv: $RepoRoot\venv" -ForegroundColor Cyan
+& "$RepoRoot\venv\Scripts\Activate.ps1"
 
-llamafactory-cli train $configPath
+$configPath = "$RepoRoot\automation\configs\vgpt2_v3\stage2_dpo.yaml"
+
+& "$RepoRoot\venv\Scripts\llamafactory-cli.exe" train $configPath
 

@@ -6,6 +6,8 @@
 #   .\05_validate.ps1              # Validate final model
 #   .\05_validate.ps1 -Stage sft   # Validate SFT model
 #   .\05_validate.ps1 -Quick       # Quick test (fewer questions)
+#
+# USAGE: Run as script file, not by pasting!
 
 param(
     [ValidateSet("sft", "dpo", "final")]
@@ -13,9 +15,7 @@ param(
     [switch]$Quick
 )
 
-# Get the repo root (parent of training folder)
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$RepoRoot = Split-Path -Parent $ScriptDir
+$RepoRoot = "C:\Github\LLM_fine-tuning"
 
 # Change to repo root
 Set-Location $RepoRoot
@@ -26,10 +26,14 @@ Write-Host ""
 Write-Host "Repo root: $RepoRoot"
 Write-Host ""
 
+# Activate virtual environment
+Write-Host "Activating venv: $RepoRoot\venv" -ForegroundColor Cyan
+& "$RepoRoot\venv\Scripts\Activate.ps1"
+
 $modelPath = switch ($Stage) {
-    "sft"   { Join-Path $RepoRoot "saves\vgpt2_v3\sft" }
-    "dpo"   { Join-Path $RepoRoot "saves\vgpt2_v3\dpo" }
-    "final" { Join-Path $RepoRoot "saves\vgpt2_v3\final" }
+    "sft"   { "$RepoRoot\saves\vgpt2_v3\sft" }
+    "dpo"   { "$RepoRoot\saves\vgpt2_v3\dpo" }
+    "final" { "$RepoRoot\saves\vgpt2_v3\final" }
 }
 
 if (-not (Test-Path $modelPath)) {
@@ -40,7 +44,7 @@ if (-not (Test-Path $modelPath)) {
 Write-Host "Validating model: $modelPath" -ForegroundColor Cyan
 Write-Host ""
 
-$scriptPath = Join-Path $RepoRoot "scripts\vgpt2_v3\run_validation.py"
+$scriptPath = "$RepoRoot\scripts\vgpt2_v3\run_validation.py"
 $pyArgs = @($scriptPath, "--model", $modelPath)
 if ($Quick) {
     $pyArgs += "--quick"
