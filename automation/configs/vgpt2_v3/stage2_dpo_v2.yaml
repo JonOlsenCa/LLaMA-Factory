@@ -1,0 +1,73 @@
+# VGPT2 v3 Stage 2 v2: DPO with Hallucination Focus
+# ==================================================
+# Heavy emphasis on hallucination rejection
+# Dataset composition: 83% hallucination, 17% quality/style
+#
+# Hardware: RTX A6000 (48GB) + 128GB RAM + Threadripper 7960X
+# Expected training time: ~45 minutes for 2 epochs
+#
+# Prerequisites:
+#   - Complete Stage 1 SFT training first
+#   - Generate hallucination-focused DPO dataset (vgpt2_v3_dpo_v2.json)
+#
+# Usage:
+#   llamafactory-cli train automation/configs/vgpt2_v3/stage2_dpo_v2.yaml
+
+### Model Settings ###
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
+adapter_name_or_path: saves/vgpt2_v3/sft    # Start from SFT (NOT from old DPO!)
+trust_remote_code: true
+
+### Fine-tuning Method ###
+stage: dpo
+do_train: true
+finetuning_type: lora
+lora_rank: 256
+lora_alpha: 512
+lora_dropout: 0.05
+lora_target: all
+
+### DPO Settings ###
+pref_beta: 0.1                       # KL penalty coefficient
+pref_loss: sigmoid                   # Standard DPO loss
+
+### Dataset Settings ###
+dataset: vgpt2_v3_dpo_v2             # NEW: Hallucination-focused (2584 pairs)
+template: qwen
+cutoff_len: 4096
+max_samples: 10000
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 0
+
+### Training Settings ###
+per_device_train_batch_size: 1       # DPO needs more memory per sample
+gradient_accumulation_steps: 16      # Effective batch size = 16
+learning_rate: 5.0e-6                # Low LR for DPO
+num_train_epochs: 2.0                # 2 epochs
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+gradient_checkpointing: true
+
+### Output Settings ###
+output_dir: saves/vgpt2_v3/dpo_v2    # NEW output directory
+logging_steps: 10
+save_steps: 200
+save_total_limit: 3
+plot_loss: true
+overwrite_output_dir: true           # Overwrite if exists
+save_only_model: false
+report_to: none
+
+### Resume Training ###
+resume_from_checkpoint: false
+
+### Evaluation ###
+val_size: 0.05                       # 5% holdout
+do_eval: true
+eval_strategy: steps
+eval_steps: 200
+per_device_eval_batch_size: 1
+

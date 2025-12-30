@@ -1,85 +1,97 @@
-# VGPT2 v3 Training Scripts
+# VGPT2 v3 Training Directory
 
-All scripts needed to train and monitor VGPT2 v3.
+**Status:** 🔴 PAUSED - See [MASTER_PLAN.md](MASTER_PLAN.md) for details
 
-## Quick Start
+---
+
+## ⚠️ IMPORTANT: Read Before Training
+
+Before starting any new training, read:
+1. **[MASTER_PLAN.md](MASTER_PLAN.md)** - Full status, analysis, and action plan
+2. **[../DPO_Analysis.md](../DPO_Analysis.md)** - DPO failure post-mortem
+
+### Current Issues
+- DPO v2 caused model to reject REAL Vista tables
+- Test suite keywords don't match model responses
+- Hardware under-utilized (dataloader_num_workers: 0)
+
+---
+
+## Training History
+
+| Date | Stage | Result | Notes |
+|------|-------|--------|-------|
+| 2025-12-28 | SFT | ✅ Success | 67K examples, 15.9 hrs |
+| 2025-12-29 | DPO v1 | ❌ Failed | 57% hallucination, imbalanced data |
+| 2025-12-30 | DPO v2 | ❌ Failed | Over-rejection of real tables |
+
+---
+
+## Scripts
+
+| Script | Purpose | Status |
+|--------|---------|--------|
+| `01_start_sft.ps1` | Start Stage 1 SFT | ✅ Working |
+| `02_resume_sft.ps1` | Resume SFT | ✅ Working |
+| `03_start_dpo.ps1` | Start DPO v1 | ⚠️ Imbalanced data |
+| `03b_start_dpo_v2.ps1` | Start DPO v2 | ❌ Caused over-rejection |
+| `04_start_kto.ps1` | Start KTO | ⏸️ Not tested |
+| `05_validate.ps1` | Run validation | ✅ Working |
+| `monitor_gpu.ps1` | GPU monitoring | ✅ Working |
+| `monitor_checkpoints.ps1` | Checkpoint monitoring | ✅ Working |
+
+---
+
+## Model Checkpoints
+
+```
+saves/vgpt2_v3/
+├── sft/          # ✅ Stage 1 - Good baseline
+├── dpo/          # ⚠️ Stage 2 v1 - 57% hallucination
+└── dpo_v2/       # ❌ Stage 2 v2 - Over-rejects real tables
+```
+
+---
+
+## Quick Commands
 
 ```powershell
+# Activate environment
 cd C:\Github\LLM_fine-tuning
+.\venv\Scripts\Activate.ps1
 
-# Terminal 1: Start training
-.\training\01_start_sft.ps1
+# Run validation on a model
+python scripts/vgpt2_v3/run_validation.py --model saves/vgpt2_v3/sft --quick
 
-# Terminal 2: Monitor GPU
+# Monitor GPU
 .\training\monitor_gpu.ps1
 
-# Terminal 3: Monitor checkpoints
-.\training\monitor_checkpoints.ps1
+# Start SFT (if needed)
+.\training\01_start_sft.ps1
 ```
 
-## Training Stages
+---
 
-| Script | Purpose | Time |
-|--------|---------|------|
-| `01_start_sft.ps1` | Start Stage 1 SFT | 8-12 hours |
-| `02_resume_sft.ps1` | Resume SFT from checkpoint | Remaining |
-| `03_start_dpo.ps1` | Start Stage 2 DPO | 30-60 min |
-| `04_start_kto.ps1` | Start Stage 3 KTO | 15-30 min |
-| `05_validate.ps1` | Run validation tests | 5-15 min |
+## Next Steps
 
-## Monitoring Scripts
+See [MASTER_PLAN.md](MASTER_PLAN.md) for:
+1. Validation plan before any more training
+2. Balanced DPO v3 dataset requirements
+3. Hardware optimization settings
+4. Success criteria
 
-| Script | Purpose |
-|--------|---------|
-| `monitor_gpu.ps1` | Real-time GPU stats (utilization, memory, temp) |
-| `monitor_checkpoints.ps1` | Watch for new checkpoints, show progress |
+---
 
-## Checkpoint Schedule
+## Related Files
 
-**SFT (Stage 1):**
-- Saves every 500 steps
-- First checkpoint: ~20-30 minutes
-- Keeps last 5 checkpoints
-- Location: `saves/vgpt2_v3/sft/checkpoint-*`
+| Location | Purpose |
+|----------|---------|
+| `automation/configs/vgpt2_v3/` | Training YAML configs |
+| `data/vgpt2_v3_*.json` | Training datasets |
+| `scripts/vgpt2_v3/` | Data generation & validation |
+| `output/validation_*.json` | Test results |
 
-**DPO (Stage 2):**
-- Saves every 200 steps
-- Location: `saves/vgpt2_v3/dpo/checkpoint-*`
+---
 
-**KTO (Stage 3):**
-- Saves every 200 steps
-- Final model: `saves/vgpt2_v3/final/`
-
-## Testing Resume Functionality
-
-1. Start training: `.\training\01_start_sft.ps1`
-2. Wait for first checkpoint (~20-30 min)
-3. Stop training: `Ctrl+C`
-4. Verify checkpoint exists: `ls saves/vgpt2_v3/sft/`
-5. Resume: `.\training\02_resume_sft.ps1`
-6. Confirm it continues from checkpoint (check step number in output)
-
-## Validation
-
-```powershell
-# Quick validation (fewer tests)
-.\training\05_validate.ps1 -Stage sft -Quick
-
-# Full validation
-.\training\05_validate.ps1 -Stage final
-```
-
-## Troubleshooting
-
-**Out of memory:**
-- Reduce `per_device_train_batch_size` in config
-- Ensure no other GPU apps running
-
-**Training too slow:**
-- Check GPU utilization with `monitor_gpu.ps1`
-- Should be >90% utilization
-
-**Resume not working:**
-- Check checkpoint exists in `saves/vgpt2_v3/sft/`
-- Ensure `checkpoint-*` folders have `pytorch_model.bin` or `adapter_model.safetensors`
+*Last Updated: 2025-12-30*
 

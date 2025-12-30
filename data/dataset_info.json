@@ -776,5 +776,15 @@
       "prompt": "content"
     },
     "folder": "python"
+  },
+  "vgpt2_v3_dpo_v2": {
+    "file_name": "vgpt2_v3_dpo_v2.json",
+    "formatting": "alpaca",
+    "ranking": true,
+    "columns": {
+      "prompt": "instruction",
+      "chosen": "chosen",
+      "rejected": "rejected"
+    }
   }
 }
