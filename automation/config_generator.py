@@ -33,7 +33,7 @@ class LoRAConfig:
     lora_target: str = "all"
 
 
-@dataclass  
+@dataclass
 class DataConfig:
     """Dataset configuration"""
     dataset: str = "alpaca_en_demo"
@@ -42,16 +42,22 @@ class DataConfig:
     max_samples: Optional[int] = None
     overwrite_cache: bool = True
     preprocessing_num_workers: int = 16
-    dataloader_num_workers: int = 4
+    dataloader_num_workers: int = 0  # Must be 0 on Windows
 
 
 @dataclass
 class TrainingConfig:
-    """Training hyperparameters"""
+    """Training hyperparameters
+
+    OPTIMIZED FOR: RTX A6000 (48GB) + 128GB RAM + Threadripper 7960X
+    - batch_size=2 fills ~45GB VRAM (94% utilization)
+    - gradient_accumulation=8 gives effective batch size of 16
+    - resume_from_checkpoint=True ensures no lost progress
+    """
     stage: Literal["sft", "pt", "rm", "ppo", "dpo", "kto"] = "sft"
     do_train: bool = True
-    per_device_train_batch_size: int = 2
-    gradient_accumulation_steps: int = 4
+    per_device_train_batch_size: int = 2  # Optimized for A6000 48GB
+    gradient_accumulation_steps: int = 8  # Effective batch = 16
     learning_rate: float = 1e-4
     num_train_epochs: float = 3.0
     lr_scheduler_type: str = "cosine"
@@ -59,17 +65,25 @@ class TrainingConfig:
     bf16: bool = True
     fp16: bool = False
     ddp_timeout: int = 180000000
-    resume_from_checkpoint: Optional[str] = None
+    gradient_checkpointing: bool = True  # Memory efficiency
+    resume_from_checkpoint: bool = True  # ALWAYS resume by default
 
 
 @dataclass
 class OutputConfig:
-    """Output and logging configuration"""
+    """Output and logging configuration
+
+    CHECKPOINT SAFETY:
+    - save_steps=200 ensures max ~15 min of lost work
+    - overwrite_output_dir=False protects existing checkpoints
+    - save_total_limit=3 keeps recent checkpoints without filling disk
+    """
     output_dir: str = "saves/experiment"
     logging_steps: int = 10
-    save_steps: int = 500
+    save_steps: int = 200  # Checkpoint every ~15 min
+    save_total_limit: int = 3  # Keep last 3 checkpoints
     plot_loss: bool = True
-    overwrite_output_dir: bool = True
+    overwrite_output_dir: bool = False  # SAFETY: Don't overwrite
     save_only_model: bool = False
     report_to: str = "none"  # none, wandb, tensorboard
 

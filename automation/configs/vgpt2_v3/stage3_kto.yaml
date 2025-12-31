@@ -53,15 +53,15 @@ gradient_checkpointing: true
 ### Output Settings ###
 output_dir: saves/vgpt2_v3/final     # Final model output
 logging_steps: 10
-save_steps: 200
+save_steps: 200                      # Checkpoint every ~10-15 min
 save_total_limit: 3
 plot_loss: true
-overwrite_output_dir: false
+overwrite_output_dir: false          # SAFETY: Don't overwrite existing checkpoints
 save_only_model: false
 report_to: none
 
 ### Resume Training ###
-resume_from_checkpoint: false
+resume_from_checkpoint: true         # ALWAYS resume if checkpoints exist
 
 ### Evaluation ###
 val_size: 0.1                        # 10% holdout for final validation

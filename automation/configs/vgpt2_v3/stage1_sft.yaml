@@ -54,7 +54,7 @@ save_only_model: false
 report_to: none                      # Set to tensorboard for monitoring
 
 ### Resume Training ###
-resume_from_checkpoint: false        # Set to true to resume
+resume_from_checkpoint: true         # ALWAYS resume if checkpoints exist
 
 ### Evaluation ###
 val_size: 0.02                       # 2% holdout (~2,000 samples)

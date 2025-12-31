@@ -37,12 +37,12 @@ template: qwen
 cutoff_len: 4096                     # Shorter for preference pairs
 max_samples: 10000
 overwrite_cache: true
-preprocessing_num_workers: 16
+preprocessing_num_workers: 1
 dataloader_num_workers: 0
 
 ### Training Settings ###
-per_device_train_batch_size: 1       # DPO needs more memory per sample
-gradient_accumulation_steps: 16      # Effective batch size = 16
+per_device_train_batch_size: 2       # DPO needs more memory per sample
+gradient_accumulation_steps: 8      # Effective batch size = 16
 learning_rate: 5.0e-6                # Much lower LR for DPO
 num_train_epochs: 2.0                # 2 epochs sufficient for preference learning
 lr_scheduler_type: cosine

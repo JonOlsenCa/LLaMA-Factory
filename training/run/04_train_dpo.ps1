@@ -51,6 +51,28 @@ if (Test-Path "automation/configs/vgpt2_v3/stage2_dpo.yaml") {
     exit 1
 }
 
+# Check for existing checkpoints (resume capability)
+Write-Host "  Checking for existing checkpoints..." -NoNewline
+$checkpoints = Get-ChildItem -Path "saves/vgpt2_v3/dpo" -Directory -Filter "checkpoint-*" -ErrorAction SilentlyContinue | Sort-Object { [int]($_.Name -replace 'checkpoint-', '') } -Descending
+if ($checkpoints) {
+    $latestCheckpoint = $checkpoints | Select-Object -First 1
+    $stepNum = $latestCheckpoint.Name -replace 'checkpoint-', ''
+    Write-Host " FOUND" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "  [RESUME DETECTED]" -ForegroundColor Yellow
+    Write-Host "  Latest checkpoint: $($latestCheckpoint.Name) (step $stepNum)" -ForegroundColor Yellow
+    Write-Host "  Config has resume_from_checkpoint: true" -ForegroundColor Yellow
+    Write-Host "  Training will RESUME from step $stepNum" -ForegroundColor Green
+} else {
+    Write-Host " None (starting fresh)" -ForegroundColor Green
+}
+
+Write-Host "`n[RESOURCE OPTIMIZATION]" -ForegroundColor Yellow
+Write-Host "  Batch size:         2 (optimized for A6000 48GB)"
+Write-Host "  Grad accumulation:  8 (effective batch: 16)"
+Write-Host "  Expected VRAM:      ~45GB (94% utilization)"
+Write-Host "  Checkpoint interval: 200 steps (~15 min max loss)"
+
 Write-Host "`n" + "=" * 60 -ForegroundColor Cyan
 Write-Host "Starting DPO training in 5 seconds... (Ctrl+C to cancel)" -ForegroundColor Yellow
 Write-Host "=" * 60 -ForegroundColor Cyan

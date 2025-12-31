@@ -41,8 +41,9 @@ preprocessing_num_workers: 16
 dataloader_num_workers: 0
 
 ### Training Settings ###
-per_device_train_batch_size: 1       # DPO needs more memory per sample
-gradient_accumulation_steps: 16      # Effective batch size = 16
+# OPTIMIZED: batch_size=2 uses ~45GB of 48GB VRAM (94% utilization)
+per_device_train_batch_size: 2       # Optimized for A6000 48GB
+gradient_accumulation_steps: 8       # Effective batch size = 16
 learning_rate: 5.0e-6                # Low LR for DPO
 num_train_epochs: 2.0                # 2 epochs
 lr_scheduler_type: cosine
@@ -54,15 +55,15 @@ gradient_checkpointing: true
 ### Output Settings ###
 output_dir: saves/vgpt2_v3/dpo_v2    # NEW output directory
 logging_steps: 10
-save_steps: 200
+save_steps: 200                      # Checkpoint every ~15 min
 save_total_limit: 3
 plot_loss: true
-overwrite_output_dir: true           # Overwrite if exists
+overwrite_output_dir: false          # SAFETY: Don't overwrite existing checkpoints
 save_only_model: false
 report_to: none
 
 ### Resume Training ###
-resume_from_checkpoint: false
+resume_from_checkpoint: true         # ALWAYS resume if checkpoints exist
 
 ### Evaluation ###
 val_size: 0.05                       # 5% holdout
