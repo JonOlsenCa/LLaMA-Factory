@@ -7,10 +7,11 @@ Generates preference pairs for Direct Preference Optimization (DPO) training.
 DPO teaches the model to prefer correct SQL over incorrect SQL by showing
 chosen (good) and rejected (bad) response pairs for the same instruction.
 
-Target: 5,000+ preference pairs
+Target: 15,000+ preference pairs
 
 Usage:
     python scripts/vgpt2_v3/generate_dpo_pairs.py --output data/vgpt2_v3_dpo.json
+    python scripts/vgpt2_v3/generate_dpo_pairs.py --target 20000 --output data/vgpt2_v3_dpo.json
 """
 
 import json
@@ -53,13 +54,15 @@ class DPOGenerator:
     3. Column naming (case sensitivity)
     4. JOIN patterns (complete vs incomplete)
     5. Hallucination (real vs fake tables)
+    6+ Dynamic schema-based generation for high volume
     """
 
-    def __init__(self, vgpt2_path: str):
+    def __init__(self, vgpt2_path: str, target_pairs: int = 15000):
         self.vgpt2 = Path(vgpt2_path)
         self.columns_data = {}
         self.fk_data = {}
         self.tables = []
+        self.target_pairs = target_pairs
         self._load_schema()
 
     def _load_schema(self):
@@ -128,66 +131,110 @@ class DPOGenerator:
                 break
 
     def generate_all(self) -> List[DPOPair]:
-        """Generate all DPO pairs."""
+        """Generate all DPO pairs targeting self.target_pairs count."""
         pairs = []
 
         # Category 1: WITH (NOLOCK) pairs
         logger.info("Generating NOLOCK preference pairs...")
         pairs.extend(self.generate_nolock_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 2: View vs base table pairs
         logger.info("Generating view vs base table pairs...")
         pairs.extend(self.generate_view_vs_base_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 3: Company filter pairs
         logger.info("Generating company filter pairs...")
         pairs.extend(self.generate_company_filter_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 4: Complete vs incomplete JOIN pairs
         logger.info("Generating JOIN completeness pairs...")
         pairs.extend(self.generate_join_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 5: Alias vs full name pairs
         logger.info("Generating alias preference pairs...")
         pairs.extend(self.generate_alias_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 6: Column case pairs
         logger.info("Generating column case pairs...")
         pairs.extend(self.generate_case_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 7: Hallucination pairs
         logger.info("Generating hallucination preference pairs...")
         pairs.extend(self.generate_hallucination_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 8: Reporting view pairs
         logger.info("Generating reporting view pairs...")
         pairs.extend(self.generate_reporting_view_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 9: Month format pairs
         logger.info("Generating month format pairs...")
         pairs.extend(self.generate_month_format_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 10: SQL generation quality pairs
         logger.info("Generating SQL quality pairs...")
         pairs.extend(self.generate_sql_quality_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
-        # Category 11: Schema-based NOLOCK pairs (dynamic from columns.json)
-        logger.info("Generating schema-based NOLOCK pairs...")
+        # Category 11: Schema-based NOLOCK pairs (ALL tables, multiple variations)
+        logger.info("Generating schema-based NOLOCK pairs (expanded)...")
         pairs.extend(self.generate_schema_nolock_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
-        # Category 12: Schema-based case pairs (dynamic from columns.json)
-        logger.info("Generating schema-based case pairs...")
+        # Category 12: Schema-based case pairs (ALL tables, multiple variations)
+        logger.info("Generating schema-based case pairs (expanded)...")
         pairs.extend(self.generate_schema_case_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
-        # Category 13: FK-based JOIN pairs (dynamic from foreign_keys.json)
-        logger.info("Generating FK-based JOIN pairs...")
+        # Category 13: FK-based JOIN pairs (ALL relationships)
+        logger.info("Generating FK-based JOIN pairs (expanded)...")
         pairs.extend(self.generate_fk_join_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
         # Category 14: More hallucination pairs
         logger.info("Generating extended hallucination pairs...")
         pairs.extend(self.generate_extended_hallucination_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
 
-        logger.info(f"Generated {len(pairs)} total DPO pairs")
+        # Category 15: Multi-column SELECT variations
+        logger.info("Generating multi-column SELECT variations...")
+        pairs.extend(self.generate_multicolumn_select_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
+
+        # Category 16: WHERE clause variations
+        logger.info("Generating WHERE clause variations...")
+        pairs.extend(self.generate_where_clause_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
+
+        # Category 17: ORDER BY variations
+        logger.info("Generating ORDER BY variations...")
+        pairs.extend(self.generate_orderby_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
+
+        # Category 18: Aggregate function pairs
+        logger.info("Generating aggregate function pairs...")
+        pairs.extend(self.generate_aggregate_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
+
+        # Category 19: DISTINCT usage pairs
+        logger.info("Generating DISTINCT usage pairs...")
+        pairs.extend(self.generate_distinct_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
+
+        # Category 20: TOP/LIMIT pairs
+        logger.info("Generating TOP clause pairs...")
+        pairs.extend(self.generate_top_pairs())
+        logger.info(f"  Running total: {len(pairs)}")
+
+        logger.info(f"Generated {len(pairs)} total DPO pairs (target: {self.target_pairs})")
         return pairs
 
     def generate_nolock_pairs(self) -> List[DPOPair]:
@@ -583,50 +630,69 @@ ORDER BY TotalCost DESC
         return "Co"
 
     def generate_schema_nolock_pairs(self) -> List[DPOPair]:
-        """Generate NOLOCK pairs from actual schema tables."""
-        import random
+        """Generate NOLOCK pairs from ALL schema tables with multiple variations."""
         pairs = []
 
-        # Get a sample of common tables
+        # Use ALL common tables (not just a sample)
         common_tables = [t for t in self.tables if not t.startswith('b') and not t.startswith('vrv') and not t.startswith('brv')]
-        sample_tables = random.sample(common_tables, min(200, len(common_tables)))
 
-        for table in sample_tables:
+        for table in common_tables:
             if table in self.columns_data:
                 cols = self.columns_data[table]
                 if cols:
-                    # Get first 3 column names
-                    col_names = [c.get('column_name', '') for c in cols[:3] if c.get('column_name')]
-                    if col_names:
-                        select_cols = ", ".join(col_names)
-                        co_col = self._get_company_col(table)
+                    col_names = [c.get('column_name', '') for c in cols if c.get('column_name')]
+                    co_col = self._get_company_col(table)
 
+                    # Variation 1: SELECT * with NOLOCK
+                    pairs.append(DPOPair(
+                        instruction=f"Select all from {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT *\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                        rejected=f"```sql\nSELECT *\nFROM {table}\n```"
+                    ))
+
+                    # Variation 2: SELECT specific columns (first 3)
+                    if len(col_names) >= 2:
+                        select_cols = ", ".join(col_names[:3])
                         pairs.append(DPOPair(
-                            instruction=f"Select {', '.join(col_names[:2])} from {table}",
+                            instruction=f"Query {col_names[0]} and {col_names[1]} from {table}",
                             input="",
                             chosen=f"```sql\nSELECT {select_cols}\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
                             rejected=f"```sql\nSELECT {select_cols}\nFROM {table}\n```"
                         ))
 
+                    # Variation 3: COUNT query
+                    pairs.append(DPOPair(
+                        instruction=f"Count rows in {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT COUNT(*)\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                        rejected=f"```sql\nSELECT COUNT(*)\nFROM {table}\n```"
+                    ))
+
+                    # Variation 4: Different phrasing
+                    pairs.append(DPOPair(
+                        instruction=f"Get data from the {table} table",
+                        input="",
+                        chosen=f"```sql\nSELECT *\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                        rejected=f"```sql\nSELECT *\nFROM {table}\n```"
+                    ))
+
         return pairs
 
     def generate_schema_case_pairs(self) -> List[DPOPair]:
-        """Generate case sensitivity pairs from actual column data."""
-        import random
+        """Generate case sensitivity pairs from ALL tables with multiple variations."""
         pairs = []
 
-        sample_tables = random.sample(self.tables, min(300, len(self.tables)))
-
-        for table in sample_tables:
+        for table in self.tables:
             if table in self.columns_data:
                 cols = self.columns_data[table]
                 if cols and len(cols) >= 2:
-                    col1 = cols[0].get('column_name', '')
-                    col2 = cols[1].get('column_name', '') if len(cols) > 1 else ''
+                    col_names = [c.get('column_name', '') for c in cols if c.get('column_name')]
+                    co_col = self._get_company_col(table)
 
-                    if col1 and col2:
-                        co_col = self._get_company_col(table)
-
+                    # Variation 1: First two columns - lowercase rejected
+                    if len(col_names) >= 2:
+                        col1, col2 = col_names[0], col_names[1]
                         pairs.append(DPOPair(
                             instruction=f"Query {col1} and {col2} from {table}",
                             input="",
@@ -634,22 +700,40 @@ ORDER BY TotalCost DESC
                             rejected=f"```sql\nSELECT {col1.lower()}, {col2.lower()}\nFROM {table} WITH (NOLOCK)\n```"
                         ))
 
+                    # Variation 2: UPPERCASE rejected
+                    if len(col_names) >= 2:
+                        col1, col2 = col_names[0], col_names[1]
+                        pairs.append(DPOPair(
+                            instruction=f"Get {col1.lower()} and {col2.lower()} from {table}",
+                            input="",
+                            chosen=f"```sql\nSELECT {col1}, {col2}\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                            rejected=f"```sql\nSELECT {col1.upper()}, {col2.upper()}\nFROM {table} WITH (NOLOCK)\n```"
+                        ))
+
+                    # Variation 3: Three columns if available
+                    if len(col_names) >= 3:
+                        c1, c2, c3 = col_names[0], col_names[1], col_names[2]
+                        pairs.append(DPOPair(
+                            instruction=f"Select {c1}, {c2}, {c3} from {table}",
+                            input="",
+                            chosen=f"```sql\nSELECT {c1}, {c2}, {c3}\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                            rejected=f"```sql\nSELECT {c1.lower()}, {c2.lower()}, {c3.lower()}\nFROM {table}\n```"
+                        ))
+
         return pairs
 
     def generate_fk_join_pairs(self) -> List[DPOPair]:
-        """Generate JOIN pairs from foreign key relationships."""
-        import random
+        """Generate JOIN pairs from ALL foreign key relationships with multiple variations."""
         pairs = []
 
-        # Sample FK relationships
+        # Use ALL FK relationships
         fk_items = list(self.fk_data.items()) if self.fk_data else []
-        sample_fks = random.sample(fk_items, min(500, len(fk_items)))
 
-        for table, relations in sample_fks:
+        for table, relations in fk_items:
             if not relations:
                 continue
 
-            for rel in relations[:2]:  # Max 2 relations per table
+            for rel in relations:  # ALL relations per table (removed limit)
                 ref_table = rel.get('referenced_table', '')
                 fk_cols = rel.get('fk_columns', [])
                 ref_cols = rel.get('referenced_columns', [])
@@ -660,13 +744,14 @@ ORDER BY TotalCost DESC
                     # Build complete JOIN
                     join_conditions = " AND ".join([f"{table}.{fk} = {ref_table}.{ref}" for fk, ref in zip(fk_cols, ref_cols)])
 
-                    # Get some columns
-                    t1_cols = [c.get('column_name', '') for c in self.columns_data.get(table, [])[:2] if c.get('column_name')]
-                    t2_cols = [c.get('column_name', '') for c in self.columns_data.get(ref_table, [])[:2] if c.get('column_name')]
+                    # Get columns from both tables
+                    t1_cols = [c.get('column_name', '') for c in self.columns_data.get(table, [])[:3] if c.get('column_name')]
+                    t2_cols = [c.get('column_name', '') for c in self.columns_data.get(ref_table, [])[:3] if c.get('column_name')]
 
                     if t1_cols and t2_cols:
                         select_clause = ", ".join([f"{table}.{c}" for c in t1_cols] + [f"{ref_table}.{c}" for c in t2_cols])
 
+                        # Variation 1: Complete vs incomplete JOIN
                         pairs.append(DPOPair(
                             instruction=f"Join {table} with {ref_table}",
                             input="",
@@ -683,6 +768,42 @@ Using the complete foreign key relationship ensures data integrity.""",
 SELECT *
 FROM {table}
 JOIN {ref_table} ON {table}.{fk_cols[0]} = {ref_table}.{ref_cols[0]}
+```"""
+                        ))
+
+                        # Variation 2: Different phrasing
+                        pairs.append(DPOPair(
+                            instruction=f"Query {table} with related {ref_table} data",
+                            input="",
+                            chosen=f"""```sql
+SELECT {select_clause}
+FROM {table} WITH (NOLOCK)
+INNER JOIN {ref_table} WITH (NOLOCK)
+  ON {join_conditions}
+WHERE {table}.{co_col} = @{co_col}
+```""",
+                            rejected=f"""```sql
+SELECT *
+FROM {table}, {ref_table}
+WHERE {table}.{fk_cols[0]} = {ref_table}.{ref_cols[0]}
+```"""
+                        ))
+
+                        # Variation 3: LEFT JOIN preference for optional relationships
+                        pairs.append(DPOPair(
+                            instruction=f"Get all {table} records with optional {ref_table} info",
+                            input="",
+                            chosen=f"""```sql
+SELECT {select_clause}
+FROM {table} WITH (NOLOCK)
+LEFT JOIN {ref_table} WITH (NOLOCK)
+  ON {join_conditions}
+WHERE {table}.{co_col} = @{co_col}
+```""",
+                            rejected=f"""```sql
+SELECT *
+FROM {table}
+LEFT JOIN {ref_table} ON {table}.{fk_cols[0]} = {ref_table}.{ref_cols[0]}
 ```"""
                         ))
 
@@ -751,6 +872,159 @@ JOIN {ref_table} ON {table}.{fk_cols[0]} = {ref_table}.{ref_cols[0]}
 
         return pairs
 
+    def generate_multicolumn_select_pairs(self) -> List[DPOPair]:
+        """Generate pairs for multi-column SELECT with proper formatting."""
+        pairs = []
+
+        for table in self.tables:
+            if table in self.columns_data:
+                cols = self.columns_data[table]
+                col_names = [c.get('column_name', '') for c in cols if c.get('column_name')]
+                co_col = self._get_company_col(table)
+
+                if len(col_names) >= 4:
+                    # Good: formatted multi-column SELECT
+                    good_select = ",\n  ".join(col_names[:5])
+                    bad_select = ", ".join(col_names[:5])
+
+                    pairs.append(DPOPair(
+                        instruction=f"Select multiple columns from {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT\n  {good_select}\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                        rejected=f"```sql\nSELECT {bad_select} FROM {table}\n```"
+                    ))
+
+        return pairs
+
+    def generate_where_clause_pairs(self) -> List[DPOPair]:
+        """Generate pairs for proper WHERE clause usage."""
+        pairs = []
+
+        for table in self.tables:
+            if table in self.columns_data:
+                cols = self.columns_data[table]
+                col_names = [c.get('column_name', '') for c in cols if c.get('column_name')]
+                co_col = self._get_company_col(table)
+
+                if len(col_names) >= 2:
+                    col1 = col_names[0]
+
+                    # Variation: Company filter included
+                    pairs.append(DPOPair(
+                        instruction=f"Filter {table} by {col1}",
+                        input="",
+                        chosen=f"```sql\nSELECT *\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n  AND {col1} = @{col1}\n```",
+                        rejected=f"```sql\nSELECT *\nFROM {table}\nWHERE {col1} = @{col1}\n```"
+                    ))
+
+        return pairs
+
+    def generate_orderby_pairs(self) -> List[DPOPair]:
+        """Generate pairs for ORDER BY with proper syntax."""
+        pairs = []
+
+        for table in self.tables:
+            if table in self.columns_data:
+                cols = self.columns_data[table]
+                col_names = [c.get('column_name', '') for c in cols if c.get('column_name')]
+                co_col = self._get_company_col(table)
+
+                if len(col_names) >= 2:
+                    col1 = col_names[0]
+
+                    pairs.append(DPOPair(
+                        instruction=f"Get {table} ordered by {col1}",
+                        input="",
+                        chosen=f"```sql\nSELECT *\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\nORDER BY {col1}\n```",
+                        rejected=f"```sql\nSELECT *\nFROM {table}\nORDER BY {col1.lower()}\n```"
+                    ))
+
+        return pairs
+
+    def generate_aggregate_pairs(self) -> List[DPOPair]:
+        """Generate pairs for aggregate functions."""
+        pairs = []
+        numeric_types = ['int', 'decimal', 'money', 'float', 'numeric', 'bigint', 'smallint']
+
+        for table in self.tables:
+            if table in self.columns_data:
+                cols = self.columns_data[table]
+                co_col = self._get_company_col(table)
+
+                # Find numeric columns for aggregation
+                numeric_cols = [c.get('column_name', '') for c in cols
+                               if c.get('data_type', '').lower() in numeric_types and c.get('column_name')]
+
+                if numeric_cols:
+                    num_col = numeric_cols[0]
+
+                    pairs.append(DPOPair(
+                        instruction=f"Sum {num_col} in {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT SUM({num_col}) AS Total{num_col}\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                        rejected=f"```sql\nSELECT SUM({num_col.lower()})\nFROM {table}\n```"
+                    ))
+
+                    pairs.append(DPOPair(
+                        instruction=f"Get average {num_col} from {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT AVG({num_col}) AS Avg{num_col}\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                        rejected=f"```sql\nSELECT AVG({num_col.lower()})\nFROM {table}\n```"
+                    ))
+
+        return pairs
+
+    def generate_distinct_pairs(self) -> List[DPOPair]:
+        """Generate pairs for DISTINCT usage."""
+        pairs = []
+
+        for table in self.tables:
+            if table in self.columns_data:
+                cols = self.columns_data[table]
+                col_names = [c.get('column_name', '') for c in cols if c.get('column_name')]
+                co_col = self._get_company_col(table)
+
+                if len(col_names) >= 2:
+                    col1 = col_names[0]
+
+                    pairs.append(DPOPair(
+                        instruction=f"Get unique {col1} values from {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT DISTINCT {col1}\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\n```",
+                        rejected=f"```sql\nSELECT DISTINCT {col1.lower()}\nFROM {table}\n```"
+                    ))
+
+        return pairs
+
+    def generate_top_pairs(self) -> List[DPOPair]:
+        """Generate pairs for TOP clause."""
+        pairs = []
+
+        for table in self.tables:
+            if table in self.columns_data:
+                cols = self.columns_data[table]
+                col_names = [c.get('column_name', '') for c in cols if c.get('column_name')]
+                co_col = self._get_company_col(table)
+
+                if col_names:
+                    col1 = col_names[0]
+
+                    pairs.append(DPOPair(
+                        instruction=f"Get first 10 rows from {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT TOP 10 *\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\nORDER BY {col1}\n```",
+                        rejected=f"```sql\nSELECT TOP 10 *\nFROM {table}\n```"
+                    ))
+
+                    pairs.append(DPOPair(
+                        instruction=f"Get top 100 records from {table}",
+                        input="",
+                        chosen=f"```sql\nSELECT TOP 100 *\nFROM {table} WITH (NOLOCK)\nWHERE {co_col} = @{co_col}\nORDER BY {col1}\n```",
+                        rejected=f"```sql\nSELECT TOP 100 *\nFROM {table}\nLIMIT 100\n```"
+                    ))
+
+        return pairs
+
     def save_dataset(self, pairs: List[DPOPair], output_path: str):
         """Save pairs to JSON file."""
         output_file = Path(output_path)
@@ -772,10 +1046,12 @@ def main():
                         help='Path to VGPT2 repository')
     parser.add_argument('--output', type=str, default='data/vgpt2_v3_dpo.json',
                         help='Output file path')
+    parser.add_argument('--target', type=int, default=15000,
+                        help='Target number of pairs (default: 15000)')
 
     args = parser.parse_args()
 
-    generator = DPOGenerator(args.vgpt2)
+    generator = DPOGenerator(args.vgpt2, target_pairs=args.target)
     pairs = generator.generate_all()
     generator.save_dataset(pairs, args.output)
 

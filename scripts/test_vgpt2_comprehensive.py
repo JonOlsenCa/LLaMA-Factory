@@ -88,7 +88,7 @@ TEST_QUESTIONS = {
 def load_model():
     """Load base model + LoRA adapter."""
     BASE_MODEL = "Qwen/Qwen2.5-7B-Instruct"
-    ADAPTER_PATH = "saves/vgpt2_v2_lora_sft"
+    ADAPTER_PATH = "saves/vgpt2_v3/sft"
     
     print(f"Loading base model: {BASE_MODEL}")
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL, trust_remote_code=True, local_files_only=True)

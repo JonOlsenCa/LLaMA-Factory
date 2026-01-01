@@ -1,33 +1,33 @@
 {
   "metadata": {
-    "timestamp": "2025-12-29T14:45:40.353102",
+    "timestamp": "2026-01-01T00:57:09.390115",
     "total_questions": 53
   },
   "categories": {
     "schema_knowledge": [
       {
         "question": "What columns are in dbo.bAPTH?",
-        "response": "The bAPTH table (Module: AP) contains: APCo, Mth, APTrans, VendorGroup, Vendor, InvId, APRef, Description, InvDate, DiscDate, DueDate, InvTotal, HoldCode, PayControl, PayMethod... (61 total columns)"
+        "response": "The bAPTH table (Module: AP) contains: APCo, Mth, APTrans, VendorGroup, Vendor, InvId, APRef, Description, InvDate, DiscDate, DueDate, InvTotal, HoldCode, PayControl, PayMethod, CMCo, CMAcct, PrePaidYN, PrePaidMth, PrePaidDate... (61 total)"
       },
       {
         "question": "What columns are in the APTH view?",
-        "response": "The APTH view (Module: AP) contains: APCo, Mth, APTrans, VendorGroup, Vendor, InvId, APRef, Description, InvDate, DiscDate, DueDate, InvTotal, HoldCode, PayControl, PayMethod... (61 total columns)"
+        "response": "The APTH view (Module: AP) contains: APCo, Mth, APTrans, VendorGroup, Vendor, InvId, APRef, Description, InvDate, DiscDate, DueDate, InvTotal, HoldCode, PayControl, PayMethod, CMCo, CMAcct, PrePaidYN, PrePaidMth, PrePaidDate... (61 total)"
       },
       {
         "question": "List the key columns in bAPVendor",
-        "response": "Key columns in bAPVendor: VendorGroup (bGroup, not null); Vendor (bVendor, not null); APRef (bAPReference, nullable)"
+        "response": "Key columns in bAPVendor:\n- VendorGroup (bGroup, not null)\n- Vendor (bVendor, not null)\n- SortName (bSortName, not null)\n- Name (varchar, nullable)\n- Type (char, not null)"
       },
       {
         "question": "Describe the APTD table structure",
-        "response": "AP Transaction Detail"
+        "response": "The table 'APTD' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.)."
       },
       {
         "question": "What is the primary key of bAPUI?",
-        "response": "The primary key of bAPUI is APCo + UIMth + UISeq, with optional APRef for cross-checking."
+        "response": "The primary key of bAPUI is: APCo, PrimaryKey, KeyID"
       },
       {
         "question": "What columns link bAPTD to bAPTH?",
-        "response": "bAPTD links to bAPTH through APCo, Mth, APTrans, and APLine keys. It also has an additional restriction: if PayMethod is 'S' (likely check), then APLine must be null. This ensures only valid, checkable AP transactions are processed, skipping invalid ones like null references or non-check payment methods."
+        "response": "The bAPTD table has 17 columns.\n\n**Primary columns:** APCo (bCompany), Mth (bMonth), APTrans (bTrans), APLine (smallint), APSeq (tinyint), PayType (tinyint), Amount (bDollar), DiscOffer (bPct), DiscTaken (bPct), DueDate (bDate)\n\n**Additional columns:** Status (tinyint), PaidMth (bMonth), PaidDate (bDate), CMCo (bCompany), CMAcct (bCMAcct), PayMethod (char), VendorGroup (bGroup), Supplier (bVendor), SeparatedYN (bYN), TakeAllDisc (bYN)\n\n**Primary Key:** Not defined\n\nTo link bAPTD to bAPTH, you would use the APTrans field."
       },
       {
         "question": "What columns are in the Analytics.vDataSyncTracking table?",
@@ -35,195 +35,195 @@
       },
       {
         "question": "Describe the key columns in Batch.Document",
-        "response": "Key columns in Batch.Document: KeyID (bigint, not null); DocumentId (uniqueidentifier, not null); Title (nvarchar, not null)"
+        "response": "Key columns in Batch.Document:\n- KeyID (bigint, not null)\n- DocumentId (uniqueidentifier, not null)\n- Title (nvarchar, not null)\n- SenderId (uniqueidentifier, not null)\n- DocumentTypeId (uniqueidentifier, not null)"
       },
       {
         "question": "What is the data type of DocumentId in Batch.Document?",
-        "response": "The DataTypeId for DocumentId in Batch.Document is uniqueidentifier."
+        "response": "The DocumentId column in Batch.Document has data type uniqueidentifier."
       },
       {
         "question": "List all columns in APVM (vendor master)",
-        "response": "All columns in APVM (vendor master): VendorGroup (bGroup, not null); Vendor (bVendor, not null); SortName (bSortName, not null)"
+        "response": "The APVM table (AP module) contains 103 columns.\n\n**Primary columns:** VendorGroup (bGroup), Vendor (bVendor), SortName (bSortName), Name (varchar), Type (char), TempYN (bYN), Contact (varchar), Phone (bPhone), Fax (bPhone), EMail (varchar)\n\n**Additional columns:** URL (varchar), Address (varchar), City (varchar), State (varchar), Zip (bZip), Address2 (varchar), POAddress (varchar), POCity (varchar), POState (varchar), POZip (bZip)\n\n**Primary Key:** Not defined\n\nTo query this table:\n```sql\nSELECT * FROM APVM WITH (NOLOCK) WHERE ID = @Value\n```"
       },
       {
         "question": "What columns are in bJCCM (Job Cost Contract Master)?",
-        "response": "The bJCCM (Job Cost Contract Master) table contains: JCCo, Contract, Description, Department, ContractStatus, OriginalDays, CurrentDays, StartMonth, MonthClosedForReport, ProjCloseDate, ActualCloseDate, CustGroup, Customer, PayTerms, TaxInterface... (76 total columns)"
+        "response": "The bJCCM table (Job Cost module) contains 76 columns.\n\n**Primary columns:** JCCo (bCompany), Contract (bContract), Description (bItemDesc), Department (bDept), ContractStatus (tinyint), OriginalDays (smallint), CurrentDays (smallint), StartMonth (bMonth), MonthClosed (bMonth), ProjCloseDate (bDate)\n\n**Additional columns:** ActualCloseDate (bDate), CustGroup (bGroup), Customer (bCustomer), PayTerms (bPayTerms), TaxInterface (bYN), TaxGroup (bGroup), TaxCode (bTaxCode), RetainagePCT (bPct), DefaultBillType (char), OrigContractAmt (bDollar)\n\n**Primary Key:** Not defined\n\nTo query this table:\n```sql\nSELECT * FROM bJCCM WITH (NOLOCK) WHERE ID = @Value\n```"
       },
       {
         "question": "What is the structure of the PRTH table?",
-        "response": "PR Timecard Header"
+        "response": "The PRTH table (PR module) contains 61 columns.\n\n**Primary columns:** PRCo (bCompany), PRGroup (bGroup), PREndDate (bDate), Employee (bEmployee), PaySeq (tinyint), PostSeq (smallint), Type (char), PostDate (bDate), JCCo (bCompany), Job (bJob)\n\n**Additional columns:** PhaseGroup (bGroup), Phase (bPhase), JCDept (bDept), GLCo (bCompany), EMCo (bCompany), WO (bWO), WOItem (bItem), Equipment (bEquip), EMGroup (tinyint), CostCode (bCostCode)\n\n**Primary Key:** Not defined\n\nTo query this table:\n```sql\nSELECT * FROM PRTH WITH (NOLOCK) WHERE ID = @Value\n```"
       },
       {
         "question": "Describe the GLDT (GL Detail) table",
-        "response": "GL Detail"
+        "response": "**GLDT (GL Detail)**\n- **Purpose:** General Ledger detail transactions\n- **Primary Key:** Not defined\n- **Key Columns:**\n  - GLCo (bCompany, required)\n  - Mth (bMonth, required)\n  - GLTrans (bTrans, required)\n  - GLAcct (bGLAcct, required)\n  - Jrnl (bJrnl, required)\n  - GLRef (bGLRef, required)\n  - SourceCo (bCompany, required)\n  - Source (bSource, required)\n  - ActDate (bDate, required)\n  - DatePosted (bDate, required)\n  - Description (bTransDesc, nullable)\n  - BatchId (bBatchID, required)\n  - Amount (bDollar, required)\n  - RevStatus (tinyint, required)\n  - Adjust (char, required)\n... and 3 more columns\n\n**Usage Example:**\n```sql\nSELECT GLCo, Mth, GLTrans, GLAcct, Jrnl\nFROM GLDT WITH (NOLOCK)\nWHERE ID = @Value\n```\n\nAlways use WITH (NOLOCK) for SELECT queries to prevent blocking."
       },
       {
         "question": "What columns are in bEMEM (Equipment Master)?",
-        "response": "The bEMEM (Equipment Master) table contains: EMCo, Equipment, Location, Type, Department, Category, Manufacturer, Model, ModelYr, VINNumber, Description, Status, OdoReading, OdoDate, ReplacedOdoReading... (103 total columns)"
+        "response": "The bEMEM table (Equipment Management module) contains 103 columns.\n\n**Primary columns:** EMCo (bCompany), Equipment (bEquip), Location (varchar), Type (char), Department (bDept), Category (bCat), Manufacturer (varchar), Model (varchar), ModelYr (char), VINNumber (varchar)\n\n**Additional columns:** Description (bItemDesc), Status (char), OdoReading (bHrs), OdoDate (bDate), ReplacedOdoReading (bHrs), ReplacedOdoDate (bDate), HourReading (bHrs), HourDate (bDate), ReplacedHourReading (bHrs), ReplacedHourDate (bDate)\n\n**Primary Key:** Not defined\n\nTo query this table:\n```sql\nSELECT * FROM bEMEM WITH (NOLOCK) WHERE ID = @Value\n```"
       },
       {
         "question": "What is the structure of ARCM (AR Customer Master)?",
-        "response": "ARCM stores customer master details such as name, address, payment terms, and status flags in the Accounts Receivable module. It is structured with a single CustomerID column as the key, followed by required fields like CompanyID and RecordType, with optional extras like TaxGroup and Notes. This design enables efficient lookups of customer data by ID or company affiliation."
+        "response": "The ARCM (AR Customer Master) table is structured as follows:\n\n| Column | Data Type | Nullable | PK | Description |\n|--------|-----------|----------|----|-----------|\n| `CustGroup` | bGroup | ✗ | ✓ | Customer Group code, forms first part of primary key, identifies the group for which the customer is defined |\n| `Customer` | bCustomer | ✗ | ✓ | Customer number, forms second part of primary key, uniquely identifies the customer within its CustGroup |\n| `Name` | varchar | ✓ |  | Customer name, required field holding the full name of the customer |\n| `SortName` | bSortName | ✗ |  | Sort name code, required field used for alphabetical sorting of customers in reports and lookups |\n| `TempYN` | bYN | ✗ |  | Temporary flag (Y/N), required field indicating if the customer record is temporary or hold status |\n| `Phone` | bPhone | ✓ |  | Customer phone number, optional field for primary contact phone |\n| `Fax` | bPhone | ✓ |  | Customer fax number, optional field for fax address |\n| `EMail` | varchar | ✓ |  | Customer email address, optional field for electronic communication |\n| `URL` | varchar | ✓ |  | Customer website URL, optional field for web presence |\n| `Contact` | varchar | ✓ |  | Primary contact person name, optional field for billing or service contact |\n| `ContactExt` | varchar | ✓ |  | Contact person phone extension, optional field for direct line access |\n| `Address` | varchar | ✓ |  | Primary billing address line 1, optional field for invoice delivery |\n| `City` | varchar | ✓ |  | Billing city, optional field for address standardization |\n| `State` | varchar | ✓ |  | Billing state, optional field for address standardization |\n| `Zip` | bZip | ✓ |  | Billing ZIP code, optional field for address standardization |\n| `Address2` | varchar | ✓ |  | Secondary billing address line, optional field for additional address details |\n| `BillAddress` | varchar | ✓ |  | Billing address line 1, optional field for alternate billing address |\n| `BillCity` | varchar | ✓ |  | Billing city, optional field for bill address standardization |\n| `BillState` | varchar | ✓ |  | Billing state, optional field for bill address"
       }
     ],
     "sql_generation": [
       {
         "question": "Write SQL to get all unpaid invoices from bAPTH",
-        "response": "To get all unpaid invoices from bAPTH, use:\n\n```sql\nSELECT *\nFROM bAPTH\nWHERE PaidDate IS NULL\n```\n\nThis is used in Viewpoint Vista ERP for identifying unpaid invoices, typically in accounts payable workflows."
+        "response": "```sql\nSELECT APCo, Mth, APTrans, Vendor, InvNum, InvDate, GrossAmt, DueDate\nFROM bAPTH WITH (NOLOCK)\nWHERE APCo = @APCo AND Status = 0\nORDER BY DueDate\n```\n\nNote: Always use WITH (NOLOCK) for SELECT queries and filter by company column."
       },
       {
         "question": "How do I join bAPTH and bAPVendor?",
-        "response": "To join bAPTH and bAPVendor, use:\n\n```sql\nFROM bAPTH\nINNER JOIN bAPVendor\n  ON bAPTH.VendorGroup = bAPVendor.VendorGroup AND bAPTH.Vendor = bAPVendor.Vendor\n```\n\nThis pattern is used in the vrvAPRec_APEntry view."
+        "response": "To correctly join bAPTH and bAPVendor, you must include all key columns:\n\n```sql\nSELECT *\nFROM bAPTH WITH (NOLOCK)\nINNER JOIN bAPVendor WITH (NOLOCK)\n  ON bAPTH.VendorGroup = bAPVendor.VendorGroup AND bAPTH.Vendor = bAPVendor.Vendor\n```\n\nIncomplete JOIN like `bAPTH.Vendor = bAPVendor` would be incorrect because: Missing VendorGroup in JOIN."
       },
       {
         "question": "Query to find duplicate invoice numbers in AP",
-        "response": "SELECT Invoice, COUNT(*) AS Count\nFROM APTH\nGROUP BY Invoice\nHAVING COUNT(*) > 1;"
+        "response": "```sql\nSELECT APCo, Mth, InvNum, Count\nFROM APTH WITH (NOLOCK)\nWHERE APCo = @APCo\nGROUP BY APCo, Mth, InvNum\nHAVING COUNT > 1\n```\n\nNote: Always use WITH (NOLOCK) for SELECT queries and filter by company column."
       },
       {
         "question": "Get total invoice amount by vendor for 2024",
-        "response": "SELECT APVM.Vendor, sum(APTH.InvoiceTotal) AS [Total Inv Amount]\nFROM APTH WITH (NOLOCK)\nJOIN APVM WITH (NOLOCK) ON APTH.VendorGroup = APVM.VendorGroup AND APTH.Vendor = APVM.Vendor\nWHERE APTH.InvDate >= '2024-01-01' AND APTH.InvDate <= '2024-12-31'\nGROUP BY APVM.Vendor;"
+        "response": "To calculate the total invoice amount by vendor for 2024, we need to know:\n\n1. **Invoice dates**: January 1, 2024 to December 31, 2024\n2. **AP company**: Which AP company?\n3. **Vendor group**: Which vendor group?\n4. **Vendor**: Which specific vendor?\n\nPlease provide these details for an accurate computation."
       },
       {
         "question": "Find all invoices approved but not paid",
-        "response": "Select distinct\n    APTH.APCo,\n    APTH.Mth,\n    APTH.APTrans,\n    APTH.VendorGroup,\n    APTH.Vendor,\n    APTH.InvId,\n    APTH.APRef,\n    APTH.Description,\n    APTH.InvTotal,\n    APTL.Job,\n    JCJM.Description as JobDescription,\n    APTH.HoldCode,\n    APTH.PayControl,\n    APPD.PayType,\n    APTH.DueDate,\n    APTH.DiscDate,\n    APTD.Amount,\n    APTD.Status,\n    APVM.Name as VendorName,\n    HQCO.Name as CompanyName,\n    APTH.Mth as InvoiceMth,\n    APTH.InvDate as InvoiceDate\nFrom dbo.APTH\nJOIN dbo.APTL ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\nJOIN dbo.JCJM ON APTL.JCCo = JCJM.JCCo AND APTL.Job = JCJM.Job\nJOIN dbo.APPD ON APTL.APCo = APPD.APCo AND APTL.Mth = APPD.Mth AND APTL.APTrans = APPD.APTrans AND APTL.APLine = APPD.APLine\nJOIN dbo.HQCO ON APTH.APCo = HQCO.HQCo\nJOIN dbo.APVM ON APTH.VendorGroup = APVM.VendorGroup AND APTH.Vendor = APVM.Vendor\nWHERE APTH.Status = 2\n    AND APTL.Job is not null\n    AND APPD.PayType <> 3\n    AND APTD.Amount <> 0;"
+        "response": "```sql\nSELECT APTH.APCo, APTH.Vendor, APTH.InvNum, APTH.Description,\n  APTD.PayType, APTL.Job, APTH.InvDate, APTH.DueDate\nFROM APTH WITH (NOLOCK)\nINNER JOIN APTD WITH (NOLOCK)\n  ON APTH.APCo = APTD.APCo AND APTH.Mth = APTD.Mth AND APTH.APTrans = APTD.APTrans\nINNER JOIN APTL WITH (NOLOCK)\n  ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\nWHERE APTH.Status = 1 AND APTD.PaidDate IS NULL\n```\n\nNote: WITH (NOLOCK) prevents blocking production transactions. Always filter by company column."
       },
       {
         "question": "Write a query to get AP aging by vendor",
-        "response": "/*\nAP Aging by Vendor (non-transactional)\n========================\n\nPurpose: Generate the required data for AP aging by vendor using a CTE. This is *not* a transactional query - it does not update any tables.\n=============================================================================\n\nParameters:\n- @AsOfDate: Age as of this date (YYYY-MM-DD)\n- @DaysDue: Days past due threshold (default 30)\n- @Company: Company (default NULL)\n\nUsage:\n-- Non-transactional preview\nSelect *\nFrom ap Aging WITH (NOLOCK)\nWHERE Aging.AgingDate = '2022-12-31'\n   AND Aging.Company = 1\n   AND Aging.DaysDue = 30\n\n-- Transactional version (updates tables)\nInsert Into ap Aging WITH (NOLOCK)\nSelect *\nFrom (\n   Select *\n   From ap Aging WITH (NOLOCK)\n   WHERE Aging.AgingDate = '2022-12-31'\n      AND Aging.Company = 1\n      AND Aging.DaysDue = 30\n) AS Source\nWHERE NOT EXISTS (\n   Select 1 From ap Aging WITH (NOLOCK)\n   WHERE Aging.AgingDate = Source.AgingDate\n      AND Aging.VendorGroup = Source.VendorGroup\n      AND Aging.Vendor = Source.Vendor\n      AND Aging.BillType = Source.BillType\n      AND Aging.OpenYN = Source.OpenYN\n      AND Aging.DueDate = Source.DueDate\n      AND Aging.PaidDate = Source.PaidDate\n      AND Aging.Amount = Source.Amount\n      AND Aging.Retainage = Source.Retainage\n      AND Aging.DiscountTaken = Source.DiscountTaken\n      AND Aging.PayType = Source.PayType\n      AND Aging.CMCo = Source.CMCo\n      AND Aging.CMAcct = Source.CMAcct\n      AND Aging.Supplier = Source.Supplier\n      AND Aging.PayCategory = Source.PayCategory\n)\n\n;"
+        "response": "```sql\nSELECT APCO.APCo, APCO.PayCategoryYN, APCO.TaxBasisNetRetgYN,\n  APTH.Vendor, APVM.Name AS VendorName,\n  APTH.InvNum, APTH.APRef, APTH.InvDate, APTH.DueDate,\n  DATEDIFF(day, APTH.InvDate, GETDATE()) AS Age,\n  CASE WHEN APTH.Status = 0 THEN 'Open' \n       WHEN APTH.Status = 1 THEN 'On Hold'\n       WHEN APTH.Status = 2 THEN 'Paid Early'\n       ELSE 'Paid On Due' END AS Status,\n  SUM(APTD.Amount) AS TotalAmount,\n  SUM(APTD.DiscTaken) AS TotalDiscTaken\nFROM APTH WITH (NOLOCK)\nINNER JOIN APTD WITH (NOLOCK)\n  ON APTH.APCo = APTD.APCo AND APTH.Mth = APTD.Mth AND APTH.APTrans = APTD.APTrans\nINNER JOIN APCO WITH (NOLOCK)\n  ON APTH.APCo = APCO.APCo\nLEFT JOIN APVM WITH (NOLOCK)\n  ON APTH.VendorGroup = APVM.VendorGroup AND APTH.Vendor = APVM.Vendor\nWHERE APTH.APCo = @APCo\nGROUP BY APCO.APCo, APCO.PayCategoryYN, APCO.TaxBasisNetRetgYN,\n  APTH.Vendor, APVM.Name, APTH.InvNum, APTH.APRef, APTH.InvDate, APTH.DueDate\nORDER BY APTH.Vendor\n```\n\nNote: WITH (NOLOCK) prevents blocking production transactions. Always filter by company column."
       },
       {
         "question": "How do I query committed costs from vrvJCCommittedCost?",
-        "response": "To query committed costs from vrvJCCommittedCost, use:\n\n```sql\nSELECT JCCo, PO, POItem, SL, SLItem, JCCType, PhaseGroup, Phase, DateOrderd, DateVendor, Vendor, Description, UM, OrderedUnits, OrderedAmt...\n```\n\nThis view aggregates committed units and costs by job, phase, vendor, and PO/SL for purchase order line items (ItemType=6) and service ledger line items (ItemType=7), distinguishing originals from changes via CmtdUnits/CmtdCost fields. It joins with PO/SL headers and masters for vendor and PO/SL details. Primarily used for reporting committed costs in Job Costing."
+        "response": "```sql\nSELECT Source, Company, PO, POItem, POItemType, POItemLine\nFROM vrvJCCommittedCost WITH (NOLOCK)\nWHERE Company = @Company\nORDER BY Source\n```\n\nThis query selects key columns from vrvJCCommittedCost (JC module).\n\nImportant:\n- WITH (NOLOCK) prevents blocking production transactions\n- Always filter by company column (Company)\n- Use exact column case (Viewpoint is case-sensitive)"
       },
       {
         "question": "Write SQL to find all active vendors in APVM",
-        "response": "To find all active vendors in APVM, use:\n\n```sql\nSELECT *\nFROM APVM WITH (NOLOCK)\nWHERE ActiveYN = 'Y'\n```\n\nThis will return all vendor details for active vendors only, ordered by VendorGroup and Vendor."
+        "response": "```sql\nSELECT VendorGroup, Vendor, SortName, Name, Type, TempYN\nFROM APVM WITH (NOLOCK)\nWHERE VendorGroup = @VendorGroup\n  AND TempYN = 'N'\nORDER BY Vendor\n```\n\nNote: Always use WITH (NOLOCK) for SELECT queries and filter by company column."
       },
       {
         "question": "Query to get job cost transactions for a specific job",
-        "response": "SELECT\n    JCCD.JCCo,\n    JCCD.Job,\n    JCCD.Phase,\n    JCCD.CostType,\n    JCCD.ActualDate,\n    JCCD.Source,\n    JCCD.Employee,\n    JCCD.Vendor,\n    JCCD.Material,\n    JCCD.ActualHours,\n    JCCD.ActualUnits,\n    JCCD.ActualCost,\n    JCCD.UM,\n    JCCD.APRef,\n    JCCD.MSTicket,\n    JCCD.INCo,\n    JCCD.Loc,\n    JCCD.PO,\n    JCCD.POItem,\n    JCCD.SL,\n    JCCD.SLItem,\n    JCCD.Description,\n    JCCD.RevCode,\n    JCCD.GLOffsetAcct,\n    JCCD.GLTransAcct,\n    JCCD.GLOpenWIPAcct,\n    JCCD.GLClosedExpAcct,\n    JCCD.GLMiscExpAcct,\n    JCCD.GLEquipAcct,\n    JCCD.GLEquipRevAcct,\n    JCCD.GLMaterialAcct,\n    JCCD.GLMatlExpAcct,\n    JCCD.GLMiscAcct,\n    JCCD.GLAdjAcct,\n    JCCD.GLTrnsfrAcct,\n    JCCD.GLProdAcct,\n    JCCD.GLSubAcct,\n    JCCD.GLSLAcct,\n    JCCD.GLSLSubAcct,\n    JCCD.GLInvAcct,\n    JCCD.GLExpAcct,\n    JCCD.GLRemAcct,\n    JCCD.GLCloseAcct,\n    JCCD.GLMatAcct,\n    JCCD.GLMatSubAcct,\n    JCCD.GLCompAcct,\n    JCCD.GLSubCompAcct,\n    JCCD.GLMiscCompAcct,\n    JCCD.GLAdjCompAcct,\n    JCCD.GLTrnsfrCompAcct,\n    JCCD.GLProdCompAcct,\n    JCCD.GLSLCompAcct,\n    JCCD.GLInvCompAcct,\n    JCCD.GLExpCompAcct,\n    JCCD.GLRemCompAcct,\n    JCCD.G"
+        "response": "```sql\nSELECT JCCo, Job, Phase, CostType, ActualDate, ActualHours\nFROM JCCD WITH (NOLOCK)\nWHERE JCCo = @JCCo\n  AND Job = @Job\nORDER BY JCCo\n```\n\nNote: WITH (NOLOCK) prevents blocking production transactions. Always filter by company column."
       },
       {
         "question": "How do I join PRTH (PR Transaction Header) with employee data?",
-        "response": "To join PRTH with employee data, use:\n\n```sql\nFROM PRTH\nINNER JOIN PREH\n  ON PRTH.PRCo = PREH.PRCo AND PRTH.Employee = PREH.Employee\n```\n\nThis pattern is used in the vrvPRCertExport view."
+        "response": "To correctly join PRTH with employee data, you must include all key columns:\n\n```sql\nSELECT *\nFROM PRTH WITH (NOLOCK)\nINNER JOIN PREH WITH (NOLOCK)\n  ON PRTH.PRCo = PREH.PRCo AND PRTH.Employee = PREH.Employee\n```\n\nIncomplete JOIN like `PRTH.Employee = PREH.Employee` would be incorrect because: Missing PRCo in JOIN."
       },
       {
         "question": "Write SQL to get GL account balances by month",
-        "response": "To get GL account balances by month, use the `GLBL` table:\n```sql\nSELECT GLCo, GLAcct, Mth, NetActivity\nFROM GLBL WITH (NOLOCK)\nWHERE GLCo = @GLCo\n```"
+        "response": "```sql\nSELECT GLCo, GLAcct, Mth, NetActivity, Debits, Credits\nFROM GLBL WITH (NOLOCK)\nWHERE GLCo = @GLCo\nORDER BY Mth\n```\n\nNote: WITH (NOLOCK) prevents blocking production transactions. Always filter by company column."
       },
       {
         "question": "Query to find all equipment with maintenance due",
-        "response": "To find all equipment with maintenance due:\n```sql\nSELECT EMCo, Equipment, DueDate\nFROM EMEM\nINNER JOIN EMCD ON EMEM.EMCo = EMCD.EMCo AND EMEM.Equipment = EMCD.Equipment\nWHERE EMCD.DueDate IS NOT NULL AND EMCD.DueDate = EMEM.LastDoneDate + INTERVAL '1' YEAR\n```\n\nThis query joins equipment master and maintenance history tables to identify equipment requiring scheduled maintenance (duedate not null and matching last done date plus one year)."
+        "response": "```sql\nSELECT EMCo, Equipment, EquipDesc, Type, Status, OdoReading\nFROM EMEM WITH (NOLOCK)\nWHERE EMCo = @EMCo\n  AND Status = 'A'\nORDER BY Equipment\n```\n\nNote: Always use WITH (NOLOCK) for SELECT queries and filter by company column."
       },
       {
         "question": "How do I get AR customer outstanding balances?",
-        "response": "To retrieve AR customer outstanding balances, use the `aroutstanding` function with the specified company code. For example, in Python:\n```python\nbalances = aroutstanding('YOUR_AR_CO')\n```\n\nThis will return a result set of customers and their outstanding amounts, ordered by customer. You can also pass additional filters via parameters, though the basic usage is straightforward."
+        "response": "```sql\nSELECT ARCo, Customer, CustGroup, InvNum, InvDate, Amount,\n  DATEDIFF(day, InvDate, GETDATE()) AS Age\nFROM ARTH WITH (NOLOCK)\nWHERE ARCo = @ARCo AND Status = 0\nORDER BY Age DESC\n```\n\nNote: Always use WITH (NOLOCK) for SELECT queries and filter by company column."
       },
       {
         "question": "Write a query joining APTH with APTL (AP Transaction Lines)",
-        "response": "SELECT APTH.*, APTL.*\nFROM APTH\nINNER JOIN APTL\n  ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\nWHERE APTL.Job IS NOT NULL;"
+        "response": "To correctly join APTH with APTL, you must include all key columns:\n\n```sql\nSELECT *\nFROM APTH WITH (NOLOCK)\nINNER JOIN APTL WITH (NOLOCK)\n  ON APTH.APCo = APTL.APCo AND APTH.Mth = APTL.Mth AND APTH.APTrans = APTL.APTrans\n```\n\nIncomplete JOIN like `APTH.APTrans = APTL.APTrans` would be incorrect because: Missing APCo and Mth in JOIN."
       },
       {
         "question": "Query to find all vendors with no invoices in 90 days",
-        "response": "To find all vendors with no invoices in 90 days, first identify the relevant invoice months using `@InvoiceMonth = DATEADD(MM, -90, GETDATE())`, then list vendors from `APVM` who lack an invoice in `APTH` for that period via a left join and filter on `@InvoiceMonth`. This approach ensures you correctly identify vendors without recent invoicing history.\n\n---"
+        "response": "```sql\nSELECT VendorGroup, Vendor, Name, Phone, Address, City\nFROM APVM WITH (NOLOCK)\nWHERE VendorGroup = @VendorGroup AND Vendor = @Vendor\n  AND NOT EXISTS (\n    SELECT TOP 1 1 FROM APTH WITH (NOLOCK)\n    WHERE APCo = @APCo AND Mth = @Mth AND APTrans = @APTrans\n  )\nORDER BY Name\n```\n\nNote: WITH (NOLOCK) prevents blocking production transactions. Always filter by company column."
       }
     ],
     "edge_cases_hallucination": [
       {
         "question": "What is the Invoice table?",
-        "response": "This table stores Accounts Payable (AP) invoice details like vendor info, invoice date, descriptions, and open flags, but only for those linked to Service Management (SM) work orders. It uses an identity column that mismatches the physical SMWorkOrderID from SMWorkOrderINode for non-internal invoices, storing actual vendor/supplier IDs, invoice numbers, and paid/clear dates. This supports tracking AP invoices tied to SM work orders for billing and payment processing."
+        "response": "There is no table or view named 'Invoice' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master).\n\nYou may be looking for:\n- APTH (AP Transaction Header)\n- vrvAP_MVAllInvoices\n- APTL (AP Transaction Lines)"
       },
       {
         "question": "How do I query the UserPreferences table?",
-        "response": "To query the UserPreferences table, use:\n\n```sql\nSELECT *\nFROM UserPreferences\nWHERE KeyID = [specific KeyID]\n```\n\nOr to retrieve all user preferences:\n\n```sql\nSELECT *\nFROM UserPreferences\nWHERE KeyID IS NULL\n```\n\nThis table stores personalized preference data for Viewpoint users, such as UI customization, notification methods (e.g., email), and access options."
+        "response": "I cannot write a query for 'UserPreferences' because this table does not exist in Viewpoint Vista.\n\nPlease specify the correct Viewpoint table name."
       },
       {
         "question": "What columns are in the Payments table?",
-        "response": "The Payments table (Module: Other) contains: KeyID, EMCo, Mth, EMTrans, BatchId, EMGroup, Equipment, CostCode, EMCostType, PostedDate, ActualDate, Source, TransType, APVendor, APRef... (41 total columns)"
+        "response": "There is no table or view named 'Payments' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
       },
       {
         "question": "Describe the CustomerOrders table",
-        "response": "Customer Orders"
+        "response": "The correct table/column name is 'Customer Orders', not 'CustomerOrders'.\n\nViewpoint uses Latin1_General_BIN collation which is case-sensitive. Always use the exact case as defined in the schema.\n\n```sql\nSELECT *\nFROM CustomerOrders WITH (NOLOCK)\n```"
       },
       {
         "question": "What is the structure of the SalesData table?",
-        "response": "The SalesData table (Module: Other) contains: Month, MonthID"
+        "response": "There is no table or view named 'SalesData' in Viewpoint Vista. The database uses module-prefixed names like APTH (AP Transaction Header) or JCJM (JC Job Master)."
       },
       {
         "question": "How do I join Invoice and Customer tables?",
-        "response": "To join Invoice and Customer tables, use:\n\n```sql\nFROM Invoice\nINNER JOIN Customer\n  ON Invoice.CustGroup = Customer.CustGroup AND Invoice.Customer = Customer.Customer\n```\n\nThis pattern is used in the vrvSMWorkOrder view."
+        "response": "Neither 'Invoice' nor 'Customer' exist in Viewpoint Vista. Viewpoint tables use module prefixes. For example:\n- AP tables: APTH, APTL, APVM\n- JC tables: JCJM, JCCD, JCCI\n\nPlease specify the correct Viewpoint table names."
       },
       {
         "question": "What's the difference between bAPTH and APTH?",
-        "response": "bAPTH is the physical Accounts Payable Transaction Header table used for active data in Viewpoint Vista ERP. APTH is an alias for bAPTH, providing the same structure but allowing for schema changes or compatibility. Both store AP transaction header details like company, vendor, invoice date, and payment terms."
+        "response": "The table 'bAPTH' does not exist in Viewpoint Vista. Viewpoint uses specific naming conventions with module prefixes (AP, AR, JC, GL, PR, etc.).\n\nYou may be looking for:\n- APTH (AP Transaction Header)"
       },
       {
         "question": "When should I use bAPTH vs APTH?",
-        "response": "Use `bAPTH` for base/actual transaction data from the AP module, not for reports or aggregations. Use `APTH` (with company context) for report queries or when you need company-specific joins/reporting. Always add WITH (NOLOCK) after view names in SELECT queries."
+        "response": "- `bAPTH` is the base table for AP Transaction Header\n- `APTH` is the view for AP Transaction Header\n\nUse `bAPTH` when you need to write/update raw transaction data, and `APTH` when querying transaction details."
       },
       {
         "question": "What's the difference between bAPTH and vrvAP_MVAllInvoices?",
-        "response": "The bAPTH table contains all columns from the APTH view plus a pseudo-column named 'Type', which is NULL for standard invoices and 'MV' for miscellaneous vouchers. It represents Accounts Payable transaction headers in the base table structure, including headers for both standard invoices and miscellaneous vouchers. The vrvAP_MVAllInvoices view unions APTH records with non-null Type values and APTL records filtered to Type='MV', providing a unified dataset for reporting all AP invoices regardless of type."
+        "response": "The key difference is that vrvAP_MVAllInvoices includes line-level details like Job Cost (JC) and Inventory (IN) allocations, while bAPTH only provides header information without these detail rows.\n\nHere's a query showing both views:\n```sql\nSELECT *\nFROM bAPTH WITH (NOLOCK)\nUNION ALL\nSELECT * FROM vrvAP_MVAllInvoices WITH (NOLOCK)\nWHERE bAPTH.APCo = 1 AND bAPTH.Mth = '2024-01-01'\n```\n\nThe UNION reveals the full invoice picture in vrvAP_MVAllInvoices, with fields like JCCo, Job, Phase, Material, PO, and SL not present in bAPTH."
       }
     ],
     "naming_conventions": [
       {
         "question": "What naming convention do Viewpoint table prefixes follow?",
-        "response": "Viewpoint table/view prefixes indicate the module:\n- AP = Accounts Payable\n- AR = Accounts Receivable\n- GL = General Ledger\n- JC = Job Cost\n- PR = Payroll\n- PM = Project Management\n- IN = Inventory\n- SM = Service Management\n- HR = Human Resources\n- HQ = Headquarters (company-wide settings)"
+        "response": "Viewpoint table/view prefixes indicate the module:\n- AP = Accounts Payable\n- AR = Accounts Receivable\n- JC = Job Cost\n- GL = General Ledger\n- PR = Payroll\n- PM = Project Management\n- IN = Inventory\n- EM = Equipment Management\n- HQ = Headquarters (company-wide settings)\n- SM = Service Management\n- HR = Human Resources\n- MS = Material Sales\n- PO = Purchase Orders\n- SL = Subcontracts\n- JB = Job Billing\n- SM = Service Management\n- RQ = Requisitions\n- PC = Preconstruction\n- AP = Accounts Payable\n- AR = Accounts Receivable\n- JC = Job Cost\n- GL = General Ledger\n- PR = Payroll\n- PM = Project Management\n- IN = Inventory\n- EM = Equipment Management\n- HQ = Headquarters (company-wide settings)\n- SM = Service Management\n- RQ = Requisitions\n- PC = Preconstruction\n\nAlways verify the actual prefix in the database; this is a general guideline."
       },
       {
         "question": "What does the 'b' prefix mean in Viewpoint tables?",
-        "response": "The 'b' prefix in Viewpoint tables (e.g., bAPTH) indicates it's a base/physical table used for data modification. Always use views (vAPTH) for SELECT queries to ensure proper schema handling and performance optimizations. Use base tables only when inserting or updating data directly."
+        "response": "In Viewpoint Vista:\n- bAPTH = AP Transaction Header\n- bAPTL = AP Transaction Lines\n- bJCCD = JC Cost Detail\n- bGLAC = GL Accounts\n- bHQCO = HQ Company\n\nThe 'b' prefix indicates a base table used for data storage and queries in Viewpoint ERP. Always check if a view (indicated by 'v') exists for optimized reporting or processing; if not, use the base table directly."
       },
       {
         "question": "What is the vrv prefix used for?",
-        "response": "vrv prefix indicates a Viewpoint Report View, optimized for reporting with pre-built CTEs (Composable Table Expressions) and minimal SQL. It's used to simplify complex queries by breaking them down into reusable parts defined in the vrv* view. This enables faster execution and reduces query complexity for Crystal Reports or BI tools."
+        "response": "Viewpoint reporting views prefixed with 'vrv' are predefined reports designed for export or integration. Always check if a vrv view exists before querying, as it likely aggregates data from core tables for analysis. Key views include vrvAP_MVAllInvoices and vrvAR_MVAllInvoices for comprehensive financial reporting.\n\n---"
       },
       {
         "question": "How are company columns named in Viewpoint?",
-        "response": "Company columns are prefixed with `co` or `pmco` (for Project Management companies) to distinguish them from global entities. The `PMCo` column is used for project management company-specific data. Always check for these prefix patterns when looking for company-related configurations."
+        "response": "Company columns in Viewpoint:\n- APCo (AP Company)\n- JCCo (Job Cost Company)\n- PRCo (Payroll Company)\n- GLCo (GL Company)\n- HQCo (HQ Company)"
       },
       {
         "question": "What is the correct way to reference tables in Viewpoint SQL?",
-        "response": "In Viewpoint:\n- Use view names (APTH) not base tables (bAPTH) for SELECT queries\n- Don't use schema prefix (dbo.) for views - they default to dbo\n- Always use WITH (NOLOCK) after view names: FROM APTH WITH (NOLOCK)\n- Use exact column case from the database (APCo, not apco)"
+        "response": "In Viewpoint:\n- Use view names (APTH) not base tables (bAPTH) for SELECT queries\n- Don't use schema prefix (dbo.) for views - they default to dbo\n- Use WITH (NOLOCK) after view names: FROM APTH WITH (NOLOCK)\n- Use exact column case from the database (APCo, not apco)\n- Viewpoint uses Latin1_General_BIN collation (case-sensitive)"
       },
       {
         "question": "What's the difference between b-prefixed and non-prefixed tables?",
-        "response": "In Viewpoint Vista:\n- b-prefixed tables (bAPTH) are base/physical tables used for data modification\n- Non-prefixed names (APTH) are views built on base tables\n- Always use views for SELECT queries (better performance, security)\n- Use base tables only when inserting/updating data"
+        "response": "In Viewpoint Vista:\n- b-prefixed tables (bAPTH) are base/physical tables used for data modification\n- Non-prefixed names (APTH) are views built on base tables\n- Always use views for SELECT queries (better performance, security)\n- Use base tables only when inserting/updating data\n- Views enforce Viewpoint's Data Type Security and Row-Level Security"
       }
     ],
     "business_logic": [
       {
         "question": "How does the AP payment approval workflow work?",
-        "response": "AP payment approval workflows vary by company and configuration, but generally follow these steps:\n\n1. **Initiation**: A payment request (APTH/APTL) is initiated, either manually or via batch.\n2. **Approval Sequence**: Depending on pay types (e.g., employee reimbursement 'E', vendor invoice 'V'), it populates a temporary table (#tmpPayInfo) with eligible reviewers (from APUR) based on filters like job, vendor, amount thresholds, and approval sequences.\n3. **Notification**: It prepares email notifications (from HQ) for primary and secondary approvers.\n4. **Review**: Reviewers receive notifications and logins to approve/reject payments in #Review.\n5. **Posting**: Once approved, it generates GL journal entries (via bspAPGLPost) and updates AP ledgers.\n6. **Rejection**: If rejected, it returns an error message and blocks further processing.\n\n**Key Rules**: \n- Payments must be reviewed within specified days/weeks; otherwise, they expire.\n- Primary/secondary approver roles determine review order (primary gets first notification).\n- Rejections can block payments permanently or temporarily (based on config).\n- Notifications use company-defined recipients (APUR), but allow overrides."
+        "response": "The AP payment approval workflow in Viewpoint Vista involves routing payments through an approval chain based on company settings (e.g., payment method 'S' for check, 'E' for EFT, 'N' for other). It starts with initial review in APExpPayApprvdYN by department and user, then proceeds to batch-level approvals in APHB for check payments if enabled, ultimately posting to APTrans once all approvals pass. Key steps include routing based on line type (PO/SL vs. non-PO/SL), setting up batches, and handling rejection feedback via comments."
       },
       {
         "question": "What triggers a duplicate invoice warning?",
-        "response": "A duplicate invoice warning is triggered if an AP Entry or AP Entry Detail record matches on company, batch month/sequence/line, or pay type/currency combinations (for PayCategory='P'). It sets the output message to 'Duplicate Invoice' and returns 1 if a match exists, or 0 otherwise. This ensures invoice uniqueness before posting in the Accounts Payable module."
+        "response": "The vtV6InvoiceWarningi trigger fires on INSERT events on vV6InvoiceWarning.\n\nThis trigger validates insertions into the vV6InvoiceWarning table to ensure no duplicate warnings are added for the same company, batch month, and batch ID in Viewpoint Vista's invoice management system. It exists to enforce data integrity and prevent redundant or conflicting warning messages during batch processing, such as when dealing with invoices that may have been previously marked for deletion. By checking against existing records, it helps maintain accurate financial tracking and avoids errors in workflows involving vendor invoices or payments."
       },
       {
         "question": "When is an invoice considered 'paid' in AP?",
-        "response": "An AP invoice is typically considered \"paid\" when it reaches a status of 3 (fully paid) or 4 (voided), assuming no unposted payments. However, if partial payment processing is enabled for the company (via APCO settings) and the invoice has open lines (Status=1), it may be marked as partially paid with remaining amounts due. The effective payment date is the last APTrans entry date for non-retainage payments or last APLine date for retainage."
+        "response": "An AP invoice is considered \"paid\" when the payment is received and posted, but not always immediately after posting. Payment types (e.g., Check, EFT) may require additional processing before final payment. In Viewpoint Vista, payments are often batched and may post to a future period."
       },
       {
         "question": "How does batch processing work in Viewpoint AP?",
-        "response": "AP uses batch tables to stage transactions before posting. Transactions go into batch tables (bAPTB header, bAPTD detail) where they can be validated and approved. When posted, they move to production tables (APTH, APTL). The BatchId links header to detail records."
+        "response": "# Viewpoint Batch Processing Reference\n\n**Status:** AUTHORITATIVE - Generated from schema metadata\n**Generated:** 2025-12-23 19:46\n**Source:** `Viewpoint_Database/_Metadata/CSVs/columns.csv`\n\n---\n\n## 🎯 What Is Batch Processing?\n\n**Batches are Viewpoint's mechanism for staging transactions before posting.**\n\n```\n┌─────────────┐     ┌─────────────┐     ┌─────────────┐\n│  User Entry │ ──▶ │ Batch Table │ ──▶ │ Posted Table│\n│  (bAPHB)    │     │  Validation │     │   (APTH)   │\n└─────────────┘     └─────────────┘     └─────────────┘\n                           │\n                       bspAPHBPost\n```\n\n**Why batches exist:**\n- Validate before committing\n- Group related transactions\n- Track who entered what\n- Enable reversal/correction\n\n---\n\n## 🔑 Batch Key Structure\n\nMost batch tables use this composite key:\n\n| Column | Type | Purpose |\n|--------|------|---------|\n| `Co` | bCompany | Company code |\n| `Mth` | bMonth | Accounting month (SMALLDATETIME) |\n| `BatchId` | bBatchID | Batch identifier (int) |\n| `BatchSeq` | int | Sequence within batch |\n\n**Central batch control:** `bHQBC` (HQ Batch Control) tracks all batches.\n\n---\n\n## 📊 Batch Status Codes (bHQBC.Status)\n\n| Status | Meaning | Description |\n|--------|---------|-------------|\n| 0 | Open | Batch is open for entry |\n| 1 | In Progress | Being validated |\n| 2 | Invalid | Validation failed |\n| 3 | Valid | Ready to post |\n| 4 | Posting | Post in progress |\n| 5 | Posted | Successfully posted |\n\n**Most batch tables use Status 0-3.**\n\n---\n\n## 📋 Batch Tables by Module\n\n### AP (Accounts Payable)\n\n| Table | Has Mth | Has BatchSeq | Notes |\n|-------|---------|--------------|-------|\n| `bAPCD` | ✓ | ✓ |  |\n| `bAPCT` | ✓ | ✓ |  |\n| `bAPDB` | ✓ | ✓ |  |\n| `bAPFB` | ✓ | ✓ |  |\n| `bAP"
       },
       {
         "question": "What tables are used for AP batch entry?",
-        "response": "AP batch entry uses: bAPTB (batch header), bAPTD (batch detail/lines), bAPDS (batch distributions). After posting, data moves to APTH (transaction header) and APTL (transaction lines)."
+        "response": "- `bAPAB` - AP Additional Batch\n- `bAPCO` - AP Company Parameters\n- `bAPPC` - AP Payable Category\n- `bAPTD` - AP Transaction Detail\n- `bAPTH` - AP Transaction Header\n- `bAPTL` - AP Transaction Line\n- `vAP2020T5` - Accounts Payable Table. Key columns: APCo, TaxYear, VendorGroup, Vendor, InvId\n\n\n---"
       },
       {
         "question": "How do VendorGroups work in Viewpoint?",
-        "response": "VendorGroups allow multiple companies to share vendor master data while maintaining group-specific vendor ranges for AP tasks. Multiple groups can be defined with sequential IDs, and each group can have its own vendor start and end points. For example, company 1 could use vendors 1-1000, while company 2 uses 1001-2000 with the same VendorGroup."
+        "response": "# Viewpoint Vendor Group Reference\n\n**Status:** AUTHORITATIVE - Generated from schema metadata\n**Generated:** 2025-12-23 19:46\n**Source:** `Viewpoint_Database/_Metadata/CSVs/columns.csv`\n\n---\n\n## 🎯 What Are Vendor Groups?\n\n**Vendor Groups organize vendors into hierarchical groups for reporting and processing.**\n\n```\n┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n│                   VENDOR GROUP HIERARCHY - THE BIG PICTURE │\n│                                                                 │\n│  Company (APCo) ──► VendorGroup ──► Vendor ──► Name     │\n│  |                 |     |     |     |       |     |\n│  └───────────────────────┘     └─────────┘       └─────────┘\n└─────────────────────────────────┘             └─────────┘\n```\n\n**Each company has its own VendorGroup hierarchy.**\n\n---\n\n## 🔑 Critical Rule: VendorGroup + Vendor = Unique Vendor\n\n**The combination of VendorGroup + Vendor is the unique identifier for a vendor.**\n\n```sql\n-- ❌ WRONG - Vendor is NOT unique\nSELECT COUNT(*) FROM APTH WHERE Vendor = 100;\n\n-- ✅ CORRECT - VendorGroup + Vendor is unique\nSELECT COUNT(*) FROM APTH WITH (NOLOCK) WHERE VendorGroup = 1 AND Vendor = 100;\n```\n\n---\n\n## 📋 VendorGroup Structure\n\n### Levels of the Hierarchy\n\n| Level | Description |\n|-------|-------------|\n| 0 (Top) | Company (APCo) |\n| 1 | VendorGroup |\n| 2 | Vendor |\n| 3 (Bottom) | Name |\n\n### Links Between Levels\n\n| Parent Column | Child Column |\n|--------------|-------------|\n| `APCo` | `VendorGroup` |\n| `VendorGroup` | `Vendor` |\n\n### Special Cases\n\n- `@vrvAP_MVAllInvoices` uses `Vendor` as the sole key\n- `@APTL` uses both `VendorGroup` AND `Vendor` (but rarely filters on `VendorGroup`)\n\n---\n\n## 📊 VendorGroup Columns in APTH\n\n| Column | Data Type | Purpose |\n|--------|-----------|---------|\n| `VendorGroup` | bGroup | Vendor's assigned group code (bGroup type) |\n\n### Important Notes"
       },
       {
         "question": "When should I use WITH (NOLOCK) in queries?",
-        "response": "Always include WITH (NOLOCK) after every table/view name in SELECT queries. This prevents blocking production transactions. Only omit NOLOCK when you specifically need transactional consistency."
+        "response": "WITH (NOLOCK) is required for SELECT queries in Viewpoint Vista because:\n- Prevents blocking production transactions\n- Viewpoint's batch processing standard\n- Supports reporting without locking\n- Only omit NOLOCK when you specifically need transaction consistency\n\nExample:\nSELECT * FROM APTH WITH (NOLOCK) WHERE APCo = 1"
       },
       {
         "question": "How does company context work in Viewpoint queries?",
-        "response": "Most Viewpoint tables contain data for multiple companies. By default, queries return data for the current company (via SUSER_SNAME()) or for all companies. Always filter by company in WHERE clause to ensure data isolation."
+        "response": "Most Viewpoint tables use company columns:\n- APCo = AP Company\n- JCCo = Job Cost Company\n- PRCo = Payroll Company\n- GLCo = GL Company\n- HQCo = Headquarters Company\n\nAlways filter by company in WHERE clause or JOIN conditions to ensure data isolation between companies."
       }
     ]
   }
