@@ -189,27 +189,50 @@ class DDLExtractor:
             columns_data = json.load(f)
         
         # Group columns by table
+        # VGPT2 columns.json uses: ObjectName, ColumnName, DataType, SchemaName, Module, etc.
+        # NOTE: In Vista, main data objects like ARTH, ARCM, APTD are VIEWS, not tables!
+        # We include both tables and views for SQL training purposes.
         for col_data in columns_data:
-            table_name = col_data.get("TABLE_NAME", "")
+            table_name = col_data.get("ObjectName", "")
             if not table_name:
+                continue
+            
+            # Include both Tables and Views (Vista's main objects are views)
+            obj_type = col_data.get("ObjectType", "Table").lower()
+            if obj_type not in ("table", "view"):
                 continue
             
             # Create table if not exists
             if table_name not in self._tables:
                 self._tables[table_name] = TableInfo(
                     name=table_name,
-                    schema=col_data.get("TABLE_SCHEMA", "dbo"),
-                    module=self._infer_module(table_name)
+                    schema=col_data.get("SchemaName", "dbo"),
+                    module=col_data.get("Module", self._infer_module(table_name))
                 )
+            
+            # Parse max_length - handle string values
+            max_length = col_data.get("MaxLength")
+            if isinstance(max_length, str):
+                max_length = int(max_length) if max_length.isdigit() else None
+            
+            # Parse precision
+            precision = col_data.get("Precision")
+            if isinstance(precision, str):
+                precision = int(precision) if precision.isdigit() else None
+            
+            # Parse scale
+            scale = col_data.get("Scale")
+            if isinstance(scale, str):
+                scale = int(scale) if scale.isdigit() else None
             
             # Add column
             col = ColumnInfo(
-                name=col_data.get("COLUMN_NAME", ""),
-                data_type=col_data.get("DATA_TYPE", ""),
-                is_nullable=col_data.get("IS_NULLABLE", "YES") == "YES",
-                max_length=col_data.get("CHARACTER_MAXIMUM_LENGTH"),
-                precision=col_data.get("NUMERIC_PRECISION"),
-                scale=col_data.get("NUMERIC_SCALE"),
+                name=col_data.get("ColumnName", ""),
+                data_type=col_data.get("DataType", ""),
+                is_nullable=col_data.get("IsNullable", "True") in ("True", "true", True, "YES", "1"),
+                max_length=max_length,
+                precision=precision,
+                scale=scale,
             )
             self._tables[table_name].columns.append(col)
         
