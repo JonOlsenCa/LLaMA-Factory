@@ -17,6 +17,12 @@
 # Step 2: Install core dependencies
 #   pip install "numpy<2.0.0" cffi python-dateutil pandas
 #
+# Step 3 (optional but recommended on Windows): Enable fast Hugging Face downloads
+#   pip install "huggingface_hub[hf_xet]"
+#   # If you cannot enable Windows Developer Mode for symlinks, set:
+#   #   setx HF_HUB_DISABLE_SYMLINKS_WARNING 1
+# This avoids fallback warnings and improves cache efficiency; training still works without it.
+
 # Step 3: Install ML libraries (PINNED VERSIONS - DO NOT UPGRADE)
 #   pip install transformers==4.57.1 peft==0.17.1 accelerate==1.11.0
 #

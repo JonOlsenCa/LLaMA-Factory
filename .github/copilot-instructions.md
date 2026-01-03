@@ -25,24 +25,15 @@ Set `USE_V1=1` to enable v1 architecture.
 
 ### v0 Architecture (Default)
 
-- `src/llamafactory/` - Main package directory
-  - `api/` - OpenAI-style API implementation
   - `chat/` - Chat interface implementation
   - `cli.py` - Command-line interface
   - `data/` - Data processing and dataset handling
-  - `eval/` - Model evaluation utilities
-  - `extras/` - Additional utilities and helpers
-  - `hparams/` - Hyperparameter definitions
   - `model/` - Model loading, patching, and utilities
   - `train/` - Training pipeline implementation
   - `webui/` - Gradio-based web interface
-- `src/train.py` - Training entry script (delegates to `llamafactory.train.tuner`)
-- `src/webui.py` - Web UI entry script (delegates to `llamafactory.webui.interface`)
 - `src/api.py` - API server entry script (delegates to `llamafactory.api.app`)
 - `tests/` - Test suite
 - `examples/` - Example configurations for various training scenarios
-- `data/` - Dataset definitions and examples
-
 ### v1 Architecture (USE_V1=1)
 
 - `src/llamafactory/v1/` - Version 1 package directory
@@ -53,9 +44,6 @@ Set `USE_V1=1` to enable v1 architecture.
   - `config/` - Configuration management
   - `utils/` - Utility functions
 
-## Development Practices
-
-### Code Style
 
 - Follow the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 - Use ruff for linting and formatting
@@ -178,3 +166,13 @@ pip install -e ".[dev]"
 - `make test` - Run tests
 - `make commit` - Install and run pre-commit hooks
 - `make license` - Check license headers
+
+## Command Guidance (PowerShell)
+
+- Always provide absolute paths so commands work from any current directory (no `cd`, no `./` or `.\`).
+- Prefer the repo venv executables with full paths when invoking Python/CLI.
+- Before sharing any command, verify the target script/config/data path exists; if it does not, report the missing path and ask whether to create or adjust.
+- Example:
+```powershell
+C:\Github\LLM_fine-tuning\training\01_start_sft_v4.ps1 -DryRun
+```

@@ -7,13 +7,20 @@
 #   .\training\01_start_sft_v4.ps1 -DryRun  # Preview config without training
 
 param(
-    [switch]$DryRun = $false,
-    [switch]$Resume = $false
+    [switch]$DryRun,
+    [switch]$Resume
 )
 
-# Configuration
-$CONFIG_FILE = "automation/configs/vgpt2_v4/stage1_sft.yaml"
-$OUTPUT_DIR = "saves/vgpt2_v4/sft"
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$RepoRoot = Split-Path -Parent $ScriptDir
+
+# Paths (absolute so the script works from any cwd)
+$PythonExe = Join-Path $RepoRoot ".venv/Scripts/python.exe"
+$CliExe = Join-Path $RepoRoot ".venv/Scripts/llamafactory-cli.exe"
+$CONFIG_FILE = Join-Path $RepoRoot "automation/configs/vgpt2_v4/stage1_sft.yaml"
+$OUTPUT_DIR = Join-Path $RepoRoot "saves/vgpt2_v4/sft"
+$DATASET_PATH = Join-Path $RepoRoot "data/vgpt2_v4_sft_expanded_clean.json"
+$ExpandScript = Join-Path $RepoRoot "scripts/expand_v4_training_data.py"
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  VGPT2 v4 Training: SQLCoder SFT" -ForegroundColor Cyan
@@ -23,26 +30,30 @@ Write-Host ""
 # Check prerequisites
 Write-Host "[1/5] Checking prerequisites..." -ForegroundColor Yellow
 
+# Optional: Speed up HF downloads and silence cache warnings (hf_xet)
+# Install once: pip install "huggingface_hub[hf_xet]"
+# If symlink warning persists on Windows, set: setx HF_HUB_DISABLE_SYMLINKS_WARNING 1
+
 # Check CUDA
-$cudaCheck = python -c "import torch; print(torch.cuda.is_available())" 2>$null
+$cudaCheck = & $PythonExe -c "import torch; print(torch.cuda.is_available())" 2>$null
 if ($cudaCheck -ne "True") {
     Write-Host "ERROR: CUDA not available!" -ForegroundColor Red
-    Write-Host "Run: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128"
+    Write-Host "Run (inside .venv): pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128" -ForegroundColor Yellow
     exit 1
 }
 Write-Host "  CUDA: Available" -ForegroundColor Green
 
 # Check GPU
-$gpuName = python -c "import torch; print(torch.cuda.get_device_name(0))" 2>$null
+$gpuName = & $PythonExe -c "import torch; print(torch.cuda.get_device_name(0))" 2>$null
 Write-Host "  GPU: $gpuName" -ForegroundColor Green
 
 # Check GPU memory
-$gpuMem = python -c "import torch; print(f'{torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f}GB')" 2>$null
+$gpuMem = & $PythonExe -c "import torch; print(f'{torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f}GB')" 2>$null
 Write-Host "  VRAM: $gpuMem" -ForegroundColor Green
 
 # Check LLaMA Factory
 try {
-    $version = llamafactory-cli version 2>$null
+    $version = & $CliExe version 2>$null
     Write-Host "  LLaMA Factory: $version" -ForegroundColor Green
 } catch {
     Write-Host "ERROR: LLaMA Factory not found!" -ForegroundColor Red
@@ -76,13 +87,12 @@ if ($config -match "lora_rank:\s*(\S+)") {
 # Check dataset
 Write-Host ""
 Write-Host "[3/5] Checking dataset..." -ForegroundColor Yellow
-$datasetPath = "data/vgpt2_v4_sft_expanded_clean.json"
-if (-not (Test-Path $datasetPath)) {
+if (-not (Test-Path $DATASET_PATH)) {
     Write-Host "WARNING: Expanded dataset not found, generating..." -ForegroundColor Yellow
-    python scripts/expand_v4_training_data.py
+    & $PythonExe $ExpandScript
 }
 
-$datasetSize = python -c "import json; print(len(json.load(open('$datasetPath', encoding='utf-8'))))" 2>$null
+$datasetSize = & $PythonExe -c "import json, pathlib; p = pathlib.Path('$DATASET_PATH'); print(len(json.load(open(p, encoding='utf-8'))))" 2>$null
 Write-Host "  Dataset size: $datasetSize examples" -ForegroundColor Green
 
 # Check/create output directory
@@ -126,8 +136,8 @@ Write-Host "  nvidia-smi -l 1" -ForegroundColor White
 Write-Host "  Get-Content $OUTPUT_DIR/trainer_log.jsonl -Tail 10 -Wait" -ForegroundColor White
 Write-Host ""
 
-# Build command
-$cmd = "llamafactory-cli train $CONFIG_FILE"
+# Build command args (array to avoid Invoke-Expression parsing issues)
+$cmdArgs = @("train", "$CONFIG_FILE")
 if ($Resume) {
     # Find latest checkpoint
     $latestCheckpoint = Get-ChildItem -Path $OUTPUT_DIR -Filter "checkpoint-*" -Directory | 
@@ -135,15 +145,15 @@ if ($Resume) {
         Select-Object -First 1
     if ($latestCheckpoint) {
         Write-Host "Resuming from: $($latestCheckpoint.FullName)" -ForegroundColor Yellow
-        $cmd += " --resume_from_checkpoint $($latestCheckpoint.FullName)"
+        $cmdArgs += @("--resume_from_checkpoint", "$($latestCheckpoint.FullName)")
     }
 }
 
 # Execute training
-Write-Host "Command: $cmd" -ForegroundColor DarkGray
+Write-Host "Command: $CliExe $($cmdArgs -join ' ')" -ForegroundColor DarkGray
 Write-Host ""
 
-Invoke-Expression $cmd
+& $CliExe @cmdArgs
 
 # Training complete
 Write-Host ""
@@ -152,6 +162,6 @@ Write-Host "  Training Complete!" -ForegroundColor Green
 Write-Host "============================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
-Write-Host "  1. Validate: python scripts/probe_model.py --model $OUTPUT_DIR" -ForegroundColor White
-Write-Host "  2. Chat test: llamafactory-cli chat --model_name_or_path $OUTPUT_DIR --template llama3" -ForegroundColor White
-Write-Host "  3. If needed, run DPO: .\training\02_start_dpo_v4.ps1" -ForegroundColor White
+Write-Host "  1. Validate: $PythonExe $RepoRoot\scripts\vgpt2_v4\probe.py --model $OUTPUT_DIR --output $RepoRoot\output\probe_sft.json" -ForegroundColor White
+Write-Host "  2. Chat test: $CliExe chat --model_name_or_path $OUTPUT_DIR --template llama3 --adapter_name_or_path $OUTPUT_DIR" -ForegroundColor White
+Write-Host "  3. If needed, run DPO: pwsh -File $RepoRoot\training\02_start_dpo_v4.ps1" -ForegroundColor White

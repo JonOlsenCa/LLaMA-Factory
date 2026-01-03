@@ -8,13 +8,7 @@
 # 3. Quality over quantity: ~3,000 curated examples vs 67K auto-generated
 #
 # Hardware: RTX A6000 (48GB) + 128GB RAM + Threadripper 7960X
-# Expected training time: 2-4 hours for 3 epochs
-#
-# Evidence base:
-# - SQLCoder outperforms GPT-4 on text-to-SQL tasks
-# - Trained on 20K human-curated examples (similar to our V4 approach)
-# - Schema-in-prompt eliminates memorization issues
-# - Same architecture fits on A6000 with LoRA
+# Expected training time: ~30-45 min for 3 epochs (optimized)
 #
 # Usage:
 #   llamafactory-cli train automation/configs/vgpt2_v4/stage1_sft.yaml
@@ -22,6 +16,11 @@
 ### Model Settings ###
 model_name_or_path: defog/llama-3-sqlcoder-8b
 trust_remote_code: true
+flash_attn: fa2                      # Flash Attention 2 - 2x faster than SDPA
+
+### Windows Single-GPU Settings ###
+use_unsloth: false                   # Disabled - breaks LlamaFactory deps
+torch_compile: false                 # Disabled - causes freezing on Windows
 
 ### Fine-tuning Method ###
 finetuning_type: lora
@@ -36,39 +35,40 @@ template: llama3                     # LLaMA 3 template for SQLCoder
 cutoff_len: 4096                     # SQLCoder uses 4K context
 max_samples: 10000                   # Allow full dataset + expansion
 overwrite_cache: true
-preprocessing_num_workers: 16        # Utilize Threadripper cores
-dataloader_num_workers: 0            # Must be 0 on Windows
-packing: false                       # Disabled for consistent examples
+preprocessing_num_workers: 1         # Single worker - avoids Windows multiprocessing issues
+dataloader_num_workers: 0            # MUST be 0 on Windows
+packing: false                       # DISABLED - was causing training collapse
 
 ### Training Settings ###
 stage: sft
 do_train: true
-per_device_train_batch_size: 4       # Larger batch for smaller dataset
-gradient_accumulation_steps: 4       # Effective batch size = 16
-learning_rate: 2e-4                  # Standard for LoRA fine-tuning
+per_device_train_batch_size: 4       # Reduced for stability
+gradient_accumulation_steps: 4       # Effective batch size = 16 (same)
+learning_rate: 1e-4                  # Reduced - 2e-4 may have caused collapse
 num_train_epochs: 3.0                # 3 epochs for small curated dataset
 lr_scheduler_type: cosine
 warmup_ratio: 0.1                    # 10% warmup for small dataset
 bf16: true
-ddp_timeout: 180000000
 gradient_checkpointing: true         # Enable for memory efficiency
+gradient_checkpointing_kwargs: '{"use_reentrant": false}'
 
 ### Output Settings ###
-output_dir: saves/vgpt2_v4/sft
+output_dir: saves/vgpt2_v4/sft_optimized
 logging_steps: 10
-save_steps: 100                      # Save every 100 steps
-save_total_limit: 5                  # Keep last 5 checkpoints
+save_steps: 200                      # Less frequent saves - reduces overhead
+save_total_limit: 3                  # Keep last 3 checkpoints
 plot_loss: true
-overwrite_output_dir: false
-save_only_model: false
-report_to: none
+overwrite_output_dir: true           # Fresh start
+save_only_model: true                # Faster saves - skip optimizer state
+report_to: wandb                     # W&B tracking (installed by 00_setup.ps1)
+run_name: vgpt2_v4_sft_optimized
 
 ### Resume Training ###
-resume_from_checkpoint: true         # Resume if checkpoints exist
+resume_from_checkpoint: null         # Fresh start
 
 ### Evaluation ###
 val_size: 0.1                        # 10% holdout (~300 samples)
 do_eval: true
 eval_strategy: steps
-eval_steps: 100
-per_device_eval_batch_size: 4
+eval_steps: 200                      # Less frequent evals
+per_device_eval_batch_size: 8

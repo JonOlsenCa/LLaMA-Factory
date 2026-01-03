@@ -31,6 +31,12 @@ V4 represents a **fundamental shift** from V3's trivia-based approach to **produ
 
 ## Quick Start
 
+### Recent Environment Notes (2026-01-01)
+
+- Use Python 3.12; Python 3.14 breaks datasets/dill serialization (Pickler._batch_setitems error).
+- Install torch/torchvision/torchaudio with CUDA 12.8 wheels for the A6000: `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128`.
+- Optional but recommended: `pip install "huggingface_hub[hf_xet]"` to avoid Hugging Face cache fallbacks; if symlink warnings persist on Windows, set `HF_HUB_DISABLE_SYMLINKS_WARNING=1` or enable Developer Mode.
+
 ### Prerequisites
 
 ```bash
@@ -205,6 +211,13 @@ python -c "from transformers import AutoModelForCausalLM; AutoModelForCausalLM.f
 1. Check learning rate (try 1e-4 instead of 2e-4)
 2. Verify dataset format matches template
 3. Check for data quality issues
+
+### Hugging Face cache warnings (hf_xet or symlinks)
+
+- Symptom: Warnings about `hf_xet` missing or symlink support, fallback to regular HTTP downloads.
+- Fix (recommended): `pip install "huggingface_hub[hf_xet]"`.
+- If symlink warnings persist on Windows: enable Developer Mode or set `HF_HUB_DISABLE_SYMLINKS_WARNING=1`.
+- Impact: Only slower downloads and extra disk use; training correctness is unaffected.
 
 ---
 

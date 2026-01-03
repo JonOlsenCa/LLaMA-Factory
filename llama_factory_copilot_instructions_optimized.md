@@ -42,9 +42,17 @@ Provide commands for user to copy/paste. Never use `launch-process` or execute P
 ```powershell
 # [Brief description of what this does]
 # ⚠️ REQUIRES ADMIN (only if true)
-cd C:\Github\LLM_fine-tuning
-.\path\to\script.ps1 -Flag value
+# Absolute paths only; must work from any cwd
+C:\Github\LLM_fine-tuning\training\01_start_sft_v4.ps1 -Resume
+# Prefer fully qualified venv executables for Python/CLI
+C:\Github\LLM_fine-tuning\.venv\Scripts\python.exe C:\Github\LLM_fine-tuning\scripts\vgpt2_v3\probe_test.py --model C:\Github\LLM_fine-tuning\saves\vgpt2_v3\sft --output C:\Github\LLM_fine-tuning\output\probe_sft.json
 ```
+
+### Absolute Path Rule
+- Do not use `cd` or relative prefixes (`./`, `..`, `.\`).
+- Every command must be copy/paste ready from any current directory.
+- Use fully-qualified paths to repo scripts, configs, outputs, and venv executables.
+- Before proposing a command, confirm the target path exists; if missing, say so and ask whether to create/adjust.
 
 ### PowerShell Regex Syntax
 PowerShell uses .NET regex, NOT bash/grep regex:

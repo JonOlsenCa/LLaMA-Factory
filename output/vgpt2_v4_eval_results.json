@@ -1,0 +1,20 @@
+[
+  {
+    "prompt": "Generate a SQL query to answer the following question.\n\nQuestion: Write a SQL query to get all open AP invoices for company 5\n\nDatabase Schema:\nCREATE TABLE APTH (\n  APCo bcompany NOT NULL,\n  Mth bmonth NOT NULL,\n  APTrans bseq NOT NULL,\n  Vendor bvendor NOT NULL,\n  Invoice varchar(30),\n  InvDate bdate,\n  Amount bdollar NOT NULL,\n  Status tinyint NOT NULL,\n  PRIMARY KEY (APCo, Mth, APTrans)\n);\n\nProvide:\n1. A brief explanation of the approach\n2. The SQL query\n3. Any important notes about Vista-specific conventions used",
+    "response": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+    "has_sql": false,
+    "has_nolock": false
+  },
+  {
+    "prompt": "Generate a SQL query to answer the following question.\n\nQuestion: Show job cost variance by phase for active jobs\n\nDatabase Schema:\nCREATE TABLE JCJM (\n  JCCo bcompany NOT NULL,\n  Job bjob NOT NULL,\n  Description varchar(60),\n  JobStatus tinyint NOT NULL,\n  PRIMARY KEY (JCCo, Job)\n);\nCREATE TABLE JCCP (\n  JCCo bcompany NOT NULL,\n  Job bjob NOT NULL,\n  PhaseGroup bgroup NOT NULL,\n  Phase bphase NOT NULL,\n  ActualCost bdollar NOT NULL,\n  OrigEstCost bdollar NOT NULL,\n  PRIMARY KEY (JCCo, Job, PhaseGroup, Phase)\n);\n\nProvide:\n1. A brief explanation of the approach\n2. The SQL query\n3. Any important notes about Vista-specific conventions used",
+    "response": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+    "has_sql": false,
+    "has_nolock": false
+  },
+  {
+    "prompt": "Generate a SQL query to answer the following question.\n\nQuestion: List all employees with their department\n\nDatabase Schema:\nCREATE TABLE PREH (\n  PRCo bcompany NOT NULL,\n  Employee bemployee NOT NULL,\n  FirstName varchar(30),\n  LastName varchar(30),\n  Department bdept,\n  ActiveYN char(1),\n  PRIMARY KEY (PRCo, Employee)\n);\n\nProvide:\n1. A brief explanation of the approach\n2. The SQL query\n3. Any important notes about Vista-specific conventions used",
+    "response": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+    "has_sql": false,
+    "has_nolock": false
+  }
+]
